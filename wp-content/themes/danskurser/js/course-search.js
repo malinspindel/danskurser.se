@@ -115,8 +115,8 @@ searchForm.submit(function(e){
           html += course_name;
           html += "</div>";
 
-          html += "<div class='no-padding-side medium-1 large-1 columns'>";
-          html += "Adress";
+          html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
+          html += "<i class='fa fa-map-pin'></i>";
           html += "</div>";
 
         html += "</div>";
@@ -131,21 +131,21 @@ searchForm.submit(function(e){
           html += "<div class='columns medium-4 large-4'>";
             html += "<label>Dag / Tid</label>";
             html += "<p>" + day + time + "</p>";
-            html += "<label> Ålder:</label>"
+            html += "<label> Ålder</label>"
             html +=  "<p>" + age + "</p>";
           html += "</div>";
 
           html += "<div class='columns medium-4 large-4'>";
-            html += "<label>Kursstart:</label>";
+            html += "<label>Kursstart</label>";
             html += "<p>1 jan</p>"
-            html += "<label>Antal ggr / tim:</label>";
+            html += "<label>Antal ggr / tim</label>";
             html += "<p>12 ggr / 18 tim";
           html += "</div>";
 
           html += "<div class='columns medium-4 large-4'>";
-            html += "<label>Pris:</label>";
+            html += "<label>Pris</label>";
             html += "<p> 3275:-</p>";
-            html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i>Mer info</a><br>";
+            html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i></a>";
           html += "</div>";
 
           html += "</div>";

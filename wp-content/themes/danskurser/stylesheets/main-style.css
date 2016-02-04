@@ -46,12 +46,16 @@ img {
   max-width: 100%;
   vertical-align: bottom; }
 
+button,
+i,
 a {
-  color: #c3c3c3;
+  color: #28464B;
   text-decoration: none; }
 
+button:hover,
+i:hover,
 a:hover {
-  color: #42d9c8; }
+  color: #2c8c99; }
 
 a:focus {
   outline: 0; }
@@ -88,8 +92,9 @@ input:focus {
     text-transform: uppercase;
     list-style: none;
     display: inline-block;
-    margin-right: 2em;
     font-size: 1.125em; }
+  .header ul li:hover {
+    opacity: .9; }
   .header ul li a {
     color: #fff; }
 
@@ -106,6 +111,27 @@ h2 {
 .no-padding-side {
   padding-left: 0;
   padding-right: 0; }
+
+.text-right {
+  text-align: right; }
+
+button {
+  color: #fff;
+  background-color: #28464B;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 1em 1.5em;
+  margin: 2em 0em; }
+
+button:hover {
+  background-color: #2C8C99; }
+
+i {
+  color: #28464B; }
+
+i:hover {
+  color: #2C8C99; }
 
 select {
   font-size: 1.4em;
@@ -167,7 +193,6 @@ select {
         .search-filter .section-filter .section-filter-second .choise input {
           width: 20%; }
     .search-filter .section-filter button {
-      background: #2c8c99;
       color: #fff;
       font-size: 1.2em;
       text-transform: uppercase;
@@ -187,23 +212,23 @@ select {
       list-style: none;
       border-bottom: 2px solid #28464B;
       margin-bottom: 1.5em;
-      padding: 0 0 1.5em 0;
+      padding: 0;
       background: #ccc; }
       .search-filter .section-result ul li .course-heading {
         padding: 0.5em 1.5em;
         background: #28464B;
         color: white;
         font-size: 1.45em;
-        font-weight: bold;
+        font-weight: 300;
         text-transform: uppercase; }
       .search-filter .section-result ul li .course-logo {
-        padding: 1em 1em 1em 2em;
+        padding: 2em 2em 1em 2em;
         height: 115px; }
         .search-filter .section-result ul li .course-logo img {
           max-height: 100px;
           width: auto; }
       .search-filter .section-result ul li .course-info {
-        padding: 1em 0; }
+        padding: 2em 0; }
         .search-filter .section-result ul li .course-info .medium-4 {
           font-size: 1.25em; }
           .search-filter .section-result ul li .course-info .medium-4 label {
@@ -214,11 +239,11 @@ select {
             text-transform: uppercase;
             font-size: 1em; }
           .search-filter .section-result ul li .course-info .medium-4 a {
-            color: #6D6B6B;
-            text-transform: uppercase;
-            font-size: 0.8em; }
+            color: #6D6B6B; }
             .search-filter .section-result ul li .course-info .medium-4 a i {
-              font-size: 1.5em; }
+              font-size: 3em;
+              margin-left: 2.35em;
+              margin-top: .25em; }
 
 /* sidebar */
 /* footer */
