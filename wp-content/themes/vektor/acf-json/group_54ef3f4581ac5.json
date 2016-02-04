@@ -1,0 +1,23 @@
+{
+    "key": "group_54ef3f4581ac5",
+    "title": "Undermeny stilmall",
+    "fields": [
+
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "template-sidebarmenu.php"
+            }
+        ]
+    ],
+    "menu_order": -4,
+    "position": "acf_after_title",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1424965549
+}

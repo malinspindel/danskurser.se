@@ -1,0 +1,23 @@
+{
+    "key": "group_542a9f71e14a3",
+    "title": "\u00d6vriga inst\u00e4llningar",
+    "fields": [
+
+    ],
+    "location": [
+        [
+            {
+                "param": "options_page",
+                "operator": "==",
+                "value": "acf-options-ovriga-installningar"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "seamless",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1424690756
+}

@@ -1,0 +1,74 @@
+{
+    "key": "group_54ede6839b4be",
+    "title": "Tj\u00e4nst",
+    "fields": [
+        {
+            "key": "field_54ede696b9cce",
+            "label": "Visa case",
+            "name": "show_cases",
+            "prefix": "",
+            "type": "true_false",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "default_value": 0
+        },
+        {
+            "key": "field_54ede6b0b9ccf",
+            "label": "Case",
+            "name": "cases",
+            "prefix": "",
+            "type": "relationship",
+            "instructions": "Om inget v\u00e4ljs kommer de tre senaste casen att visas.",
+            "required": 0,
+            "conditional_logic": [
+                [
+                    {
+                        "field": "field_54ede696b9cce",
+                        "operator": "==",
+                        "value": "1"
+                    }
+                ]
+            ],
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "post_type": [
+                "case"
+            ],
+            "taxonomy": "",
+            "filters": [
+                "search"
+            ],
+            "elements": [
+                "featured_image"
+            ],
+            "max": 3,
+            "return_format": "id"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "service"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "modified": 1424877701
+}
