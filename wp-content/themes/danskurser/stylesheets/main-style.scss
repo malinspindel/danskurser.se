@@ -140,6 +140,13 @@ h3 {
 
 /* General layout */
 
+.no-padding-side {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+
 select {
 	font-size: 1.4em;
 	height: 3em;
@@ -248,17 +255,75 @@ select {
 	.section-result {
 		background: #fff;
 
+
+		ul li:nth-child(odd) .course-heading {
+			background: #2C8C99;
+		}
+
+
+		h2 {
+			background: #28464B;
+			padding: 1.5em;
+			color: #fff;
+			text-align: center;
+		}
+
 		ul li {
 			list-style: none;
-			h2 {
-				background: #28464B;
-				padding: 1.5em;
-				color: #fff;
-				text-align: center;
-			}
-		}
-	} //section-result
+			border-bottom: 2px solid #28464B;
+			margin-bottom: 1.5em;
+			padding: 0 0 1.5em 0;
+			background: #ccc;
 
+			.course-heading {
+				padding: 0.5em 1.5em;
+				background: #28464B;
+				color: white;
+				font-size: 1.45em;
+				font-weight: bold;
+				text-transform: uppercase;
+			}
+
+			.course-logo {
+				padding: 1em 1em 1em 2em;
+				height: 115px;
+
+				img {
+					max-height: 100px;
+					width: auto;
+				}
+			}
+
+			.course-info {
+				padding: 1em 0;
+				.medium-4 {
+					font-size: 1.25em;
+
+					label {
+						text-transform: uppercase;
+						font-size: 0.85em;
+						color: #6D6B6B;
+					}
+
+					p {
+						text-transform:uppercase;
+						font-size: 1em;
+					}
+
+					a {
+						color: #6D6B6B;
+						text-transform: uppercase;
+						font-size: 0.8em;
+						i{
+							font-size: 1.5em;
+						}
+					}
+				}
+			}//course-info
+
+
+		} //ul li
+	} //section-result
 }//search-filter
 
 

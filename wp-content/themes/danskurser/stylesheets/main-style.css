@@ -103,6 +103,10 @@ h2 {
   margin-bottom: 1em; }
 
 /* General layout */
+.no-padding-side {
+  padding-left: 0;
+  padding-right: 0; }
+
 select {
   font-size: 1.4em;
   height: 3em;
@@ -172,13 +176,49 @@ select {
       margin: 2em 0em; }
   .search-filter .section-result {
     background: #fff; }
+    .search-filter .section-result ul li:nth-child(odd) .course-heading {
+      background: #2C8C99; }
+    .search-filter .section-result h2 {
+      background: #28464B;
+      padding: 1.5em;
+      color: #fff;
+      text-align: center; }
     .search-filter .section-result ul li {
-      list-style: none; }
-      .search-filter .section-result ul li h2 {
+      list-style: none;
+      border-bottom: 2px solid #28464B;
+      margin-bottom: 1.5em;
+      padding: 0 0 1.5em 0;
+      background: #ccc; }
+      .search-filter .section-result ul li .course-heading {
+        padding: 0.5em 1.5em;
         background: #28464B;
-        padding: 1.5em;
-        color: #fff;
-        text-align: center; }
+        color: white;
+        font-size: 1.45em;
+        font-weight: bold;
+        text-transform: uppercase; }
+      .search-filter .section-result ul li .course-logo {
+        padding: 1em 1em 1em 2em;
+        height: 115px; }
+        .search-filter .section-result ul li .course-logo img {
+          max-height: 100px;
+          width: auto; }
+      .search-filter .section-result ul li .course-info {
+        padding: 1em 0; }
+        .search-filter .section-result ul li .course-info .medium-4 {
+          font-size: 1.25em; }
+          .search-filter .section-result ul li .course-info .medium-4 label {
+            text-transform: uppercase;
+            font-size: 0.85em;
+            color: #6D6B6B; }
+          .search-filter .section-result ul li .course-info .medium-4 p {
+            text-transform: uppercase;
+            font-size: 1em; }
+          .search-filter .section-result ul li .course-info .medium-4 a {
+            color: #6D6B6B;
+            text-transform: uppercase;
+            font-size: 0.8em; }
+            .search-filter .section-result ul li .course-info .medium-4 a i {
+              font-size: 1.5em; }
 
 /* sidebar */
 /* footer */

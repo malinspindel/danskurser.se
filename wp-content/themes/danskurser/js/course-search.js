@@ -51,14 +51,16 @@ searchForm.submit(function(e){
 
       for(var i = 0; i < response.length; i++) {
         console.log(response[i]);
+
         var city = response[i].city;
-        var logo = response[i].logo;
         var school = response[i].school;
+        var course_name = response[i].course_name;
+        var logo = response[i].logo;
         var day = "";
         var time = response[i].course_time;
         var age = response[i].age;
         // var level = "";
-        var html = "<li class='h2' id='course-id-" + response[i].id + "'><a href ='" + response[i].link + "'>" + response[i].title + "</a>";
+        var html = "<li class='row' id='course-id-" + response[i].id + "'>";
 
         //Dag
         if(response[i].day == "day_mon"){
@@ -103,18 +105,56 @@ searchForm.submit(function(e){
         // if(response[i].level6){
         //   level += " Ingen nivå";
         // }
+        html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
+          html += "<div class='no-padding-side medium-4 large-4 columns'>";
+          html += school;
+          // html += "(" + city + ")";
+          html += "</div>";
 
-        html += "<img src=" + logo + ">";
-        html += "Ort: " + city + "<br>";
-        html += "Dag: " + day + "<br>";
-        html += "Tid: " + time + "<br>";
-        html += "Ålder: " + age + "<br>";
-        // html += "Nivå: " + level + "<br>";
-        html += "Logo: " + logo + "<br>";
-        html += "School: " + school + "<br>";
+          html += "<div class='no-padding-side medium-7 large-7 columns'>";
+          html += course_name;
+          html += "</div>";
+
+          html += "<div class='no-padding-side medium-1 large-1 columns'>";
+          html += "Adress";
+          html += "</div>";
+
+        html += "</div>";
+
+
+          html += "<div class='course-logo columns medium-4 large-4'>";
+            html += "<img src=" + logo + ">";
+          html += "</div>";
+
+          html += "<div class='course-info columns large-8'>";
+
+          html += "<div class='columns medium-4 large-4'>";
+            html += "<label>Dag / Tid</label>";
+            html += "<p>" + day + time + "</p>";
+            html += "<label> Ålder:</label>"
+            html +=  "<p>" + age + "</p>";
+          html += "</div>";
+
+          html += "<div class='columns medium-4 large-4'>";
+            html += "<label>Kursstart:</label>";
+            html += "<p>1 jan</p>"
+            html += "<label>Antal ggr / tim:</label>";
+            html += "<p>12 ggr / 18 tim";
+          html += "</div>";
+
+          html += "<div class='columns medium-4 large-4'>";
+            html += "<label>Pris:</label>";
+            html += "<p> 3275:-</p>";
+            html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i>Mer info</a><br>";
+          html += "</div>";
+
+          html += "</div>";
+
+
+
         html += "</li>";
 
-        html += "<a href ='" + response[i].link + "'>Mer info & Anmälan</a>"
+
 
         courseSearch.find('ul').append(html);
       }

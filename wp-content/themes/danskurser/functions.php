@@ -576,7 +576,7 @@ function course_search(){
       <h2>Dina Sökresultat</h2>
       <!--The response output-->
       <div class="row">
-        <ul class="small-12 medium-10 large-8"></ul>
+        <ul class="columns small-centered small-12 medium-10 large-8"></ul>
       </div>
 
     </section>
@@ -717,6 +717,7 @@ function course_search_callback() {
         'permalink' => get_permalink(),
         'link' => get_field('link'),
         'city' => get_field('city'),
+        'course_name' => get_field('course_name'),
         'day' => get_field('day'),
         'time' => get_field('time'),
         'age' => get_field('age'),
