@@ -1,13 +1,21 @@
 <?php
-	/* Template Name: Demo Page Template */
-	?>
+get_header();
+?>
 
-	<?php get_header(); ?>
 
+<?php if(get_field('top_section_type') == 'slider'): ?>
+	<?php get_template_part('templates/backgroundslider'); ?>
+<?php endif; ?>
+
+<!--search-filter templtepart-->
+<?php get_template_part('templates/search-filter'); ?>
+
+
+<!--OLD-->
 	<main role="main">
 		<!-- section -->
 		<section>
-
+HEEEJ FRONT PAGE
 			<h1><?php the_title(); ?></h1>
 
 		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
@@ -21,9 +29,9 @@
 
 				<br class="clear">
 
-				<?php edit_post_link(); ?>
-
 			</article>
+
+
 			<!-- /article -->
 
 		<?php endwhile; ?>

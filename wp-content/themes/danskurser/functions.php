@@ -126,7 +126,7 @@ function html5blank_styles()
     wp_register_style('foundation', get_template_directory_uri() . '/stylesheets/foundation.css', array(), '1.0', 'all');
     wp_enqueue_style('foundation'); // Enqueue it!
 
-    wp_register_style('main-style', get_template_directory_uri() . '/stylesheets/main-style.css', array(), '1.0', 'all');
+    wp_register_style('main-style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('main-style'); // Enqueue it!
 
 }
@@ -576,7 +576,7 @@ function course_search(){
       <h2>Dina Sökresultat</h2>
       <!--The response output-->
       <div class="row">
-        <ul class="columns small-centered small-12 medium-10 large-8"></ul>
+        <ul class="columns small-centered small-12 medium-10 large-10"></ul>
       </div>
 
     </section>

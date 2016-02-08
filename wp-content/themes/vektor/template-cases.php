@@ -9,7 +9,7 @@
 <?php get_header(); ?>
 
 <?php get_template_part('templates/top-section'); ?>
-	
+
 	<?php
 		$wp_query = new WP_Query(
 			array(
@@ -26,9 +26,9 @@
 		<section class="cases-section space small layout">
 
 		<div class="row">
-				
+
 			<?php while ($wp_query->have_posts()) : $wp_query->the_post(); ?>
-			
+
 				  <div class="small-12 medium-6 large-4 columns case-item">
 
 					<a href="<?php the_permalink(); ?>" class="item-inner">
@@ -51,21 +51,21 @@
 
 				</div>
 			<?php endwhile; ?>
-		
+
 			<div class="medium-12 columns">
 
 				<?php get_template_part('templates/pagination'); ?>
-				
+
 				<?php wp_reset_query(); ?>
 
 			</div> <!-- /.medium-12 -->
-			
+
 		</div> <!-- /.row -->
 
 		</section>
-		
+
 	<?php endif; ?>
 
 	<?php wp_reset_query(); get_template_part('templates/flexible-content'); ?>
-	
+
 <?php get_footer(); ?>

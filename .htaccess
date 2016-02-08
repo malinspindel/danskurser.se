@@ -4,6 +4,7 @@
 RewriteEngine On
 RewriteBase /danskurser/
 RewriteRule ^index\.php$ - [L]
+RewriteRule ^download/(.+)$ /danskurser/wp-content/themes/vektor/lib/inc/plugins/force-download.php?file=uploads/$1 [QSA,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /danskurser/index.php [L]

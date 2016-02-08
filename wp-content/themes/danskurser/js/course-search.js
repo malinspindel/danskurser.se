@@ -59,30 +59,56 @@ searchForm.submit(function(e){
         var day = "";
         var time = response[i].course_time;
         var age = response[i].age;
-        // var level = "";
-        var html = "<li class='row' id='course-id-" + response[i].id + "'>";
+        var level = "NYB";
+        var html = "<li class='small-12 medium-6 large-4 columns' id='course-id-" + response[i].id + "'>";
 
         //Dag
         if(response[i].day == "day_mon"){
-          day = "Måndag";
+          day = "Mån";
         }
         if(response[i].day == "day_tue"){
-          day = "Tisdag";
+          day = "Tis";
         }
         if(response[i].day == "day_wed"){
-          day = "Onsdag";
+          day = "Ons";
         }
         if(response[i].day == "day_thu"){
-          day = "Torsdag";
+          day = "Tor";
         }
         if(response[i].day == "day_fri"){
-          day = "Fredag";
+          day = "Fre";
         }
         if(response[i].day == "day_sat"){
-          day = "Lördag";
+          day = "Lör";
         }
         if(response[i].day == "day_sun"){
-          day = "Söndag";
+          day = "Sön";
+        }
+
+        //Ålder
+        if(response[i].age == "age_1"){
+          age = "1-3 år";
+        }
+        if(response[i].age == "age_4"){
+          age = "4-6 år";
+        }
+        if(response[i].age == "age_7"){
+          age = "7-9 år";
+        }
+        if(response[i].age == "age_10"){
+          age = "10-12 år";
+        }
+        if(response[i].age == "age_13"){
+          age = "13-15 år";
+        }
+        if(response[i].age == "age_16"){
+          age = "16+";
+        }
+        if(response[i].age == "age_30"){
+          age = "30+";
+        }
+        if(response[i].age == "age_50"){
+          age = "50+";
         }
 
 
@@ -106,12 +132,8 @@ searchForm.submit(function(e){
         //   level += " Ingen nivå";
         // }
         html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
-          html += "<div class='no-padding-side medium-4 large-4 columns'>";
-          html += school;
-          // html += "(" + city + ")";
-          html += "</div>";
 
-          html += "<div class='no-padding-side medium-7 large-7 columns'>";
+          html += "<div class='no-padding-side medium-11 large-11 columns'>";
           html += course_name;
           html += "</div>";
 
@@ -121,33 +143,45 @@ searchForm.submit(function(e){
 
         html += "</div>";
 
+        html += "<div class='container columns'>";
 
-          html += "<div class='course-logo columns medium-4 large-4'>";
+          html += "<div class='course-logo'>";
             html += "<img src=" + logo + ">";
           html += "</div>";
 
-          html += "<div class='course-info columns large-8'>";
+          html += "<div class='row'>";
 
-          html += "<div class='columns medium-4 large-4'>";
-            html += "<label>Dag / Tid</label>";
-            html += "<p>" + day + time + "</p>";
-            html += "<label> Ålder</label>"
-            html +=  "<p>" + age + "</p>";
+            html += "<div class='course-info columns medium-6 large-6'>";
+              html += "<label>Dag / Tid</label>";
+              html += "<p>" + day + " / " + time + "</p>";
+              html += "<label>Antal ggr / tim</label>";
+              html += "<p>12 ggr / 18 tim</p>";
+
+              html += "<label>Pris</label>";
+              html += "<p> 3275:-</p>";
+            html += "</div>";
+
+            html += "<div class='course-info text-right columns medium-6 large-6'>";
+              html += "<label>Kursstart</label>";
+              html += "<p>1 jan</p>"
+              html += "<label> Ålder</label>"
+              html +=  "<p>" + age + "</p>";
+
+            html += "</div>";
           html += "</div>";
 
-          html += "<div class='columns medium-4 large-4'>";
-            html += "<label>Kursstart</label>";
-            html += "<p>1 jan</p>"
-            html += "<label>Antal ggr / tim</label>";
-            html += "<p>12 ggr / 18 tim";
+
+          html += "<div class='course-nav row'>";
+            html += "<div class='columns medium-9'>";
+              html += "<div class='circle level'><span>" + level + "</span></div>";
+            html += "</div>";
+
+            html += "<div class='columns medium-3'>";
+              html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i></a>";
+            html += "</div>";
           html += "</div>";
 
-          html += "<div class='columns medium-4 large-4'>";
-            html += "<label>Pris</label>";
-            html += "<p> 3275:-</p>";
-            html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i></a>";
           html += "</div>";
-
           html += "</div>";
 
 
