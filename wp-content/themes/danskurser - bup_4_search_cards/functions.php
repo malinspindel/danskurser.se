@@ -468,7 +468,6 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 
 function course_search_scripts() {
   wp_enqueue_script( 'course-search', get_stylesheet_directory_uri() . '/js/course-search.js', array(), '1.0.0', true );
-  wp_enqueue_script( 'new-course-search', get_stylesheet_directory_uri() . '/js/new-course-search.js', array(), '1.0.0', true );
   wp_localize_script( 'course-search', 'ajax_url', admin_url('admin-ajax.php') );
 }
 
@@ -539,16 +538,16 @@ function course_search(){
         <div class="small-centered small-10 medium-6 large-4">
           <label for="level"><h2>Nivå</h2></label>
           <select id="level" name="level">
-            <option value="0">Alla nivåer</option>
-            <option value="1">Nybörjare</option>
-            <option value="2">Nybörjare - Fortsättning</option>
-            <option value="3">Fortsättning</option>
-            <option value="4">Fortsättning - Medel</option>
-            <option value="5">Medel</option>
-            <option value="6">Medel - Avancerad</option>
-            <option value="7">Avancerad</option>
-            <option value="8">Professionell</option>
-            <option value="9">Ingen nivå</option>
+            <option disabled selected> -- select an option -- </option>
+            <option value="level_1">Nybörjare</option>
+            <option value="level_2">Nybörjare - Fortsättning</option>
+            <option value="level_3">Fortsättning</option>
+            <option value="level_4">Fortsättning - Medel</option>
+            <option value="leve_5">Medel</option>
+            <option value="level_6">Medel - Avancerad</option>
+            <option value="leve_7">Avancerad</option>
+            <option value="level_8">Prefessionell</option>
+            <option value="level_9">Ingen nivå</option>
           </select>
         </div>
       </div> <!--//section-filter-second-->
@@ -597,9 +596,9 @@ function course_search_callback() {
     if(isset($_GET['age']))
       $age = sanitize_text_field($_GET['age']);
 
-    // $level = 0;
-    // if(isset($_GET['level']))
-    //   $level = sanitize_text_field($_GET['level']);
+    $level = 0;
+    if(isset($_GET['level']))
+      $level = sanitize_text_field($_GET['level']);
 
     // $level_1 = 0;
     // if(isset($_GET['level_1']))
@@ -656,12 +655,50 @@ function course_search_callback() {
     'value' => $age,
     'compare' => '='
   );
-  //
+
+  $args['meta_query'][] = array(
+    'key' => 'level',
+    'value' => $level,
+    'compare' => '='
+  );
+
   // $args['meta_query'][] = array(
-  //   'key' => 'level',
-  //   'value' => $level,
+  //   'key' => 'level_1',
+  //   'value' => $level_1,
   //   'compare' => '='
   // );
+  //
+  // $args['meta_query'][] = array(
+  //   'key' => 'level_2',
+  //   'value' => $level_2,
+  //   'compare' => '='
+  // );
+  //
+  // $args['meta_query'][] = array(
+  //   'key' => 'level_3',
+  //   'value' => $level_3,
+  //   'compare' => '='
+  // );
+  //
+  // $args['meta_query'][] = array(
+  //   'key' => 'level_4',
+  //   'value' => $level_4,
+  //   'compare' => '='
+  // );
+  //
+  // $args['meta_query'][] = array(
+  //   'key' => 'level_5',
+  //   'value' => $level_5,
+  //   'compare' => '='
+  // );
+  //
+  // $args['meta_query'][] = array(
+  //   'key' => 'level_6',
+  //   'value' => $level_6,
+  //   'compare' => '='
+  // );
+
+
 
   $course_query = new WP_Query( $args );
 

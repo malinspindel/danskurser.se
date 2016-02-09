@@ -9,37 +9,14 @@ console.log(searchForm);
 searchForm.submit(function(e){
   e.preventDefault();
 
-  // var level_one = 0;
-  // var level_two = 0;
-  // var level_three = 0;
-  // var level_four = 0;
-  // var level_five = 0;
-  // var level_six = 0;
-  // if(courseSearch.find('#level_1').prop("checked"))
-  //   level_one = 1;
-  // if(courseSearch.find('#level_2').prop("checked"))
-  //   level_two = 1;
-  // if(courseSearch.find('#level_3').prop("checked"))
-  //   level_three = 1;
-  // if(courseSearch.find('#level_4').prop("checked"))
-  //   level_four = 1;
-  // if(courseSearch.find('#level_5').prop("checked"))
-  //   level_five = 1;
-  // if(courseSearch.find('#level_6').prop("checked"))
-  //   level_six = 1;
-
   var data = {
     action : "course_search",
     city: courseSearch.find('#city').val(),
     day: courseSearch.find('#day').val(),
     time: courseSearch.find('#time').val(),
-    age: courseSearch.find('#age').val()
-    // level_1: level_one,
-    // level_2: level_two,
-    // level_3: level_three,
-    // level_4: level_four,
-    // level_5: level_five,
-    // level_6: level_six
+    age: courseSearch.find('#age').val(),
+    level: courseSearch.find('#level').val()
+
   }
 
   $.ajax({
@@ -50,7 +27,7 @@ searchForm.submit(function(e){
       courseSearch.find("ul").empty();
 
       for(var i = 0; i < response.length; i++) {
-        console.log(response[i]);
+        // console.log(response[i]);
 
         var city = response[i].city;
         var school = response[i].school;
@@ -59,8 +36,8 @@ searchForm.submit(function(e){
         var day = "";
         var time = response[i].course_time;
         var age = response[i].age;
-        var level = "NYB";
-        var html = "<li class='small-12 medium-6 large-4 columns' id='course-id-" + response[i].id + "'>";
+        var level = response[i].level;
+        var html = "";
 
         //Dag
         if(response[i].day == "day_mon"){
@@ -111,82 +88,101 @@ searchForm.submit(function(e){
           age = "50+";
         }
 
-
         //Nivå
-        // if(response[i].level1){
-        //   level += " Nybörjare";
-        // }
-        // if(response[i].level2){
-        //   level += " Fortsättning";
-        // }
-        // if(response[i].level3){
-        //   level += " Medel";
-        // }
-        // if(response[i].level4){
-        //   level += " Avancerad";
-        // }
-        // if(response[i].level5){
-        //   level += " Proffesionel";
-        // }
-        // if(response[i].level6){
-        //   level += " Ingen nivå";
-        // }
-        html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
+        if(response[i].level == "1"){
+          level = "N";
+        }
+        if(response[i].level == "2"){
+          level = "N - F";
+        }
+        if(response[i].level == "3"){
+          level = "F";
+        }
+        if(response[i].level == "4"){
+          level = "F - M";
+        }
+        if(response[i].level == "5"){
+          level = "M";
+        }
+        if(response[i].level == "6"){
+          level = "M - A";
+        }
+        if(response[i].level == "7"){
+          level = "A";
+        }
+        if(response[i].level == "8"){
+          level = "P";
+        }
+        if(response[i].level == "9"){
+          level = "Alla";
+        }
+        console.log(data.level);
+        if(data.level == 0) {
+          console.log("ingen nivå vald");
+          writeHTML();
+        } else if(data.level == response[i].level){
+          console.log("val och svar matchar");
+          writeHTML();
+        }
 
-          html += "<div class='no-padding-side medium-11 large-11 columns'>";
-          html += course_name;
-          html += "</div>";
 
-          html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
-          html += "<i class='fa fa-map-pin'></i>";
-          html += "</div>";
+        function writeHTML(){
+          html = "<li class='small-12 medium-6 large-4 columns' id='course-id-" + response[i].id + "'>";
 
-        html += "</div>";
+          html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
 
-        html += "<div class='container columns'>";
-
-          html += "<div class='course-logo'>";
-            html += "<img src=" + logo + ">";
-          html += "</div>";
-
-          html += "<div class='row'>";
-
-            html += "<div class='course-info columns medium-6 large-6'>";
-              html += "<label>Dag / Tid</label>";
-              html += "<p>" + day + " / " + time + "</p>";
-              html += "<label>Antal ggr / tim</label>";
-              html += "<p>12 ggr / 18 tim</p>";
-
-              html += "<label>Pris</label>";
-              html += "<p> 3275:-</p>";
+            html += "<div class='no-padding-side medium-11 large-11 columns'>";
+            html += course_name;
             html += "</div>";
 
-            html += "<div class='course-info text-right columns medium-6 large-6'>";
-              html += "<label>Kursstart</label>";
-              html += "<p>1 jan</p>"
-              html += "<label> Ålder</label>"
-              html +=  "<p>" + age + "</p>";
-
-            html += "</div>";
-          html += "</div>";
-
-
-          html += "<div class='course-nav row'>";
-            html += "<div class='columns medium-9'>";
-              html += "<div class='circle level'><span>" + level + "</span></div>";
+            html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
+            html += "<i class='fa fa-map-pin'></i>";
             html += "</div>";
 
-            html += "<div class='columns medium-3'>";
-              html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i></a>";
+          html += "</div>";
+
+          html += "<div class='container columns'>";
+
+            html += "<div class='course-logo'>";
+              html += "<img src=" + logo + ">";
             html += "</div>";
-          html += "</div>";
+
+            html += "<div class='row'>";
+
+              html += "<div class='course-info columns medium-6 large-6'>";
+                html += "<label>Dag / Tid</label>";
+                html += "<p>" + day + " / " + time + "</p>";
+                html += "<label>Antal ggr / tim</label>";
+                html += "<p>12 ggr / 18 tim</p>";
+
+                html += "<label>Pris</label>";
+                html += "<p> 3275:-</p>";
+              html += "</div>";
+
+              html += "<div class='course-info text-right columns medium-6 large-6'>";
+                html += "<label>Kursstart</label>";
+                html += "<p>1 jan</p>"
+                html += "<label> Ålder</label>"
+                html +=  "<p>" + age + "</p>";
+
+              html += "</div>";
+            html += "</div>";
+
+            html += "<div class='course-nav row'>";
+              html += "<div class='columns medium-9'>";
+                html += "<div class='circle " + level + "'><span>" + level + "</span></div>";
+              html += "</div>";
+
+              html += "<div class='columns medium-3'>";
+                html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i></a>";
+              html += "</div>";
+            html += "</div>";
 
           html += "</div>";
           html += "</div>";
 
-
-
-        html += "</li>";
+          html += "</li>";
+        }
 
 
 
