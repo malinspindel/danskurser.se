@@ -17,9 +17,24 @@ var searchForm = courseSearch.find('form');
     day: courseSearch.find('#day').val(),
     time: courseSearch.find('#time').val(),
     age: courseSearch.find('#age').val(),
-    level: courseSearch.find('#level').val()
-
+    level: courseSearch.find('#level').val(),
+    styles: function getCheckboxes(checkboxName) {
+              var checkboxes = document.getElementsByName(checkboxName);
+              // console.log(checkboxes);
+              var checked = [];
+              for(var i = 0 ; i < checkboxes.length; i++){
+                if(checkboxes[i].checked){
+                  checked.push(checkboxes[i].defaultValue);
+                }
+              }
+              return checked.length > 0 ? checked : null;
+            }
   }
+
+  var checkedBoxes = data.styles("style");
+
+
+
 
   $.ajax({
     url : ajax_url,
@@ -39,6 +54,8 @@ var searchForm = courseSearch.find('form');
         var time = response[i].course_time;
         var age = response[i].age;
         var level = response[i].level;
+        var styles = response[i].styles;
+
         var html = "";
 
         //Dag
@@ -118,17 +135,118 @@ var searchForm = courseSearch.find('form');
         if(response[i].level == "9"){
           level = "Alla";
         }
-        console.log(data.level);
-        if(data.level == 0) {
-          console.log("ingen nivå vald");
-          writeHTML();
-        } else if(data.level == response[i].level){
-          console.log("val och svar matchar");
+
+      //Filtering levels
+        // console.log(data.level);
+
+        if(data.level == 0 && checkedBoxes == null) {
+          console.log("no choises");
           writeHTML();
         }
 
+        else if(data.level == response[i].level && checkedBoxes != null){
+          console.log("both choises ")
+
+            if(data.level == response[i].level){
+              for(j = 0; j < checkedBoxes.length; j++ ){
+                // console.log("forloop");
+                for(k = 0 ; k < styles.length ; k++ ) {
+                  if(checkedBoxes[j] == styles[k]) {
+                    // console.log("samma:");
+                    // console.log(checkedBoxes[j]);
+                    // console.log(styles[k]);
+                    writeHTML();
+                  }
+                }
+
+              }
+            }
+
+        }
+
+        else if(data.level == response[i].level && checkedBoxes == null) {
+          console.log("level choise is true");
+          writeHTML();
+        }
+
+        else if(checkedBoxes != null && data.level == 0){
+          console.log("styles choises true");
+              for(j = 0; j < checkedBoxes.length; j++ ){
+                // console.log("forloop");
+                for(k = 0 ; k < styles.length ; k++ ) {
+                  if(checkedBoxes[j] == styles[k]) {
+                    // console.log("samma:");
+                    // console.log(checkedBoxes[j]);
+                    // console.log(styles[k]);
+                    writeHTML();
+                  }
+                }
+              }
+
+        }
+
+
+
+        // if(data.level == 0) {
+        //   console.log(checkedBoxes);
+        //   writeHTML();
+        // } else if(data.level == response[i].level){
+        //   // console.log("val och svar matchar");
+        //   writeHTML();
+        // }
+        //
+        // if(checkedBoxes) {
+        //
+        //     for(j = 0; j < checkedBoxes.length; j++ ){
+        //       // console.log("forloop");
+        //       for(k = 0 ; k < styles.length ; k++ ) {
+        //         if(checkedBoxes[j] == styles[k]) {
+        //           console.log("samma:");
+        //           // console.log(checkedBoxes[j]);
+        //           // console.log(styles[k]);
+        //           writeHTML();
+        //         }
+        //       }
+        //     }
+        //
+        // }
+
+
+        //The checked checkboxes array
+        // console.log("choise array: " + checkedBoxes);
+        // console.log("response array: " + styles);
+
+      //Filtering styles
+
+        // if(checkedBoxes) {
+        //
+        //
+        //
+        //
+        //   // console.log("choise  checkboxes length: " + checkedBoxes.length);
+        //   // console.log("posts respons length: " + styles.length);
+        //   for(j = 0; j < checkedBoxes.length; j++ ){
+        //     // console.log("forloop");
+        //     for(k = 0 ; k < styles.length ; k++ ) {
+        //       if(checkedBoxes[j] == styles[k]) {
+        //         console.log("samma:");
+        //         console.log(checkedBoxes[j]);
+        //         console.log(styles[k]);
+        //       }
+        //     }
+        //   }
+        //
+        // }
+
+
 
         function writeHTML(){
+
+
+
+
+
+
           html = "<li class='small-12 medium-6 large-4 columns' id='course-id-" + response[i].id + "'>";
 
           html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
@@ -179,6 +297,8 @@ var searchForm = courseSearch.find('form');
                 html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i></a>";
               html += "</div>";
             html += "</div>";
+
+            html += "<p>styles: <p>" + styles;
 
           html += "</div>";
           html += "</div>";

@@ -536,6 +536,7 @@ function course_search(){
       </div>  <!--//section-filter-first -->
 
       <div class="section-filter-second row" id="advanced-filter">
+
         <div class="small-centered small-10 medium-6 large-4">
           <label for="level"><h2>Nivå</h2></label>
           <select id="level" name="level">
@@ -551,6 +552,14 @@ function course_search(){
             <option value="9">Ingen nivå</option>
           </select>
         </div>
+
+        <div class="small-centered small-10 medium-6 large-4">
+          <label for="styles"><h2>Dansstilar</h2></label>
+            <input class="style" type="checkbox" name="style" value="modern"> Modern<br>
+            <input class="style" type="checkbox" name="style" value="jazz"> Jazz<br>
+            <input class="style" type="checkbox" name="style" value="streetdance"> Streetdance<br>
+        </div>
+
       </div> <!--//section-filter-second-->
 
       <button type="submit">SÖK DANSKURSER</button>
@@ -688,7 +697,8 @@ function course_search_callback() {
         // 'level4' => get_field('level_4'),
         // 'level5' => get_field('level_5'),
         // 'level6' => get_field('level_6'),
-        'logo' => get_field('logo')
+        'logo' => get_field('logo'),
+        'styles' => get_field('styles')
       );
     }
 
