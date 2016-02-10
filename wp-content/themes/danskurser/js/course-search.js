@@ -4,10 +4,12 @@ var courseSearch = $('#course-search');
 
 var searchForm = courseSearch.find('form');
 
-console.log(searchForm);
+// console.log(searchForm);
+// $( document ).ready(function() {
+  searchForm.submit(function(e){
+    e.preventDefault();
 
-searchForm.submit(function(e){
-  e.preventDefault();
+
 
   var data = {
     action : "course_search",
