@@ -43,6 +43,10 @@ var searchForm = courseSearch.find('form');
 
       courseSearch.find("ul").empty();
 
+      if(response.length == 0) {
+        alert("Tyvärr, inga kurser matchade din sökning.");
+      }
+
       for(var i = 0; i < response.length; i++) {
         // console.log(response[i]);
 
@@ -158,10 +162,8 @@ var searchForm = courseSearch.find('form');
                     writeHTML();
                   }
                 }
-
               }
             }
-
         }
 
         else if(data.level == response[i].level && checkedBoxes == null) {
@@ -175,9 +177,6 @@ var searchForm = courseSearch.find('form');
                 // console.log("forloop");
                 for(k = 0 ; k < styles.length ; k++ ) {
                   if(checkedBoxes[j] == styles[k]) {
-                    // console.log("samma:");
-                    // console.log(checkedBoxes[j]);
-                    // console.log(styles[k]);
                     writeHTML();
                   }
                 }
@@ -186,66 +185,7 @@ var searchForm = courseSearch.find('form');
         }
 
 
-
-        // if(data.level == 0) {
-        //   console.log(checkedBoxes);
-        //   writeHTML();
-        // } else if(data.level == response[i].level){
-        //   // console.log("val och svar matchar");
-        //   writeHTML();
-        // }
-        //
-        // if(checkedBoxes) {
-        //
-        //     for(j = 0; j < checkedBoxes.length; j++ ){
-        //       // console.log("forloop");
-        //       for(k = 0 ; k < styles.length ; k++ ) {
-        //         if(checkedBoxes[j] == styles[k]) {
-        //           console.log("samma:");
-        //           // console.log(checkedBoxes[j]);
-        //           // console.log(styles[k]);
-        //           writeHTML();
-        //         }
-        //       }
-        //     }
-        //
-        // }
-
-
-        //The checked checkboxes array
-        // console.log("choise array: " + checkedBoxes);
-        // console.log("response array: " + styles);
-
-      //Filtering styles
-
-        // if(checkedBoxes) {
-        //
-        //
-        //
-        //
-        //   // console.log("choise  checkboxes length: " + checkedBoxes.length);
-        //   // console.log("posts respons length: " + styles.length);
-        //   for(j = 0; j < checkedBoxes.length; j++ ){
-        //     // console.log("forloop");
-        //     for(k = 0 ; k < styles.length ; k++ ) {
-        //       if(checkedBoxes[j] == styles[k]) {
-        //         console.log("samma:");
-        //         console.log(checkedBoxes[j]);
-        //         console.log(styles[k]);
-        //       }
-        //     }
-        //   }
-        //
-        // }
-
-
-
         function writeHTML(){
-
-
-
-
-
 
           html = "<li class='small-12 medium-6 large-4 columns' id='course-id-" + response[i].id + "'>";
 

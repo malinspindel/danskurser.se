@@ -407,6 +407,7 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 function course_search_scripts() {
   wp_enqueue_script( 'course-search', get_stylesheet_directory_uri() . '/js/course-search.js', array(), '1.0.0', true );
   wp_enqueue_script( 'new-course-search', get_stylesheet_directory_uri() . '/js/new-course-search.js', array(), '1.0.0', true );
+  wp_enqueue_script( 'new-course-search', get_stylesheet_directory_uri() . '/js/scripts.js', array(jquery), '1.0.0', true );
   wp_localize_script( 'course-search', 'ajax_url', admin_url('admin-ajax.php') );
 }
 function course_search(){
@@ -427,8 +428,7 @@ function course_search(){
       </select>
     </div>
 
-    <div class="section-filter">
-
+    <div class="section-filter" id="open">
       <div class="section-filter-first row">
         <div class="section-day column small-12 medium-6 large-4">
           <label for="day"><h2>Dag</h2></label>
@@ -466,12 +466,12 @@ function course_search(){
             <option value="age_50">50+</option>
           </select>
         </div>
-
+          <button id="button-second-filter">Fler val</button>
       </div>  <!--//section-filter-first -->
 
-      <div class="section-filter-second row" id="advanced-filter">
+      <div class="section-filter-second row" id="second-filter">
 
-        <div class="small-centered small-10 medium-6 large-4">
+        <div class=" small-10 medium-4 large-4 columns">
           <label for="level"><h2>Nivå</h2></label>
           <select id="level" name="level">
             <option value="0">Alla nivåer</option>
@@ -487,32 +487,40 @@ function course_search(){
           </select>
         </div>
 
-        <div class="small-centered small-10 medium-6 large-4">
+        <div class=" small-10 medium-8 large-8 columns">
           <label for="styles"><h2>Dansstilar</h2></label>
-          <input class="style" type="checkbox" name="style" value="balett"> Balett<br>
-          <input class="style" type="checkbox" name="style" value="barndans"> Barndans<br>
-          <input class="style" type="checkbox" name="style" value="breaking"> Breaking<br>
-          <input class="style" type="checkbox" name="style" value="dansmix"> Dansmix<br>
-          <input class="style" type="checkbox" name="style" value="flamenco"> Flamenco<br>
-          <input class="style" type="checkbox" name="style" value="improvisation"> Improvisation<br>
-          <input class="style" type="checkbox" name="style" value="jazzdans"> Jazzdans<br>
-          <input class="style" type="checkbox" name="style" value="latinska"> Latinska<br>
-          <input class="style" type="checkbox" name="style" value="modernnutida"> Modern & Nutida<br>
-          <input class="style" type="checkbox" name="style" value="musikal"> Musikal<br>
-          <input class="style" type="checkbox" name="style" value="pardans"> Pardans<br>
-          <input class="style" type="checkbox" name="style" value="pilates"> Pilates<br>
-          <input class="style" type="checkbox" name="style" value="streetdance"> Streetdance<br>
-          <input class="style" type="checkbox" name="style" value="yoga"> Yoga<br>
+          <div class="small-6 medium-4 large-4 columns">
+            <input class="style" type="checkbox" name="style" value="balett"> Balett<br>
+            <input class="style" type="checkbox" name="style" value="barndans"> Barndans<br>
+            <input class="style" type="checkbox" name="style" value="breaking"> Breaking<br>
+            <input class="style" type="checkbox" name="style" value="dansmix"> Dansmix<br>
+            <input class="style" type="checkbox" name="style" value="flamenco"> Flamenco<br>
+          </div>
+
+          <div class="small-6 medium-4 large-4 columns">
+            <input class="style" type="checkbox" name="style" value="improvisation"> Improvisation<br>
+            <input class="style" type="checkbox" name="style" value="jazzdans"> Jazzdans<br>
+            <input class="style" type="checkbox" name="style" value="latinska"> Latinska<br>
+            <input class="style" type="checkbox" name="style" value="modernnutida"> Modern & Nutida<br>
+            <input class="style" type="checkbox" name="style" value="musikal"> Musikal<br>
+          </div>
+
+          <div class="small-6 medium-4 large-4 columns">
+            <input class="style" type="checkbox" name="style" value="pardans"> Pardans<br>
+            <input class="style" type="checkbox" name="style" value="pilates"> Pilates<br>
+            <input class="style" type="checkbox" name="style" value="streetdance"> Streetdance<br>
+            <input class="style" type="checkbox" name="style" value="yoga"> Yoga<br>
+          </div>
         </div>
 
       </div> <!--//section-filter-second-->
 
-      <button type="submit">SÖK DANSKURSER</button>
+      <button type="submit" id="button-search">SÖK DANSKURSER</button>
 
     </form>
     </div>
 
-    <section class="section-result">
+    <section class="section-result" id="result">
       <h2>Dina Sökresultat</h2>
       <!--The response output-->
       <div class="row">
