@@ -4,40 +4,32 @@
  *  URL: html5blank.com | @html5blank
  *  Custom functions, support, custom post types and more.
  */
-
 /*------------------------------------*\
 	External Modules/Files
 \*------------------------------------*/
-
 // Load any external files you have here
-
 /*------------------------------------*\
 	Theme Support
 \*------------------------------------*/
-
 if (!isset($content_width))
 {
     $content_width = 900;
 }
-
 if (function_exists('add_theme_support'))
 {
     // Add Menu Support
     add_theme_support('menus');
-
     // Add Thumbnail Theme Support
     add_theme_support('post-thumbnails');
     add_image_size('large', 700, '', true); // Large Thumbnail
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
     add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
-
     // Add Support for Custom Backgrounds - Uncomment below if you're going to use
     /*add_theme_support('custom-background', array(
 	'default-color' => 'FFF',
 	'default-image' => get_template_directory_uri() . '/img/bg.jpg'
     ));*/
-
     // Add Support for Custom Header - Uncomment below if you're going to use
     /*add_theme_support('custom-header', array(
 	'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
@@ -50,18 +42,14 @@ if (function_exists('add_theme_support'))
 	'admin-head-callback'		=> $adminhead_cb,
 	'admin-preview-callback'	=> $adminpreview_cb
     ));*/
-
     // Enables post and comment RSS feed links to head
     add_theme_support('automatic-feed-links');
-
     // Localisation Support
     load_theme_textdomain('html5blank', get_template_directory() . '/languages');
 }
-
 /*------------------------------------*\
 	Functions
 \*------------------------------------*/
-
 // HTML5 Blank navigation
 function html5blank_nav()
 {
@@ -86,31 +74,23 @@ function html5blank_nav()
 		)
 	);
 }
-
 // Load HTML5 Blank scripts (header.php)
 function html5blank_header_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
-
       // jQuery
       	wp_deregister_script('jquery');
       	wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery-12.0.0.min.js', false, null, true );
-
     	wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
         wp_enqueue_script('conditionizr'); // Enqueue it!
-
         wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
         wp_enqueue_script('modernizr'); // Enqueue it!
-
         wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('html5blankscripts'); // Enqueue it!
-
         wp_register_script('app', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('html5blankscripts'); // Enqueue it!
-
     }
 }
-
 // Load HTML5 Blank conditional scripts
 function html5blank_conditional_scripts()
 {
@@ -119,21 +99,16 @@ function html5blank_conditional_scripts()
         wp_enqueue_script('scriptname'); // Enqueue it!
     }
 }
-
 // Load HTML5 Blank styles
 function html5blank_styles()
 {
     wp_register_style('normalize', get_template_directory_uri() . '/stylesheets/normalize.css', array(), '1.0', 'all');
     wp_enqueue_style('normalize'); // Enqueue it!
-
     wp_register_style('foundation', get_template_directory_uri() . '/stylesheets/foundation.css', array(), '1.0', 'all');
     wp_enqueue_style('foundation'); // Enqueue it!
-
     wp_register_style('main-style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('main-style'); // Enqueue it!
-
 }
-
 // Register HTML5 Blank Navigation
 function register_html5_menu()
 {
@@ -143,26 +118,22 @@ function register_html5_menu()
         'extra-menu' => __('Extra Menu', 'html5blank') // Extra Navigation if needed (duplicate as many as you need!)
     ));
 }
-
 // Remove the <div> surrounding the dynamic navigation to cleanup markup
 function my_wp_nav_menu_args($args = '')
 {
     $args['container'] = false;
     return $args;
 }
-
 // Remove Injected classes, ID's and Page ID's from Navigation <li> items
 function my_css_attributes_filter($var)
 {
     return is_array($var) ? array() : '';
 }
-
 // Remove invalid rel attribute values in the categorylist
 function remove_category_rel_from_category_list($thelist)
 {
     return str_replace('rel="category tag"', 'rel="tag"', $thelist);
 }
-
 // Add page slug to body class, love this - Credit: Starkers Wordpress Theme
 function add_slug_to_body_class($classes)
 {
@@ -177,10 +148,8 @@ function add_slug_to_body_class($classes)
     } elseif (is_singular()) {
         $classes[] = sanitize_html_class($post->post_name);
     }
-
     return $classes;
 }
-
 // If Dynamic Sidebar Exists
 if (function_exists('register_sidebar'))
 {
@@ -194,7 +163,6 @@ if (function_exists('register_sidebar'))
         'before_title' => '<h3>',
         'after_title' => '</h3>'
     ));
-
     // Define Sidebar Widget Area 2
     register_sidebar(array(
         'name' => __('Widget Area 2', 'html5blank'),
@@ -206,7 +174,6 @@ if (function_exists('register_sidebar'))
         'after_title' => '</h3>'
     ));
 }
-
 // Remove wp_head() injected Recent Comment styles
 function my_remove_recent_comments_style()
 {
@@ -216,7 +183,6 @@ function my_remove_recent_comments_style()
         'recent_comments_style'
     ));
 }
-
 // Pagination for paged posts, Page 1, Page 2, Page 3, with Next and Previous Links, No plugin
 function html5wp_pagination()
 {
@@ -229,19 +195,16 @@ function html5wp_pagination()
         'total' => $wp_query->max_num_pages
     ));
 }
-
 // Custom Excerpts
 function html5wp_index($length) // Create 20 Word Callback for Index page Excerpts, call using html5wp_excerpt('html5wp_index');
 {
     return 20;
 }
-
 // Create 40 Word Callback for Custom Post Excerpts, call using html5wp_excerpt('html5wp_custom_post');
 function html5wp_custom_post($length)
 {
     return 40;
 }
-
 // Create the Custom Excerpts callback
 function html5wp_excerpt($length_callback = '', $more_callback = '')
 {
@@ -258,33 +221,28 @@ function html5wp_excerpt($length_callback = '', $more_callback = '')
     $output = '<p>' . $output . '</p>';
     echo $output;
 }
-
 // Custom View Article link to Post
 function html5_blank_view_article($more)
 {
     global $post;
     return '... <a class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'html5blank') . '</a>';
 }
-
 // Remove Admin bar
 function remove_admin_bar()
 {
     return false;
 }
-
 // Remove 'text/css' from our enqueued stylesheet
 function html5_style_remove($tag)
 {
     return preg_replace('~\s+type=["\'][^"\']++["\']~', '', $tag);
 }
-
 // Remove thumbnail width and height dimensions that prevent fluid images in the_thumbnail
 function remove_thumbnail_dimensions( $html )
 {
     $html = preg_replace('/(width|height)=\"\d*\"\s/', "", $html);
     return $html;
 }
-
 // Custom Gravatar in Settings > Discussion
 function html5blankgravatar ($avatar_defaults)
 {
@@ -292,7 +250,6 @@ function html5blankgravatar ($avatar_defaults)
     $avatar_defaults[$myavatar] = "Custom Gravatar";
     return $avatar_defaults;
 }
-
 // Threaded Comments
 function enable_threaded_comments()
 {
@@ -302,13 +259,11 @@ function enable_threaded_comments()
         }
     }
 }
-
 // Custom Comments Callback
 function html5blankcomments($comment, $args, $depth)
 {
 	$GLOBALS['comment'] = $comment;
 	extract($args, EXTR_SKIP);
-
 	if ( 'div' == $args['style'] ) {
 		$tag = 'div';
 		$add_below = 'comment';
@@ -346,11 +301,9 @@ function html5blankcomments($comment, $args, $depth)
 	</div>
 	<?php endif; ?>
 <?php }
-
 /*------------------------------------*\
 	Actions + Filters + ShortCodes
 \*------------------------------------*/
-
 // Add Actions
 add_action('init', 'html5blank_header_scripts'); // Add Custom Scripts to wp_head
 add_action('wp_print_scripts', 'html5blank_conditional_scripts'); // Add Conditional Page Scripts
@@ -360,7 +313,6 @@ add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
 add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
-
 // Remove Actions
 remove_action('wp_head', 'feed_links_extra', 3); // Display the links to the extra feeds such as category feeds
 remove_action('wp_head', 'feed_links', 2); // Display the links to the general feeds: Post and Comment Feed
@@ -374,7 +326,6 @@ remove_action('wp_head', 'wp_generator'); // Display the XHTML generator that is
 remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 remove_action('wp_head', 'rel_canonical');
 remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);
-
 // Add Filters
 add_filter('avatar_defaults', 'html5blankgravatar'); // Custom Gravatar in Settings > Discussion
 add_filter('body_class', 'add_slug_to_body_class'); // Add slug to body class (Starkers build)
@@ -392,27 +343,21 @@ add_filter('show_admin_bar', 'remove_admin_bar'); // Remove Admin bar
 add_filter('style_loader_tag', 'html5_style_remove'); // Remove 'text/css' from enqueued stylesheet
 add_filter('post_thumbnail_html', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to thumbnails
 add_filter('image_send_to_editor', 'remove_thumbnail_dimensions', 10); // Remove width and height dynamic attributes to post images
-
 // Remove Filters
 remove_filter('the_excerpt', 'wpautop'); // Remove <p> tags from Excerpt altogether
-
 // Shortcodes
 add_shortcode('html5_shortcode_demo', 'html5_shortcode_demo'); // You can place [html5_shortcode_demo] in Pages, Posts now.
 add_shortcode('html5_shortcode_demo_2', 'html5_shortcode_demo_2'); // Place [html5_shortcode_demo_2] in Pages, Posts now.
-
 // Shortcodes above would be nested like this -
 // [html5_shortcode_demo] [html5_shortcode_demo_2] Here's the page title! [/html5_shortcode_demo_2] [/html5_shortcode_demo]
-
 /*------------------------------------*\
 	Custom Post Types
 \*------------------------------------*/
-
 // Create 1 Custom Post type for a Demo, called HTML5-Blank
 function create_post_type_html5()
 {
     register_taxonomy_for_object_type('category', 'danskurs'); // Register Taxonomies for Category
     register_taxonomy_for_object_type('post_tag', 'danskurs');
-
     register_post_type('danskurser', // Register Custom Post Type
         array(
         'labels' => array(
@@ -445,38 +390,27 @@ function create_post_type_html5()
         ) // Add Category and Post Tags support
     ));
 }
-
 /*------------------------------------*\
 	ShortCode Functions
 \*------------------------------------*/
-
 // Shortcode Demo with Nested Capability
 function html5_shortcode_demo($atts, $content = null)
 {
     return '<div class="shortcode-demo">' . do_shortcode($content) . '</div>'; // do_shortcode allows for nested Shortcodes
 }
-
 // Shortcode Demo with simple <h2> tag
 function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 shortcode, allows for nesting within above element. Fully expandable.
 {
     return '<h2>' . $content . '</h2>';
 }
-
-
 // course_search
-
-
 function course_search_scripts() {
   wp_enqueue_script( 'course-search', get_stylesheet_directory_uri() . '/js/course-search.js', array(), '1.0.0', true );
   wp_enqueue_script( 'new-course-search', get_stylesheet_directory_uri() . '/js/new-course-search.js', array(), '1.0.0', true );
   wp_localize_script( 'course-search', 'ajax_url', admin_url('admin-ajax.php') );
 }
-
-
 function course_search(){
-
   course_search_scripts();
-
   ob_start();
   ?>
   <div id="course-search" class="">
@@ -555,9 +489,20 @@ function course_search(){
 
         <div class="small-centered small-10 medium-6 large-4">
           <label for="styles"><h2>Dansstilar</h2></label>
-            <input class="style" type="checkbox" name="style" value="modern"> Modern<br>
-            <input class="style" type="checkbox" name="style" value="jazz"> Jazz<br>
-            <input class="style" type="checkbox" name="style" value="streetdance"> Streetdance<br>
+          <input class="style" type="checkbox" name="style" value="balett"> Balett<br>
+          <input class="style" type="checkbox" name="style" value="barndans"> Barndans<br>
+          <input class="style" type="checkbox" name="style" value="breaking"> Breaking<br>
+          <input class="style" type="checkbox" name="style" value="dansmix"> Dansmix<br>
+          <input class="style" type="checkbox" name="style" value="flamenco"> Flamenco<br>
+          <input class="style" type="checkbox" name="style" value="improvisation"> Improvisation<br>
+          <input class="style" type="checkbox" name="style" value="jazzdans"> Jazzdans<br>
+          <input class="style" type="checkbox" name="style" value="latinska"> Latinska<br>
+          <input class="style" type="checkbox" name="style" value="modernnutida"> Modern & Nutida<br>
+          <input class="style" type="checkbox" name="style" value="musikal"> Musikal<br>
+          <input class="style" type="checkbox" name="style" value="pardans"> Pardans<br>
+          <input class="style" type="checkbox" name="style" value="pilates"> Pilates<br>
+          <input class="style" type="checkbox" name="style" value="streetdance"> Streetdance<br>
+          <input class="style" type="checkbox" name="style" value="yoga"> Yoga<br>
         </div>
 
       </div> <!--//section-filter-second-->
@@ -585,31 +530,25 @@ add_shortcode( 'course_search', 'course_search');
 add_action( 'wp_ajax_course_search', 'course_search_callback' );
 add_action( 'wp_ajax_nopriv_course_search', 'course_search_callback' );
 
-//Creates an ajax callback
+//Create an ajax callback
 function course_search_callback() {
   //Parsing to json, doesn't work?
    header("Content-type: application/json");
-
     $city = 0;
     if(isset($_GET['city']))
       $city = sanitize_text_field($_GET['city']);
-
     $day = 0;
     if(isset($_GET['day']))
       $day = sanitize_text_field($_GET['day']);
-
     $time = 0;
     if(isset($_GET['time']))
       $time = sanitize_text_field($_GET['time']);
-
     $age = 0;
     if(isset($_GET['age']))
       $age = sanitize_text_field($_GET['age']);
-
     // $level = 0;
     // if(isset($_GET['level']))
     //   $level = sanitize_text_field($_GET['level']);
-
     // $level_1 = 0;
     // if(isset($_GET['level_1']))
     //   $level_1 = intval(sanitize_text_field($_GET['level_1']) );
@@ -633,7 +572,6 @@ function course_search_callback() {
     // $level_6 = 0;
     // if(isset($_GET['level_6']))
     //   $level_6 = intval(sanitize_text_field($_GET['level_6']) );
-
   //json result
   $result =  array();
   //query
@@ -641,25 +579,21 @@ function course_search_callback() {
     "post_type" => "danskurser",
     "post_per_page" => -1
   );
-
   $args['meta_query'][] = array(
     'key' => 'city',
     'value' => $city,
     'compare' => '='
   );
-
   $args['meta_query'][] = array(
     'key' => 'day',
     'value' => $day,
     'compare' => '='
   );
-
   $args['meta_query'][] = array(
     'key' => 'time',
     'value' => $time,
     'compare' => '='
   );
-
   $args['meta_query'][] = array(
     'key' => 'age',
     'value' => $age,
@@ -671,13 +605,9 @@ function course_search_callback() {
   //   'value' => $level,
   //   'compare' => '='
   // );
-
   $course_query = new WP_Query( $args );
-
     while( $course_query->have_posts() ){
-
       $course_query->the_post();
-
       $result[] = array(
         'id' => get_the_ID(),
         'title' => get_the_title(),
@@ -701,14 +631,11 @@ function course_search_callback() {
         'styles' => get_field('styles')
       );
     }
-
     //application/json didn't work so I took pretty print nd stri-replae and it looks fine now
       //Fix utf-8
     $finalResult = json_encode($result, JSON_PRETTY_PRINT);
     $finalResult = str_replace("\/","/",$finalResult);
     echo $finalResult;
-
     wp_die();
 }
-
 ?>

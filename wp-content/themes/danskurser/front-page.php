@@ -9,14 +9,35 @@ get_header();
 
 <!--search-filter templtepart-->
 <?php get_template_part('templates/search-filter'); ?>
+<section class="front-content">
+	<h1>Hej fron-tcontent</h1>
+</section>
 
+<?php
 
+$args = array(
+  'post_type' => 'danskurser'
+);
+$the_query = new WP_Query( $args );
+$post_count = $the_query->found_posts;
+
+?>
 <!--OLD-->
 	<main role="main">
 		<!-- section -->
 		<section>
-HEEEJ FRONT PAGE
-			<h1><?php the_title(); ?></h1>
+
+<h2> Kurser just nu: <?php echo $post_count ; ?> </h2>
+			<!-- <h1><?php the_title(); ?></h1> -->
+		<i class="fa fa-road"></i> MÅL
+		<i class="fa fa-paper-plane-o"></i> DELA DIN KURSER HÄR
+
+		<i class="fa fa-calendar"></i> DAG
+		<i class="fa fa-clock-o"></i> TID
+		<i class="fa fa-compass"></i> ORT
+		<i class="fa fa-star"></i> NIVÅ
+		<i class="fa fa-heart-o"></i> ÅLDER
+		<i class="fa fa-tags"></i> STILAR
 
 		<?php if (have_posts()): while (have_posts()) : the_post(); ?>
 
@@ -25,7 +46,7 @@ HEEEJ FRONT PAGE
 
 				<?php the_content(); ?>
 
-				<?php comments_template( '', true ); // Remove if you don't want comments ?>
+				<!-- <?php comments_template( '', true ); // Remove if you don't want comments ?> -->
 
 				<br class="clear">
 
@@ -52,6 +73,6 @@ HEEEJ FRONT PAGE
 		<!-- /section -->
 	</main>
 
-<?php get_sidebar(); ?>
+<!-- <?php get_sidebar(); ?> -->
 
 <?php get_footer(); ?>

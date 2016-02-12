@@ -10,8 +10,9 @@
     <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
+
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 		<meta name="description" content="<?php bloginfo('description'); ?>">
 
 		<?php wp_head(); ?>
@@ -43,8 +44,14 @@
 					<!-- /logo -->
 
 					<!-- nav -->
-					<nav class="nav medium-6 columns" role="navigation">
-						<?php html5blank_nav(); ?>
+
+					<nav class="nav medium-5 columns" role="navigation">
+						<div class="free-search-box hover-opacity">
+							<span class="free-search"><i class="fa fa-search"></i></span>
+							<!-- <?php echo do_shortcode('[wpdreams_ajaxsearchlite]'); ?> -->
+						</div>
+						<?php wp_nav_menu(); ?>
+
 					</nav>
 					<!-- /nav -->
 

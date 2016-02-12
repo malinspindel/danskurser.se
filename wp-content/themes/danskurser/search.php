@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<h1>search:PHP</h1>
 	<main role="main">
 		<!-- section -->
 		<section>
