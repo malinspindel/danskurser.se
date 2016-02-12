@@ -15,6 +15,8 @@
     MAIN
 \*------------------------------------*/
 
+
+
 /* global box-sizing */
 *,
 *:after,
@@ -31,6 +33,7 @@ html {
 }
 body {
 	font:300 11px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	padding: 20px 0 0 0 ;
 }
 /* clear */
 .clear:before,
@@ -85,12 +88,50 @@ input:focus {
 	margin:0 auto;
 	position:relative;
 }
+
+/* Responsive menu plugin*/
+
+#click-menu #RMX {
+	font-size: 55px !important;
+	color: #e1635c !important;
+}
+
+#click-menu .threeLines .line {
+	height: 4px;
+	opacity: .9;
+}
+#click-menu .threeLines:hover .line {
+	opacity: 1;
+}
+
+#responsive-menu {
+	padding-top: 11em;
+	padding-right: 5em;
+}
+
+#responsive-menu ul li {
+	text-transform: uppercase;
+}
+
+/* Free search */
+.free-search-box {
+	text-align: right;
+	z-index:100;
+
+	.fa-search {
+		font-size: 30px;
+		color: white;
+		cursor: pointer;
+	}
+}
 /* header */
 /* nav */
 .header {
-	background-color: #28464b;
 	color: #fff;
-	padding: 2.3em 0em 1em 0em;
+	padding: 2.9em 0em 1em 0em;
+	position: fixed;
+	width: 100%;
+	z-index: 999;
 
 	.logo {
 		display: inline-block;
@@ -140,6 +181,10 @@ h1, h2, h3, h4, h5 {
 p {
   color: grey;
   font-size: 1.15em;
+}
+
+section .fa {
+	font-size: 2em;
 }
 
 h1 {
@@ -218,11 +263,19 @@ select {
   color: #fff;
 }
 
+/* Free search */
+
+.asl_nores_header {
+	visibility: hidden;
+}
+
+.asl_keyword {
+	display: none;
+}
+
 /* section-slider */
 .top-section {
-	img {
-
-	}
+	margin: 0px 20px;
 	.slides-content {
 		position: relative;
 		.row {
@@ -250,6 +303,7 @@ select {
 
 /* search-filter */
 .search-filter {
+	padding: 0px 20px 20px 20px;
 	color: black;
 	position: relative;
 	top: 0em;
@@ -440,9 +494,16 @@ select {
 }
 
 /*------------------------------------*\
-    PAGES
+    HOVER-EFFECTS
 \*------------------------------------*/
 
+.hover-opacity {
+	opacity: .85;
+	transition: all .5s ease;
+}
+.hover-opacity:hover {
+	opacity: 1;
+}
 
 
 /*------------------------------------*\

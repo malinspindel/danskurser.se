@@ -28,7 +28,8 @@ html {
   font-size: 62.5%; }
 
 body {
-  font: 300 11px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+  font: 300 11px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  padding: 20px 0 0 0; }
 
 /* clear */
 .clear:before,
@@ -76,12 +77,42 @@ input:focus {
   margin: 0 auto;
   position: relative; }
 
+/* Responsive menu plugin*/
+#click-menu #RMX {
+  font-size: 55px !important;
+  color: #e1635c !important; }
+
+#click-menu .threeLines .line {
+  height: 4px;
+  opacity: .9; }
+
+#click-menu .threeLines:hover .line {
+  opacity: 1; }
+
+#responsive-menu {
+  padding-top: 11em;
+  padding-right: 5em; }
+
+#responsive-menu ul li {
+  text-transform: uppercase; }
+
+/* Free search */
+.free-search-box {
+  text-align: right;
+  z-index: 100; }
+  .free-search-box .fa-search {
+    font-size: 30px;
+    color: white;
+    cursor: pointer; }
+
 /* header */
 /* nav */
 .header {
-  background-color: #28464b;
   color: #fff;
-  padding: 2.3em 0em 1em 0em; }
+  padding: 2.9em 0em 1em 0em;
+  position: fixed;
+  width: 100%;
+  z-index: 999; }
   .header .logo {
     display: inline-block; }
     .header .logo img {
@@ -108,6 +139,9 @@ h1, h2, h3, h4, h5 {
 p {
   color: grey;
   font-size: 1.15em; }
+
+section .fa {
+  font-size: 2em; }
 
 h2 {
   text-transform: uppercase;
@@ -164,23 +198,33 @@ select {
   opacity: .9;
   color: #fff; }
 
+/* Free search */
+.asl_nores_header {
+  visibility: hidden; }
+
+.asl_keyword {
+  display: none; }
+
 /* section-slider */
-.top-section .slides-content {
-  position: relative; }
-  .top-section .slides-content .row {
-    position: absolute;
-    top: -17em;
-    right: 0;
-    left: 0; }
-    .top-section .slides-content .row h1 {
-      color: #fff; }
-    .top-section .slides-content .row p {
-      color: #fff; }
-    .top-section .slides-content .row #cityform select {
-      width: 25%; }
+.top-section {
+  margin: 0px 20px; }
+  .top-section .slides-content {
+    position: relative; }
+    .top-section .slides-content .row {
+      position: absolute;
+      top: -17em;
+      right: 0;
+      left: 0; }
+      .top-section .slides-content .row h1 {
+        color: #fff; }
+      .top-section .slides-content .row p {
+        color: #fff; }
+      .top-section .slides-content .row #cityform select {
+        width: 25%; }
 
 /* search-filter */
 .search-filter {
+  padding: 0px 20px 20px 20px;
   color: black;
   position: relative;
   top: 0em;
@@ -298,8 +342,15 @@ select {
 /* sidebar */
 /* footer */
 /*------------------------------------*\
-    PAGES
+    HOVER-EFFECTS
 \*------------------------------------*/
+.hover-opacity {
+  opacity: .85;
+  transition: all .5s ease; }
+
+.hover-opacity:hover {
+  opacity: 1; }
+
 /*------------------------------------*\
     IMAGES
 \*------------------------------------*/
