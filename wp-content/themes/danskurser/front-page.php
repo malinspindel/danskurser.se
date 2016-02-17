@@ -10,7 +10,7 @@ get_header();
 <!--search-filter templtepart-->
 <?php get_template_part('templates/search-filter'); ?>
 <section class="front-content">
-	<h1>Hej fron-tcontent</h1>
+	<h1></h1>
 </section>
 
 <?php

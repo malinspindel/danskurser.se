@@ -420,7 +420,7 @@ function course_search(){
     <form action="" method="get">
 
 
-      <label for="city">Ort</label>
+      <label for="city"><i class="fa fa-compass"></i>Ort</label>
       <select id="city" name="city">
         <option value="stockholm">Stockholm</option>
         <option value="goteborg">Göteborg</option>
@@ -431,7 +431,7 @@ function course_search(){
     <div class="section-filter" id="open">
       <div class="section-filter-first row">
         <div class="section-day column small-12 medium-6 large-4">
-          <label for="day"><h2>Dag</h2></label>
+          <label for="day"><span><i class="fa fa-calendar"></i></span> <h2>Dag</h2></label>
           <select id="day" name="day">
             <option value="day_mon">Måndag</option>
             <option value="day_tue">Tisdag</option>
@@ -444,7 +444,7 @@ function course_search(){
         </div>
 
         <div class="section-time column small-12 medium-6 large-4">
-          <label for="time"><h2>Tid</h2></label>
+          <label for="time"><span><i class="fa fa-clock-o"></i></span><h2>Tid</h2></label>
           <select id="time" name="time">
             <option value="time_7">07.00-11.00</option>
             <option value="time_11">11.00-15.00</option>
@@ -454,7 +454,7 @@ function course_search(){
         </div>
 
         <div class="section-age column small-12 medium-6 large-4">
-          <label for="age"><h2>Ålder</h2></label>
+          <label for="age"><i class="fa fa-heart-o"></i><h2>Ålder</h2></label>
           <select id="age" name="age">
             <option value="age_1">1-3 år</option>
             <option value="age_4">4-6 år</option>
@@ -466,13 +466,13 @@ function course_search(){
             <option value="age_50">50+</option>
           </select>
         </div>
-          <button id="button-second-filter">Fler val</button>
+          <button id="button-second-filter">FLER VAL</button>
       </div>  <!--//section-filter-first -->
 
       <div class="section-filter-second row" id="second-filter">
 
         <div class=" small-10 medium-4 large-4 columns">
-          <label for="level"><h2>Nivå</h2></label>
+          <label for="level"><i class="fa fa-star"></i><h2>Nivå</h2></label>
           <select id="level" name="level">
             <option value="0">Alla nivåer</option>
             <option value="1">Nybörjare</option>
@@ -487,9 +487,9 @@ function course_search(){
           </select>
         </div>
 
-        <div class=" small-10 medium-8 large-8 columns">
-          <label for="styles"><h2>Dansstilar</h2></label>
-          <div class="small-6 medium-4 large-4 columns">
+        <div class=" small-10 medium-8 large-8 columns styles">
+          <label for="styles"><i class="fa fa-tags"></i><h2>Dansstilar</h2></label>
+          <div class="small-6 medium-4 large-4 columns styles-column">
             <input class="style" type="checkbox" name="style" value="balett"> Balett<br>
             <input class="style" type="checkbox" name="style" value="barndans"> Barndans<br>
             <input class="style" type="checkbox" name="style" value="breaking"> Breaking<br>
@@ -497,7 +497,7 @@ function course_search(){
             <input class="style" type="checkbox" name="style" value="flamenco"> Flamenco<br>
           </div>
 
-          <div class="small-6 medium-4 large-4 columns">
+          <div class="small-6 medium-4 large-4 columns styles-column">
             <input class="style" type="checkbox" name="style" value="improvisation"> Improvisation<br>
             <input class="style" type="checkbox" name="style" value="jazzdans"> Jazzdans<br>
             <input class="style" type="checkbox" name="style" value="latinska"> Latinska<br>
@@ -505,7 +505,7 @@ function course_search(){
             <input class="style" type="checkbox" name="style" value="musikal"> Musikal<br>
           </div>
 
-          <div class="small-6 medium-4 large-4 columns">
+          <div class="small-6 medium-4 large-4 columns styles-column">
             <input class="style" type="checkbox" name="style" value="pardans"> Pardans<br>
             <input class="style" type="checkbox" name="style" value="pilates"> Pilates<br>
             <input class="style" type="checkbox" name="style" value="streetdance"> Streetdance<br>

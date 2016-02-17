@@ -28,8 +28,7 @@ html {
   font-size: 62.5%; }
 
 body {
-  font: 300 11px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  padding: 20px 0 0 0; }
+  font: 300 11px/1.4 'Helvetica Neue', Helvetica, Arial, sans-serif; }
 
 /* clear */
 .clear:before,
@@ -141,7 +140,12 @@ p {
   font-size: 1.15em; }
 
 section .fa {
-  font-size: 2em; }
+  font-size: 2.85em;
+  display: inline-block; }
+
+h1 {
+  font-size: 4em;
+  color: #e7e143; }
 
 h2 {
   text-transform: uppercase;
@@ -179,10 +183,10 @@ button:hover {
   background-color: #2C8C99; }
 
 i {
-  color: #28464B; }
+  color: #fff; }
 
 i:hover {
-  color: #2C8C99; }
+  color: #fff; }
 
 select {
   font-size: 1.4em;
@@ -206,25 +210,22 @@ select {
   display: none; }
 
 /* section-slider */
-.top-section {
-  margin: 0px 20px; }
-  .top-section .slides-content {
-    position: relative; }
-    .top-section .slides-content .row {
-      position: absolute;
-      top: -17em;
-      right: 0;
-      left: 0; }
-      .top-section .slides-content .row h1 {
-        color: #fff; }
-      .top-section .slides-content .row p {
-        color: #fff; }
-      .top-section .slides-content .row #cityform select {
-        width: 25%; }
+.top-section .slides-content {
+  position: relative; }
+  .top-section .slides-content .row {
+    position: absolute;
+    top: -22em;
+    right: 0;
+    left: 0; }
+    .top-section .slides-content .row h1 {
+      color: #e7e143; }
+    .top-section .slides-content .row p {
+      color: #fff; }
+    .top-section .slides-content .row #cityform select {
+      width: 25%; }
 
 /* search-filter */
 .search-filter {
-  padding: 0px 20px 20px 20px;
   color: black;
   position: relative;
   top: 0em;
@@ -232,7 +233,7 @@ select {
   right: 0;
   margin: 0 auto; }
   .search-filter .wrapper {
-    background: #e4e4e4; }
+    background: #379D7F; }
   .search-filter .section-city {
     position: relative;
     top: -11em;
@@ -242,6 +243,9 @@ select {
   .search-filter .section-filter {
     text-align: center;
     padding-bottom: 2.5em; }
+    .search-filter .section-filter h2 {
+      font-size: 1.75em;
+      font-weight: bold; }
     .search-filter .section-filter .section-filter-first {
       text-align: center; }
       .search-filter .section-filter .section-filter-first select {
@@ -250,6 +254,8 @@ select {
       text-align: center;
       padding-top: 3em;
       padding-bottom: 3em; }
+      .search-filter .section-filter .section-filter-second select {
+        width: 60%; }
       .search-filter .section-filter .section-filter-second .choise {
         display: inline-block;
         width: 100%; }
@@ -261,6 +267,9 @@ select {
           width: 70%; }
         .search-filter .section-filter .section-filter-second .choise input {
           width: 20%; }
+      .search-filter .section-filter .section-filter-second .styles .styles-column {
+        text-align: left;
+        padding-left: 3em; }
     .search-filter .section-filter button {
       color: #fff;
       font-size: 1.2em;
@@ -272,6 +281,8 @@ select {
     background: #fff; }
     .search-filter .section-result ul li:nth-child(odd) .course-heading {
       background: #2C8C99; }
+      .search-filter .section-result ul li:nth-child(odd) .course-heading .fa {
+        font-size: 1.1em; }
     .search-filter .section-result h2 {
       background: #28464B;
       padding: 1.5em;
