@@ -13,12 +13,17 @@
 function App(){
 	console.log("nurå");
 
+$('#course-search').addClass('no-height');
+
+$('#IRHolder').css('text-align', 'center');
+
 $('#open').hide();
 $('#result').hide();
 $('#second-filter').hide();
 
  $('select').on('click', function(e){
 	 e.preventDefault();
+	 $('#course-search').addClass('height');
 	 $('#open').fadeIn("slow");
 
  });
@@ -28,7 +33,7 @@ $('#second-filter').hide();
  });
 
  $('#button-second-filter').on('click', function(e){
-	$('#second-filter').fadeToggle("2000");
+	$('#second-filter').fadeIn("2000");
  });
 
 }

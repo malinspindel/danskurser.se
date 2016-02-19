@@ -116,19 +116,19 @@ var searchForm = courseSearch.find('form');
           level = "N";
         }
         if(response[i].level == "2"){
-          level = "N - F";
+          level = "N-F";
         }
         if(response[i].level == "3"){
           level = "F";
         }
         if(response[i].level == "4"){
-          level = "F - M";
+          level = "F-M";
         }
         if(response[i].level == "5"){
           level = "M";
         }
         if(response[i].level == "6"){
-          level = "M - A";
+          level = "M-A";
         }
         if(response[i].level == "7"){
           level = "A";
@@ -137,7 +137,7 @@ var searchForm = courseSearch.find('form');
           level = "P";
         }
         if(response[i].level == "9"){
-          level = "Alla";
+          level = "ALLA";
         }
 
       //Filtering levels
@@ -191,9 +191,9 @@ var searchForm = courseSearch.find('form');
 
           html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
 
-            html += "<div class='no-padding-side medium-11 large-11 columns'>";
+            html += "<div class='no-padding-side medium-11 large-11 columns'><h3>";
             html += course_name;
-            html += "</div>";
+            html += "</h3></div>";
 
             html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
             html += "<i class='fa fa-map-pin'></i>";

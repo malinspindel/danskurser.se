@@ -1,11 +1,31 @@
 			<!-- footer -->
-			<footer class="footer" role="contentinfo">
+			<footer class="footer " role="contentinfo">
+
+				<section class="row padding-top-bottom">
+					<div class="columns small-12 medium-6 large-6 text-right padding-sides">
+						<h3>SOCIALA MEDIER</h3>
+						<ul>
+							<li>Besök oss på Facebook här</li>
+							<li>Besök oss på Instagram här</li>
+						</ul>
+					</div>
+
+					<div class="columns small-12 medium-6 large-6 padding-sides">
+						<h3>KONTAKT</h3>
+						<ul>
+							<li>info@danskurser.se</li>
+							<li>Eller klicka här.</li>
+						</ul>
+					</div>
+
+
+				</section>
 
 				<!-- copyright -->
-				<p class="copyright">
+				<!-- <p class="copyright">
 					&copy; <?php echo date('Y'); ?> Copyright <?php bloginfo('name'); ?>. <?php _e('Powered by', 'danskurser.se'); ?>
 					<a href="//malinspindel.se" title="Malin">Malin</a> &amp; <a href="//danskurser.se" title="danskurser.se">danskurser.se</a>.
-				</p>
+				</p> -->
 				<!-- /copyright -->
 
 			</footer>

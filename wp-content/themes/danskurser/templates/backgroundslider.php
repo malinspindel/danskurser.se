@@ -24,7 +24,7 @@
 							<?php endif; ?>
 
 							<?php if($intro = get_sub_field('top_intro')): ?>
-								<p class="intro"><?php echo $intro; ?></p>
+								<h2 class="h5 intro"><?php echo $intro; ?></p>
 							<?php endif; ?>
 
 							<?php if($btn_text = get_sub_field('btn_text')): ?>

@@ -13,6 +13,9 @@
 /*------------------------------------*\
     MAIN
 \*------------------------------------*/
+/* Fonts */
+@import url(https://fonts.googleapis.com/css?family=Lora:400,700);
+@import url(https://fonts.googleapis.com/css?family=Exo+2:400,600);
 /* global box-sizing */
 *,
 *:after,
@@ -100,9 +103,10 @@ input:focus {
   text-align: right;
   z-index: 100; }
   .free-search-box .fa-search {
-    font-size: 30px;
+    font-size: 24px;
     color: white;
-    cursor: pointer; }
+    cursor: pointer;
+    margin-top: 14px; }
 
 /* header */
 /* nav */
@@ -132,12 +136,24 @@ input:focus {
 
 /* logo */
 /*  Typography  */
-h1, h2, h3, h4, h5 {
-  color: #28464b; }
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 {
+  color: #28464b;
+  font-family: 'Exo 2', sans-serif; }
 
 p {
-  color: grey;
-  font-size: 1.15em; }
+  color: #576364;
+  font-size: 1.25em;
+  font-family: 'Lora', serif; }
+
+p strong {
+  color: #28464b; }
+
+ul li {
+  font-family: 'Lora', serif; }
+
+.accent-text {
+  color: #379d7f;
+  font-family: 'Exo 2', sans-serif; }
 
 section .fa {
   font-size: 2.85em;
@@ -149,9 +165,69 @@ h1 {
 
 h2 {
   text-transform: uppercase;
-  margin-bottom: 1em; }
+  margin-bottom: .5em; }
+
+h5, .h5 {
+  font-size: 1.25em;
+  color: #fff; }
 
 /* General layout */
+/* Checkbox */
+input[type=checkbox] {
+  visibility: hidden; }
+
+.styles-column {
+  width: 25px;
+  margin: 20px;
+  position: relative; }
+
+.style-holder {
+  position: relative;
+  padding-top: .5em; }
+
+.styles-column label {
+  cursor: pointer;
+  position: absolute;
+  width: 23px !important;
+  height: 23px;
+  top: 0;
+  left: 0;
+  background: #eee;
+  border: 1px solid #ddd; }
+
+.styles-column label:after {
+  opacity: 0.2;
+  content: '';
+  position: absolute;
+  width: 17px;
+  height: 7px;
+  background: transparent;
+  top: 6px;
+  left: 2px;
+  border: 3px solid #28464B;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg); }
+
+.checkbox-label {
+  padding-left: 3.5em;
+  font-size: 1.45em;
+  letter-spacing: 1px;
+  color: #28464b;
+  text-transform: uppercase;
+  margin-top: 2px;
+  font-family: 'Exo 2', sans-serif;
+  font-weight: bold; }
+
+.styles-column label:hover::after {
+  opacity: 0.5; }
+
+/**
+ * Create the checkbox state for the tick
+ */
+.styles-column input[type=checkbox]:checked + label:after {
+  opacity: 1; }
+
 .container {
   padding: 0em 3em; }
 
@@ -159,6 +235,12 @@ h2 {
   padding: 0em 2.5em; }
 
 .padding-top-bottom {
+  padding: 4em 0; }
+
+.padding-left {
+  padding-left: 17em; }
+
+.padding {
   padding: 4em; }
 
 .no-padding-side {
@@ -169,6 +251,9 @@ h2 {
 
 .text-right {
   text-align: right; }
+
+.text-center {
+  text-align: center; }
 
 button {
   color: #fff;
@@ -188,19 +273,15 @@ i {
 i:hover {
   color: #fff; }
 
+form {
+  display: block; }
+
 select {
   font-size: 1.4em;
   height: 3em;
   padding: 0.5em 1em;
-  text-align: center; }
-
-.fa-map-pin {
-  color: #fff;
-  opacity: .75; }
-
-.fa-map-pin:hover {
-  opacity: .9;
-  color: #fff; }
+  text-align: center;
+  margin-bottom: 0; }
 
 /* Free search */
 .asl_nores_header {
@@ -209,12 +290,54 @@ select {
 .asl_keyword {
   display: none; }
 
+/* Sections */
+.section-filter label {
+  width: 60%;
+  margin: 0 auto; }
+.section-filter span {
+  display: inline-block;
+  width: 20%; }
+.section-filter h2 {
+  width: 40%;
+  display: inline-block;
+  text-align: left; }
+.section-filter #button-search {
+  background-color: transparent; }
+  .section-filter #button-search i {
+    font-size: 4em;
+    vertical-align: middle;
+    color: #fff;
+    opacity: 0.9;
+    -webkit-transition: all .35s ease;
+    /* Safari and Chrome */
+    -moz-transition: all .35s ease;
+    /* Firefox */
+    -o-transition: all .35s ease;
+    /* IE 9 */
+    -ms-transition: all .35s ease;
+    /* Opera */
+    transition: all .35s ease; }
+  .section-filter #button-search i:hover {
+    opacity: 1;
+    color: #e7e143;
+    -webkit-transform: scale(1.1);
+    /* Safari and Chrome */
+    -moz-transform: scale(1.1);
+    /* Firefox */
+    -ms-transform: scale(1.1);
+    /* IE 9 */
+    -o-transform: scale(1.1);
+    /* Opera */
+    transform: scale(1.1); }
+  .section-filter #button-search #search {
+    font-size: 1em; }
+
 /* section-slider */
 .top-section .slides-content {
   position: relative; }
   .top-section .slides-content .row {
     position: absolute;
-    top: -22em;
+    top: -25em;
     right: 0;
     left: 0; }
     .top-section .slides-content .row h1 {
@@ -236,18 +359,33 @@ select {
     background: #379D7F; }
   .search-filter .section-city {
     position: relative;
-    top: -11em;
-    text-align: center; }
+    top: -13.5em;
+    text-align: center;
+    opacity: .8;
+    transition: all .35s ease; }
+    .search-filter .section-city i {
+      font-size: 3.3em;
+      color: #e7e143; }
+    .search-filter .section-city label {
+      display: inline-block;
+      vertical-align: middle; }
     .search-filter .section-city select {
-      width: 25%; }
+      width: 16%;
+      height: 3.5em;
+      margin-left: 1em;
+      vertical-align: middle; }
+  .search-filter .section-city:hover {
+    opacity: 1; }
   .search-filter .section-filter {
     text-align: center;
     padding-bottom: 2.5em; }
     .search-filter .section-filter h2 {
-      font-size: 1.75em;
+      font-size: 2em;
       font-weight: bold; }
     .search-filter .section-filter .section-filter-first {
       text-align: center; }
+      .search-filter .section-filter .section-filter-first h2 {
+        margin-bottom: 1em; }
       .search-filter .section-filter .section-filter-first select {
         width: 60%; }
     .search-filter .section-filter .section-filter-second {
@@ -268,8 +406,7 @@ select {
         .search-filter .section-filter .section-filter-second .choise input {
           width: 20%; }
       .search-filter .section-filter .section-filter-second .styles .styles-column {
-        text-align: left;
-        padding-left: 3em; }
+        text-align: left; }
     .search-filter .section-filter button {
       color: #fff;
       font-size: 1.2em;
@@ -279,28 +416,33 @@ select {
       margin: 2em 0em; }
   .search-filter .section-result {
     background: #fff; }
-    .search-filter .section-result ul li:nth-child(odd) .course-heading {
-      background: #2C8C99; }
-      .search-filter .section-result ul li:nth-child(odd) .course-heading .fa {
-        font-size: 1.1em; }
     .search-filter .section-result h2 {
       background: #28464B;
       padding: 1.5em;
       color: #fff;
       text-align: center; }
+    .search-filter .section-result .fa-map-pin {
+      color: #fff;
+      opacity: .85;
+      font-size: 1.5em; }
+    .search-filter .section-result .fa-map-pin:hover {
+      opacity: 1;
+      color: #fff; }
     .search-filter .section-result ul li {
       list-style: none;
       margin-bottom: 1.5em;
-      opacity: .9; }
+      opacity: .93;
+      transition: all .25s ease; }
       .search-filter .section-result ul li .course-heading {
         padding: 0.5em 1.5em;
         background: #28464B;
-        color: white;
+        color: #fff;
         font-size: 1.45em;
         font-weight: 300;
         text-transform: uppercase;
-        height: 3.5em;
-        line-height: 2.5em; }
+        height: 4.5em;
+        line-height: 3.5em;
+        transition: all .25s ease; }
       .search-filter .section-result ul li .course-logo {
         padding: 3em 0em 1em 0em;
         height: 100px;
@@ -325,10 +467,11 @@ select {
         .search-filter .section-result ul li .course-info p {
           text-transform: uppercase;
           font-size: .9em;
-          color: black; }
+          color: black;
+          font-family: 'Exo 2', serif; }
       .search-filter .section-result ul li .course-nav {
         height: 4em;
-        opacity: .75; }
+        opacity: .98; }
         .search-filter .section-result ul li .course-nav .circle {
           height: 3.5em;
           width: 3.5em;
@@ -338,6 +481,24 @@ select {
           font-weight: bold;
           text-align: center;
           line-height: 3.55em; }
+        .search-filter .section-result ul li .course-nav .circle.Alla {
+          background-color: #16C736; }
+        .search-filter .section-result ul li .course-nav .circle.N {
+          background-color: #0E903D; }
+        .search-filter .section-result ul li .course-nav .circle.N-F {
+          background-color: #16a085; }
+        .search-filter .section-result ul li .course-nav .circle.F {
+          background-color: #f1c40f; }
+        .search-filter .section-result ul li .course-nav .circle.F-M {
+          background-color: #D86E28; }
+        .search-filter .section-result ul li .course-nav .circle.M {
+          background-color: #CD3C2C; }
+        .search-filter .section-result ul li .course-nav .circle.M-A {
+          background-color: #D34067; }
+        .search-filter .section-result ul li .course-nav .circle.A {
+          background-color: #3B4F9D; }
+        .search-filter .section-result ul li .course-nav .circle.P {
+          background-color: #222121; }
         .search-filter .section-result ul li .course-nav .level {
           background-color: green; }
         .search-filter .section-result ul li .course-nav a {
@@ -346,12 +507,94 @@ select {
           .search-filter .section-result ul li .course-nav a i {
             font-size: 5em; }
       .search-filter .section-result ul li .course-nav:hover {
-        opacity: .95; }
+        opacity: 1; }
     .search-filter .section-result ul li:hover {
       opacity: 1; }
+    .search-filter .section-result ul li:hover .course-heading {
+      background: #379D7F; }
+
+/* Front-page */
+.text-slider-wrapper {
+  background-color: #379d7f;
+  opacity: .9;
+  transition: all .5s ease; }
+  .text-slider-wrapper .text-slider {
+    overflow: hidden;
+    height: 100px;
+    padding: 2em 0em;
+    width: 60%;
+    margin: 0 auto; }
+    .text-slider-wrapper .text-slider #IRHolder {
+      text-align: center;
+      font-size: 1em;
+      font-style: italic;
+      color: #28464B;
+      line-height: 1.75; }
+      .text-slider-wrapper .text-slider #IRHolder strong {
+        font-weight: 100;
+        font-style: normal;
+        font-size: 1.25em;
+        text-align: right;
+        color: white;
+        font-family: 'Exo 2', serif; }
+
+.text-slider-wrapper:hover {
+  opacity: 1; }
+
+.row-wrapper {
+  background-color: #e4e4e4; }
+  .row-wrapper .front-page-content article .container {
+    padding: 1em 3em; }
+  .row-wrapper .front-page-content article .content-center {
+    border-left: 2px solid;
+    border-right: 2px solid;
+    border-color: white; }
+    .row-wrapper .front-page-content article .content-center p {
+      text-transform: uppercase;
+      font-size: 1.49em;
+      color: #28464b;
+      margin: 0;
+      font-weight: bold;
+      line-height: 1.15;
+      font-family: 'Exo 2', sans-serif; }
+    .row-wrapper .front-page-content article .content-center p:first-child {
+      color: #379d7f;
+      font-size: 2.25em;
+      padding-top: 1em; }
+    .row-wrapper .front-page-content article .content-center p:last-child {
+      margin-bottom: 2em; }
+    .row-wrapper .front-page-content article .content-center h2 {
+      margin: 0;
+      font-size: 7.5em;
+      line-height: .9;
+      margin-left: -5px; }
+    .row-wrapper .front-page-content article .content-center .accent-text {
+      font-size: 1.75em;
+      padding-bottom: 3em; }
+
+/* Classes added (jQuery) */
+.no-height {
+  height: 0; }
+
+.height {
+  height: auto; }
 
 /* sidebar */
 /* footer */
+.footer {
+  background-color: #28464B;
+  height: 300px; }
+  .footer h3 {
+    color: white;
+    margin-bottom: 1em; }
+  .footer .copyright {
+    background-color: #4BA78C;
+    text-align: right; }
+  .footer ul {
+    list-style: none;
+    margin-left: 0;
+    font-size: 1.25em; }
+
 /*------------------------------------*\
     HOVER-EFFECTS
 \*------------------------------------*/

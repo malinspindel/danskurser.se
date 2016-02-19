@@ -406,10 +406,10 @@ function html5_shortcode_demo_2($atts, $content = null) // Demo Heading H2 short
 // course_search
 function course_search_scripts() {
   wp_enqueue_script( 'course-search', get_stylesheet_directory_uri() . '/js/course-search.js', array(), '1.0.0', true );
-  wp_enqueue_script( 'new-course-search', get_stylesheet_directory_uri() . '/js/new-course-search.js', array(), '1.0.0', true );
-  wp_enqueue_script( 'new-course-search', get_stylesheet_directory_uri() . '/js/scripts.js', array(jquery), '1.0.0', true );
+  wp_enqueue_script( 'scripts', get_stylesheet_directory_uri() . '/js/scripts.js', array(jquery), '1.0.0', true );
   wp_localize_script( 'course-search', 'ajax_url', admin_url('admin-ajax.php') );
 }
+
 function course_search(){
   course_search_scripts();
   ob_start();
@@ -420,7 +420,7 @@ function course_search(){
     <form action="" method="get">
 
 
-      <label for="city"><i class="fa fa-compass"></i>Ort</label>
+      <label for="city"><i class="fa fa-compass"></i></label>
       <select id="city" name="city">
         <option value="stockholm">Stockholm</option>
         <option value="goteborg">Göteborg</option>
@@ -454,7 +454,7 @@ function course_search(){
         </div>
 
         <div class="section-age column small-12 medium-6 large-4">
-          <label for="age"><i class="fa fa-heart-o"></i><h2>Ålder</h2></label>
+          <label for="age"><span><i class="fa fa-heart-o"></i></span><h2>Ålder</h2></label>
           <select id="age" name="age">
             <option value="age_1">1-3 år</option>
             <option value="age_4">4-6 år</option>
@@ -472,7 +472,7 @@ function course_search(){
       <div class="section-filter-second row" id="second-filter">
 
         <div class=" small-10 medium-4 large-4 columns">
-          <label for="level"><i class="fa fa-star"></i><h2>Nivå</h2></label>
+          <label for="level"><span><i class="fa fa-star"></i></span><h2>Nivå</h2></label>
           <select id="level" name="level">
             <option value="0">Alla nivåer</option>
             <option value="1">Nybörjare</option>
@@ -488,34 +488,66 @@ function course_search(){
         </div>
 
         <div class=" small-10 medium-8 large-8 columns styles">
-          <label for="styles"><i class="fa fa-tags"></i><h2>Dansstilar</h2></label>
-          <div class="small-6 medium-4 large-4 columns styles-column">
-            <input class="style" type="checkbox" name="style" value="balett"> Balett<br>
-            <input class="style" type="checkbox" name="style" value="barndans"> Barndans<br>
-            <input class="style" type="checkbox" name="style" value="breaking"> Breaking<br>
-            <input class="style" type="checkbox" name="style" value="dansmix"> Dansmix<br>
-            <input class="style" type="checkbox" name="style" value="flamenco"> Flamenco<br>
+          <label for="styles"><span><i class="fa fa-tags"></i></span><h2>Dansstilar</h2></label>
+
+          <div class="small-12 medium-6 large-4 columns styles-column">
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="balett" id="balett" />     <label for="balett"><p class="checkbox-label">Balett</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="barndans" id="barndans" />             <label for="barndans"><p class="checkbox-label">Barndans</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="breaking" id="breaking" />             <label for="breaking"><p class="checkbox-label">Breaking</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="dansmix" id="dansmix" />               <label for="dansmix"><p class="checkbox-label">Dansmix</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="flamenco" id="flamenco"/>              <label for="flamenco"><p class="checkbox-label">Flamenco</p></label>
+            </div>
           </div>
 
-          <div class="small-6 medium-4 large-4 columns styles-column">
-            <input class="style" type="checkbox" name="style" value="improvisation"> Improvisation<br>
-            <input class="style" type="checkbox" name="style" value="jazzdans"> Jazzdans<br>
-            <input class="style" type="checkbox" name="style" value="latinska"> Latinska<br>
-            <input class="style" type="checkbox" name="style" value="modernnutida"> Modern & Nutida<br>
-            <input class="style" type="checkbox" name="style" value="musikal"> Musikal<br>
+          <div class="small-12 medium-6 large-4 columns styles-column padding-left">
+            <div class="style-holder">
+            <input class="style" type="checkbox" name="style" value="improvisation" id="improvisation" />   <label for="improvisation"><p class="checkbox-label">Improvisation</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="jazzdans" id="jazzdans" />             <label for="jazzdans"><p class="checkbox-label">Jazzdans</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="latinska" id="latinska" />             <label for="latinska"><p class="checkbox-label">Latinska</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="modernnutida" id="modernnutida" />     <label for="modernnutida"><p class="checkbox-label">Modern&amp;Nutida</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="musikal" id="musikal"/>                <label for="musikal"><p class="checkbox-label">Musikal</p></label>
+            </div>
+
           </div>
 
-          <div class="small-6 medium-4 large-4 columns styles-column">
-            <input class="style" type="checkbox" name="style" value="pardans"> Pardans<br>
-            <input class="style" type="checkbox" name="style" value="pilates"> Pilates<br>
-            <input class="style" type="checkbox" name="style" value="streetdance"> Streetdance<br>
-            <input class="style" type="checkbox" name="style" value="yoga"> Yoga<br>
+          <div class="small-12 medium-6 large-4 columns styles-column padding-left">
+
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="pardans" id="pardans" />               <label for="pardans"><p class="checkbox-label">Pardans</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="pilates" id="pilates" />               <label for="pilates"><p class="checkbox-label">Pilates</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="streetdance" id="streetdance" />       <label for="streetdance"><p class="checkbox-label">Streetdance</p></label>
+            </div>
+            <div class="style-holder">
+              <input class="style" type="checkbox" name="style" value="yoga" id="yoga" />                     <label for="yoga"><p class="checkbox-label">Yoga</p></label>
+            </div>
+
           </div>
         </div>
 
       </div> <!--//section-filter-second-->
 
-      <button type="submit" id="button-search">SÖK DANSKURSER</button>
+      <button type="submit" id="button-search"><i class="fa fa-search"></i><span id="search">SÖK</span></button>
 
     </form>
     </div>
@@ -585,7 +617,10 @@ function course_search_callback() {
   //query
   $args = array(
     "post_type" => "danskurser",
-    "post_per_page" => -1
+    "post_per_page" => -1,
+    "meta_key" => 'level',
+    "orderby" => 'meta_value_num',
+    "order" => "ASC"
   );
   $args['meta_query'][] = array(
     'key' => 'city',
