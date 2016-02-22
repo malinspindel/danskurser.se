@@ -1,15 +1,3 @@
-(function ($, root, undefined) {
-
-	$(function () {
-
-		'use strict';
-
-		// DOM ready, take it away
-
-	});
-
-})(jQuery, this);
-
 function App(){
 	console.log("nurå");
 
@@ -36,15 +24,35 @@ $('#second-filter').hide();
 	$('#second-filter').fadeIn("2000");
  });
 
+
+/* Scroll events */
+
+function scroll_style() {
+   var window_top = $(window).scrollTop();
+   var div_top = $('#course-search').offset().top;
+
+   if (window_top > div_top-200){
+		 		$('.header').addClass('grad');
+      $('.header').css({"padding-top":"1.25em"});
+      $('#click-menu').css({"top":"21px"});
+   }
+	 if (window_top < div_top-200){
+			$('.header').removeClass('grad');
+			$('.header').css({"padding-top":"2.9em"});
+			$('#click-menu').css({"top":"38px"});
+
+	 }
+}
+$(function() {
+  $(window).scroll(scroll_style);
+  scroll_style();
+ });
+
+
+
 }
 
-//
-// $('#pickCity').on('click', function(e) {
-// 	 	e.preventDefault();
-// 	 	$('.tt-wrapper').show();
-// 	 	$('.picker-wrapper').hide();
-// 	 	$('.input-large-white').focus();
-// 	 });
+
 
 
 

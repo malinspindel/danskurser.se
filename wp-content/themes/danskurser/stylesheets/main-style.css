@@ -82,7 +82,10 @@ input:focus {
 /* Responsive menu plugin*/
 #click-menu #RMX {
   font-size: 55px !important;
-  color: #e1635c !important; }
+  color: #379D7F !important; }
+
+#click-menu #RMX:hover {
+  color: #E7E143 !important; }
 
 #click-menu .threeLines .line {
   height: 4px;
@@ -167,9 +170,32 @@ h2 {
   text-transform: uppercase;
   margin-bottom: .5em; }
 
+h4 {
+  font-weight: bold;
+  margin: 1.5em; }
+
 h5, .h5 {
   font-size: 1.25em;
   color: #fff; }
+
+.fa.fa-spinner.fa-spin, i.fa.fa-frown-o {
+  margin-bottom: .5em;
+  color: #E7E143; }
+
+i.fa.fa-arrow-circle-right {
+  color: #375357;
+  -webkit-transition: all .35s ease;
+  /* Safari and Chrome */
+  -moz-transition: all .35s ease;
+  /* Firefox */
+  -o-transition: all .35s ease;
+  /* IE 9 */
+  -ms-transition: all .35s ease;
+  /* Opera */
+  transition: all .35s ease; }
+
+i.fa.fa-arrow-circle-right:hover {
+  color: #379D7F; }
 
 /* General layout */
 /* Checkbox */
@@ -308,15 +334,15 @@ select {
     vertical-align: middle;
     color: #fff;
     opacity: 0.9;
-    -webkit-transition: all .35s ease;
+    -webkit-transition: all .25s ease;
     /* Safari and Chrome */
-    -moz-transition: all .35s ease;
+    -moz-transition: all .25s ease;
     /* Firefox */
-    -o-transition: all .35s ease;
+    -o-transition: all .25s ease;
     /* IE 9 */
-    -ms-transition: all .35s ease;
+    -ms-transition: all .25s ease;
     /* Opera */
-    transition: all .35s ease; }
+    transition: all .25s ease; }
   .section-filter #button-search i:hover {
     opacity: 1;
     color: #e7e143;
@@ -330,7 +356,8 @@ select {
     /* Opera */
     transform: scale(1.1); }
   .section-filter #button-search #search {
-    font-size: 1em; }
+    font-size: 1em;
+    color: #28464B; }
 
 /* section-slider */
 .top-section .slides-content {
@@ -362,6 +389,14 @@ select {
     top: -13.5em;
     text-align: center;
     opacity: .8;
+    -webkit-transition: all .35s ease;
+    /* Safari and Chrome */
+    -moz-transition: all .35s ease;
+    /* Firefox */
+    -o-transition: all .35s ease;
+    /* IE 9 */
+    -ms-transition: all .35s ease;
+    /* Opera */
     transition: all .35s ease; }
     .search-filter .section-city i {
       font-size: 3.3em;
@@ -421,28 +456,61 @@ select {
       padding: 1.5em;
       color: #fff;
       text-align: center; }
-    .search-filter .section-result .fa-map-pin {
+    .search-filter .section-result .fa-dot-circle {
       color: #fff;
       opacity: .85;
       font-size: 1.5em; }
-    .search-filter .section-result .fa-map-pin:hover {
+    .search-filter .section-result .fa-dot-circle:hover {
       opacity: 1;
       color: #fff; }
     .search-filter .section-result ul li {
       list-style: none;
-      margin-bottom: 1.5em;
+      margin-bottom: 1.75em;
       opacity: .93;
-      transition: all .25s ease; }
+      -webkit-transition: all .35s ease;
+      /* Safari and Chrome */
+      -moz-transition: all .35s ease;
+      /* Firefox */
+      -o-transition: all .35s ease;
+      /* IE 9 */
+      -ms-transition: all .35s ease;
+      /* Opera */
+      transition: all .35s ease; }
       .search-filter .section-result ul li .course-heading {
         padding: 0.5em 1.5em;
         background: #28464B;
-        color: #fff;
-        font-size: 1.45em;
-        font-weight: 300;
-        text-transform: uppercase;
         height: 4.5em;
+        -webkit-transition: all .25s ease;
+        /* Safari and Chrome */
+        -moz-transition: all .25s ease;
+        /* Firefox */
+        -o-transition: all .25s ease;
+        /* IE 9 */
+        -ms-transition: all .25s ease;
+        /* Opera */
+        transition: all .25s ease;
         line-height: 3.5em;
-        transition: all .25s ease; }
+        font-size: 1.45em; }
+        .search-filter .section-result ul li .course-heading .fa {
+          font-size: 1.5em;
+          -webkit-transition: all .25s ease;
+          /* Safari and Chrome */
+          -moz-transition: all .25s ease;
+          /* Firefox */
+          -o-transition: all .25s ease;
+          /* IE 9 */
+          -ms-transition: all .25s ease;
+          /* Opera */
+          transition: all .25s ease; }
+        .search-filter .section-result ul li .course-heading .fa:hover {
+          font-size: 1.6em;
+          color: #F6A32C;
+          cursor: pointer; }
+        .search-filter .section-result ul li .course-heading h3 {
+          color: #fff;
+          line-height: 3em;
+          font-weight: 300;
+          text-transform: uppercase; }
       .search-filter .section-result ul li .course-logo {
         padding: 3em 0em 1em 0em;
         height: 100px;
@@ -468,7 +536,8 @@ select {
           text-transform: uppercase;
           font-size: .9em;
           color: black;
-          font-family: 'Exo 2', serif; }
+          font-family: 'Exo 2', serif;
+          font-weight: bold; }
       .search-filter .section-result ul li .course-nav {
         height: 4em;
         opacity: .98; }
@@ -481,7 +550,7 @@ select {
           font-weight: bold;
           text-align: center;
           line-height: 3.55em; }
-        .search-filter .section-result ul li .course-nav .circle.Alla {
+        .search-filter .section-result ul li .course-nav .circle.ALLA {
           background-color: #16C736; }
         .search-filter .section-result ul li .course-nav .circle.N {
           background-color: #0E903D; }
@@ -517,6 +586,14 @@ select {
 .text-slider-wrapper {
   background-color: #379d7f;
   opacity: .9;
+  -webkit-transition: all .5s ease;
+  /* Safari and Chrome */
+  -moz-transition: all .5s ease;
+  /* Firefox */
+  -o-transition: all .5s ease;
+  /* IE 9 */
+  -ms-transition: all .5s ease;
+  /* Opera */
   transition: all .5s ease; }
   .text-slider-wrapper .text-slider {
     overflow: hidden;
@@ -579,6 +656,18 @@ select {
 .height {
   height: auto; }
 
+.grad {
+  background: #28464B;
+  /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(black, rgba(40, 70, 75, 0.1));
+  /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#28464B, transparent);
+  /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#28464B, transparent);
+  /* For Firefox 3.6 to 15 */
+  background: linear-gradient(black, rgba(40, 70, 75, 0.1));
+  /* Standard syntax */ }
+
 /* sidebar */
 /* footer */
 .footer {
@@ -600,6 +689,14 @@ select {
 \*------------------------------------*/
 .hover-opacity {
   opacity: .85;
+  -webkit-transition: all .5s ease;
+  /* Safari and Chrome */
+  -moz-transition: all .5s ease;
+  /* Firefox */
+  -o-transition: all .5s ease;
+  /* IE 9 */
+  -ms-transition: all .5s ease;
+  /* Opera */
   transition: all .5s ease; }
 
 .hover-opacity:hover {

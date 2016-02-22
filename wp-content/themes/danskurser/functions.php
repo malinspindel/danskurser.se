@@ -311,6 +311,7 @@ add_action('get_header', 'enable_threaded_comments'); // Enable Threaded Comment
 add_action('wp_enqueue_scripts', 'html5blank_styles'); // Add Theme Stylesheet
 add_action('init', 'register_html5_menu'); // Add HTML5 Blank Menu
 add_action('init', 'create_post_type_html5'); // Add our HTML5 Blank Custom Post Type
+add_action('init', 'create_post_type_organisationer'); // Add our HTML5 Blank Custom Post Type
 add_action('widgets_init', 'my_remove_recent_comments_style'); // Remove inline Recent Comment Styles from wp_head()
 add_action('init', 'html5wp_pagination'); // Add our HTML5 Pagination
 // Remove Actions
@@ -390,6 +391,44 @@ function create_post_type_html5()
         ) // Add Category and Post Tags support
     ));
 }
+
+function create_post_type_organisationer()
+{
+    register_taxonomy_for_object_type('category', 'organisationer'); // Register Taxonomies for Category
+    register_taxonomy_for_object_type('post_tag', 'organisationer');
+    register_post_type('organisationer', // Register Custom Post Type
+        array(
+        'labels' => array(
+            'name' => __('Organisationer', 'organisationer'), // Rename these to suit
+            'singular_name' => __('Organisation', 'organisation'),
+            'add_new' => __('Add New', 'organisationer'),
+            'add_new_item' => __('Add New Organisationer', 'organisationer'),
+            'edit' => __('Edit', 'organisationer'),
+            'edit_item' => __('Edit Organisationer Custom Post', 'organisationer'),
+            'new_item' => __('New Organisationer Post', 'organisationer'),
+            'view' => __('View Organisationer Post', 'organisationer'),
+            'view_item' => __('View Organisationer Post', 'organisationer'),
+            'search_items' => __('Search Organisationer Custom Post', 'organisationer'),
+            'not_found' => __('No Organisationer Posts found', 'organisationer'),
+            'not_found_in_trash' => __('No Organisationer Custom Posts found in Trash', 'organisationer')
+        ),
+        'public' => true,
+        'hierarchical' => true, // Allows your posts to behave like Hierarchy Pages
+        'has_archive' => true,
+        'supports' => array(
+            'title',
+            'editor',
+            'excerpt',
+            'thumbnail'
+        ), // Go to Dashboard Custom HTML5 Blank post for supports
+        'can_export' => true, // Allows export in Tools > Export
+        'taxonomies' => array(
+            'post_tag',
+            'category'
+        ) // Add Category and Post Tags support
+    ));
+}
+
 /*------------------------------------*\
 	ShortCode Functions
 \*------------------------------------*/
@@ -466,7 +505,7 @@ function course_search(){
             <option value="age_50">50+</option>
           </select>
         </div>
-          <button id="button-second-filter">FLER VAL</button>
+          <p id="button-second-filter">FLER VAL</p>
       </div>  <!--//section-filter-first -->
 
       <div class="section-filter-second row" id="second-filter">
@@ -474,7 +513,7 @@ function course_search(){
         <div class=" small-10 medium-4 large-4 columns">
           <label for="level"><span><i class="fa fa-star"></i></span><h2>Nivå</h2></label>
           <select id="level" name="level">
-            <option value="0">Alla nivåer</option>
+            <option value="0">Visa alla nivåer</option>
             <option value="1">Nybörjare</option>
             <option value="2">Nybörjare - Fortsättning</option>
             <option value="3">Fortsättning</option>
@@ -483,7 +522,7 @@ function course_search(){
             <option value="6">Medel - Avancerad</option>
             <option value="7">Avancerad</option>
             <option value="8">Professionell</option>
-            <option value="9">Ingen nivå</option>
+            <option value="9">För alla nivåer</option>
           </select>
         </div>
 
@@ -556,7 +595,10 @@ function course_search(){
       <h2>Dina Sökresultat</h2>
       <!--The response output-->
       <div class="row">
-        <ul class="columns small-centered small-12 medium-10 large-10"></ul>
+        <p class="accent-text text-center small-centered msmall-12 medium-10 info">
+          <strong>Danskurser.se står ej för eventuella fel eller ändringar i kursinformationen.</strong> Läs alltid anmälningsvillkor och information på kursens egna hemsida innan du anmäler dig. Har du frågor om en kurs måste du kontakta kursanordnaren. Kontaktinformation hittar du på respektive hemsida.
+        </p>
+        <ul class="columns small-centered small-12 medium-10 large-10" id="ul-result"></ul>
       </div>
 
     </section>
@@ -664,12 +706,7 @@ function course_search_callback() {
         'course_time' => get_field('course_time'),
         'school' => get_field('school'),
         'level' => get_field('level'),
-        // 'level1' => get_field('level_1'),
-        // 'level2' => get_field('level_2'),
-        // 'level3' => get_field('level_3'),
-        // 'level4' => get_field('level_4'),
-        // 'level5' => get_field('level_5'),
-        // 'level6' => get_field('level_6'),
+        'org' => get_field('organisations'),
         'logo' => get_field('logo'),
         'styles' => get_field('styles')
       );

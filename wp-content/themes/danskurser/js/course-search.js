@@ -9,7 +9,10 @@ var searchForm = courseSearch.find('form');
   searchForm.submit(function(e){
     e.preventDefault();
 
+    courseSearch.find("ul").empty();
+    courseSearch.find("ul").append('<h4 class="text-center"><i class="fa fa-spinner fa-spin"></i><br>Söker</h4>');
 
+    var emptyText = "";
 
   var data = {
     action : "course_search",
@@ -33,9 +36,6 @@ var searchForm = courseSearch.find('form');
 
   var checkedBoxes = data.styles("style");
 
-
-
-
   $.ajax({
     url : ajax_url,
     data : data,
@@ -43,9 +43,15 @@ var searchForm = courseSearch.find('form');
 
       courseSearch.find("ul").empty();
 
+      var emptyText = "";
+
+      //if no courses is found in the wp_query
       if(response.length == 0) {
-        alert("Tyvärr, inga kurser matchade din sökning.");
+        emptyText="<h4 class='text-center'><i class='fa fa-frown-o'></i><br>Tyvärr, inga kurser matchade din sökning.</h4>";
+        courseSearch.find('ul').append(emptyText);
       }
+
+
 
       for(var i = 0; i < response.length; i++) {
         // console.log(response[i]);
@@ -59,6 +65,14 @@ var searchForm = courseSearch.find('form');
         var age = response[i].age;
         var level = response[i].level;
         var styles = response[i].styles;
+        var org = response[i].org;
+        var org_link = "";
+
+        //Get organisation link to it's post
+        for(var l in org) {
+          org_link = org[l].guid
+        }
+
 
         var html = "";
 
@@ -144,12 +158,12 @@ var searchForm = courseSearch.find('form');
         // console.log(data.level);
 
         if(data.level == 0 && checkedBoxes == null) {
-          console.log("no choises");
+          // console.log("no choises");
           writeHTML();
         }
 
         else if(data.level == response[i].level && checkedBoxes != null){
-          console.log("both choises ")
+          // console.log("both choises ")
 
             if(data.level == response[i].level){
               for(j = 0; j < checkedBoxes.length; j++ ){
@@ -184,10 +198,11 @@ var searchForm = courseSearch.find('form');
 
         }
 
-
+        //The html for the card
         function writeHTML(){
 
-          html = "<li class='small-12 medium-6 large-4 columns' id='course-id-" + response[i].id + "'>";
+
+          html = "<li class='small-12 medium-6 large-4 columns card' id='course-id-" + response[i].id + "'>";
 
           html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
 
@@ -196,7 +211,7 @@ var searchForm = courseSearch.find('form');
             html += "</h3></div>";
 
             html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
-            html += "<i class='fa fa-map-pin'></i>";
+            html += "<a href='" + org_link + "' target='_blank'><i class='fa fa-dot-circle-o'></i>></i></a>";
             html += "</div>";
 
           html += "</div>";
@@ -238,17 +253,24 @@ var searchForm = courseSearch.find('form');
               html += "</div>";
             html += "</div>";
 
-            html += "<p>styles: <p>" + styles;
+            html += "<p>" + styles + "</p>";
 
           html += "</div>";
           html += "</div>";
+
+
 
           html += "</li>";
         }
 
 
-
         courseSearch.find('ul').append(html);
+      }
+
+      //give a message if ul is empty after filtering with js
+      if(document.getElementById("ul-result").childNodes.length == 0) {
+        emptyText="<h4 class='text-center'><i class='fa fa-frown-o'></i><br>Tyvärr, inga kurser matchade din sökning.</h4>";
+        courseSearch.find('ul').append(emptyText);
       }
 
       console.log(response);

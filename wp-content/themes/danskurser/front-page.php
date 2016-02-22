@@ -1,3 +1,5 @@
+
+
 <?php
 get_header();
 ?>
@@ -69,6 +71,7 @@ $post_count = $the_query->found_posts;
 
 	</section>
 </div><!--// row-wrapper-->
+
 
 
 <?php get_footer(); ?>
