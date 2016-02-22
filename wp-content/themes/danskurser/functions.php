@@ -505,8 +505,11 @@ function course_search(){
             <option value="age_50">50+</option>
           </select>
         </div>
-          <p id="button-second-filter">FLER VAL</p>
       </div>  <!--//section-filter-first -->
+
+      <div class="row">
+        <p id="button-second-filter">FLER VAL</p>
+      </div>
 
       <div class="section-filter-second row" id="second-filter">
 
@@ -684,12 +687,7 @@ function course_search_callback() {
     'value' => $age,
     'compare' => '='
   );
-  //
-  // $args['meta_query'][] = array(
-  //   'key' => 'level',
-  //   'value' => $level,
-  //   'compare' => '='
-  // );
+
   $course_query = new WP_Query( $args );
     while( $course_query->have_posts() ){
       $course_query->the_post();
@@ -718,4 +716,83 @@ function course_search_callback() {
     echo $finalResult;
     wp_die();
 }
+
+//Freetext search
+
+function free_search_scripts() {
+  wp_enqueue_script( 'free-search', get_stylesheet_directory_uri() . '/js/free-search.js', array(), '1.0.0', true );
+  wp_localize_script( 'free-search', 'ajax_url', admin_url('admin-ajax.php') );
+}
+
+function free_search(){
+  free_search_scripts();
+  ob_start();
+?>
+
+<div id="free-search" class="">
+
+
+  <form action="" method="get">
+  	<h1>LIVE AJAX SEARCH</h1>
+    <input type="taxe" name="searh" id="search">
+
+    <ul>
+
+    </ul>
+  </form>
+
+</div>
+<?php
+}
+
+add_shortcode( 'free_search', 'free_search');
+
+add_action( 'wp_ajax_free_search', 'free_search_callback' );
+add_action( 'wp_ajax_nopriv_free_search', 'free_search_callback' );
+
+
+function free_search_callback() {
+  header("Content-type: application/json");
+
+    $result =  array();
+    //query
+    $args = array(
+      "post_type" => "danskurser",
+      "post_per_page" => -1,
+      "meta_key" => 'level',
+      "orderby" => 'meta_value_num',
+      "order" => "ASC"
+    );
+
+    $free_query = new WP_Query( $args );
+      while( $free_query->have_posts() ){
+        $free_query->the_post();
+        $result[] = array(
+          'id' => get_the_ID(),
+          'title' => get_the_title(),
+          'permalink' => get_permalink(),
+          'link' => get_field('link'),
+          'city' => get_field('city'),
+          'course_name' => get_field('course_name'),
+          'day' => get_field('day'),
+          'time' => get_field('time'),
+          'age' => get_field('age'),
+          'course_time' => get_field('course_time'),
+          'school' => get_field('school'),
+          'level' => get_field('level'),
+          'org' => get_field('organisations'),
+          'logo' => get_field('logo'),
+          'styles' => get_field('styles')
+        );
+      }
+      //application/json didn't work so I took pretty print nd stri-replae and it looks fine now
+        //Fix utf-8
+      $finalResult = json_encode($result, JSON_PRETTY_PRINT);
+      $finalResult = str_replace("\/","/",$finalResult);
+      echo $finalResult;
+      wp_die();
+
+}
+
+
 ?>
