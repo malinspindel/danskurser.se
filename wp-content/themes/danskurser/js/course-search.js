@@ -14,25 +14,25 @@ var searchForm = courseSearch.find('form');
 
     var emptyText = "";
 
-  var data = {
-    action : "course_search",
-    city: courseSearch.find('#city').val(),
-    day: courseSearch.find('#day').val(),
-    time: courseSearch.find('#time').val(),
-    age: courseSearch.find('#age').val(),
-    level: courseSearch.find('#level').val(),
-    styles: function getCheckboxes(checkboxName) {
-              var checkboxes = document.getElementsByName(checkboxName);
-              // console.log(checkboxes);
-              var checked = [];
-              for(var i = 0 ; i < checkboxes.length; i++){
-                if(checkboxes[i].checked){
-                  checked.push(checkboxes[i].defaultValue);
+    var data = {
+      action : "course_search",
+      city: courseSearch.find('#city').val(),
+      day: courseSearch.find('#day').val(),
+      time: courseSearch.find('#time').val(),
+      age: courseSearch.find('#age').val(),
+      level: courseSearch.find('#level').val(),
+      styles: function getCheckboxes(checkboxName) {
+                var checkboxes = document.getElementsByName(checkboxName);
+                // console.log(checkboxes);
+                var checked = [];
+                for(var i = 0 ; i < checkboxes.length; i++){
+                  if(checkboxes[i].checked){
+                    checked.push(checkboxes[i].defaultValue);
+                  }
                 }
+                return checked.length > 0 ? checked : null;
               }
-              return checked.length > 0 ? checked : null;
-            }
-  }
+    }
 
   var checkedBoxes = data.styles("style");
 

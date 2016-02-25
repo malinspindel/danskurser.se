@@ -79,16 +79,26 @@ function html5blank_header_scripts()
 {
     if ($GLOBALS['pagenow'] != 'wp-login.php' && !is_admin()) {
       // jQuery
-      	wp_deregister_script('jquery');
+
       	wp_register_script( 'jquery', get_template_directory_uri() . '/js/jquery-12.0.0.min.js', false, null, true );
-    	wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
+        wp_enqueue_script('jquery'); // Enqueue it!
+
+        wp_register_script('jqueryUI', get_template_directory_uri() . '/js/lib/jquery-ui-1.11.4.custom/jquery-ui.min.js', array(), '4.3.0'); // Conditionizr
+        wp_enqueue_script('jqueryUI'); // Enqueue it!
+
+        wp_register_script('conditionizr', get_template_directory_uri() . '/js/lib/conditionizr-4.3.0.min.js', array(), '4.3.0'); // Conditionizr
         wp_enqueue_script('conditionizr'); // Enqueue it!
+
         wp_register_script('modernizr', get_template_directory_uri() . '/js/lib/modernizr-2.7.1.min.js', array(), '2.7.1'); // Modernizr
         wp_enqueue_script('modernizr'); // Enqueue it!
-        wp_register_script('html5blankscripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
-        wp_enqueue_script('html5blankscripts'); // Enqueue it!
-        wp_register_script('app', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
-        wp_enqueue_script('html5blankscripts'); // Enqueue it!
+
+        wp_register_script('autocomplete', get_template_directory_uri() . '/js/autocomplete.js', array('jquery'), '1.0.0'); // Custom scripts
+        wp_enqueue_script('autocomplete'); // Enqueue it!
+
+        wp_register_script('scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
+        wp_enqueue_script('scripts'); // Enqueue it!
+
+
     }
 }
 // Load HTML5 Blank conditional scripts
@@ -104,8 +114,19 @@ function html5blank_styles()
 {
     wp_register_style('normalize', get_template_directory_uri() . '/stylesheets/normalize.css', array(), '1.0', 'all');
     wp_enqueue_style('normalize'); // Enqueue it!
+
     wp_register_style('foundation', get_template_directory_uri() . '/stylesheets/foundation.css', array(), '1.0', 'all');
     wp_enqueue_style('foundation'); // Enqueue it!
+
+    wp_register_style('jqueryui', get_template_directory_uri() . '/js/lib/jquery-ui-1.11.4.custom/jquery-ui.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('jqueryui'); // Enqueue it!
+
+    wp_register_style('jqueryui-structure', get_template_directory_uri() . '/js/lib/jquery-ui-1.11.4.custom/jquery-ui.structure.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('jqueryui'); // Enqueue it!
+
+    wp_register_style('jqueryui-theme', get_template_directory_uri() . '/js/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('jqueryui'); // Enqueue it!
+
     wp_register_style('main-style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('main-style'); // Enqueue it!
 }
@@ -631,32 +652,7 @@ function course_search_callback() {
     $age = 0;
     if(isset($_GET['age']))
       $age = sanitize_text_field($_GET['age']);
-    // $level = 0;
-    // if(isset($_GET['level']))
-    //   $level = sanitize_text_field($_GET['level']);
-    // $level_1 = 0;
-    // if(isset($_GET['level_1']))
-    //   $level_1 = intval(sanitize_text_field($_GET['level_1']) );
-    //
-    // $level_2 = 0;
-    // if(isset($_GET['level_2']))
-    //   $level_2 = intval(sanitize_text_field($_GET['level_2']) );
-    //
-    // $level_3 = 0;
-    // if(isset($_GET['level_3']))
-    //   $level_3 = intval(sanitize_text_field($_GET['level_3']) );
-    //
-    // $level_4 = 0;
-    // if(isset($_GET['level_4']))
-    //   $level_4 = intval(sanitize_text_field($_GET['level_4']) );
-    //
-    // $level_5 = 0;
-    // if(isset($_GET['level_5']))
-    //   $level_5 = intval(sanitize_text_field($_GET['level_5']) );
-    //
-    // $level_6 = 0;
-    // if(isset($_GET['level_6']))
-    //   $level_6 = intval(sanitize_text_field($_GET['level_6']) );
+
   //json result
   $result =  array();
   //query
@@ -706,7 +702,8 @@ function course_search_callback() {
         'level' => get_field('level'),
         'org' => get_field('organisations'),
         'logo' => get_field('logo'),
-        'styles' => get_field('styles')
+        'styles' => get_field('styles'),
+        'teacher' => get_field('teacher')
       );
     }
     //application/json didn't work so I took pretty print nd stri-replae and it looks fine now
@@ -729,19 +726,13 @@ function free_search(){
   ob_start();
 ?>
 
-<div id="free-search" class="">
+  <div id="free-search" class="">
+    <form action="" method="jquery">
+      <label for="datepicker"> Sök: </label>
+      <input type="text" name="search" id="input-free-search">
+    </form>
 
-
-  <form action="" method="get">
-  	<h1>LIVE AJAX SEARCH</h1>
-    <input type="taxe" name="searh" id="search">
-
-    <ul>
-
-    </ul>
-  </form>
-
-</div>
+  </div>
 <?php
 }
 
@@ -782,7 +773,9 @@ function free_search_callback() {
           'level' => get_field('level'),
           'org' => get_field('organisations'),
           'logo' => get_field('logo'),
-          'styles' => get_field('styles')
+          'styles' => get_field('styles'),
+          'teacher' => get_field('teacher'),
+          'price' => get_field('price')
         );
       }
       //application/json didn't work so I took pretty print nd stri-replae and it looks fine now

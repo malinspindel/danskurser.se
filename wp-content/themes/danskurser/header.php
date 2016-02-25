@@ -48,6 +48,7 @@
 					<nav class="nav medium-5 columns" role="navigation">
 						<div class="free-search-box hover-opacity">
 							<span class="free-search"><i class="fa fa-search"></i></span>
+							<?php echo do_shortcode( '[free_search]' ); ?>
 							<!-- <?php echo do_shortcode('[wpdreams_ajaxsearchlite]'); ?> -->
 						</div>
 						<?php wp_nav_menu(); ?>

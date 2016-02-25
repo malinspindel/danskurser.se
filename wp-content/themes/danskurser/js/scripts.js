@@ -1,6 +1,19 @@
 function App(){
 	console.log("nurå");
 
+	//Prevent error when pressing enter in Freesearch input
+	$(document).ready(function() {
+	  $(window).keydown(function(event){
+	    if(event.keyCode == 13) {
+	      event.preventDefault();
+	      return false;
+	    }
+	  });
+	});
+
+
+
+//show and hide elements
 $('#course-search').addClass('no-height');
 
 $('#IRHolder').css('text-align', 'center');
