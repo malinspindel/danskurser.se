@@ -138,6 +138,13 @@ input:focus {
     cursor: pointer;
     margin-top: 14px; }
 
+.ui-front {
+  line-height: 2.6; }
+
+.ui-menu .ui-menu-item {
+  padding: 7px 1em 7px 1em;
+  font-size: 1.25em; }
+
 /* header */
 /* nav */
 .header {
@@ -237,7 +244,8 @@ i.fa.fa-arrow-circle-right:hover {
 [type='search'],
 [type='tel'],
 textarea {
-  border: 0px; }
+  border: 0px;
+  transition: none; }
 
 [type='text']:focus,
 [type='text']:focus,
@@ -246,7 +254,10 @@ textarea {
 [type='search']:focus,
 [type='tel']:focus,
 textarea:focus {
-  border: 0px; }
+  border: 0px;
+  box-shadow: 0 0 0 #fff;
+  border: 0;
+  opacity: 1; }
 
 /* Checkbox */
 input[type=checkbox] {

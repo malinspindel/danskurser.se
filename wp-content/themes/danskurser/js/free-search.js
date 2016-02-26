@@ -3,6 +3,7 @@ $ = jQuery;
 var freeSearch = $('#free-search');
 
 var freeSearchForm = freeSearch.find('form');
+var keyUpPress = 0;
 
 var teachersList = [];
 //peka på teacher i den här arrayen
@@ -22,6 +23,12 @@ freeSearchForm.submit(function(e){
 });
 
 freeSearchForm.keyup(function(e){
+  keyUpPress ++;
+
+  if(keyUpPress > 4) {
+
+
+
 
   courseSearch.find('ul').empty();
   courseSearch.find("ul").append('<h4 class="text-center"><i class="fa fa-spinner fa-spin"></i><br>Söker</h4>');
@@ -277,5 +284,5 @@ freeSearchForm.keyup(function(e){
       $('.section-result').append(errorMsg);
     }
   })
-  // }
+} //end if keyUpPress
 })

@@ -43,6 +43,12 @@ $('#free-search').hide();
 	 $('#free-search').fadeIn("1000");
  });
 
+ $('#free-search').on('click', function(e){
+	 $('#course-search').removeClass('no-height');
+	 $('.section-city').addClass('no-height');
+	 $('#result').fadeIn("2000");
+ })
+
 
 /* Scroll events */
 

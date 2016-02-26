@@ -37,23 +37,11 @@
 //             // Element was not found, add it.
 //             teachersList.push(newTeachersList);
 //         }
-//
-//         var response = response.filter(function (chain) {
-//
-//           //Call to implement jquery on loaded content
-//
-//
-//         })
 //         afterAjax();
-//         console.log(response);
-//
-//
-//         //Loop and
-//
 //
 //     }, //success
 //     error: function( error ) {
-//       alert("Something went wrong");
+//       alert("Something went wrong, maybe you have lost your connection to internet.");
 //     }
 //
 //
