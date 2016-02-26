@@ -7,39 +7,43 @@ var freeSearchForm = freeSearch.find('form');
 var teachersList = [];
 //peka på teacher i den här arrayen
 
-
-
-
 function afterAjax() {
   $( "#input-free-search" ).autocomplete({
     source: teachersList
   });
 } afterAjax();
 
-var requestSent = false;
+// var requestSent = false;
 
+freeSearchForm.submit(function(e){
+  e.preventDefault();
+  courseSearch.find('ul').empty();
+  $(this).trigger('keyup');
+});
 
 freeSearchForm.keyup(function(e){
 
   courseSearch.find('ul').empty();
+  courseSearch.find("ul").append('<h4 class="text-center"><i class="fa fa-spinner fa-spin"></i><br>Söker</h4>');
 
   var data = {
     action: "free_search",
     freeSearchText: freeSearch.find('#input-free-search').val()
   }
 
-  if(!requestSent) {
-    requestSent=true;
+  // if(!requestSent) {
+    // requestSent = true;
 
 
   $.ajax({
     url : ajax_url,
     data : data,
-
-    complete: function() {
-      requestSent = false;
-    },
+    // complete: function() {
+    //   requestSent = false;
+    // },
     success : function(response) {
+
+        courseSearch.find("ul").empty();
 
         var responseLength = response.length;
         var html = "";
@@ -59,6 +63,7 @@ freeSearchForm.keyup(function(e){
         var matchStyles = "";
         var matchTeacher = "";
         var matchPrice = "";
+        var matchOrgLink = "";
         console.log(response);
 
         function checkAndAdd(name) {
@@ -84,7 +89,7 @@ freeSearchForm.keyup(function(e){
               matchLink = chain.link;
               matchCity = chain.city;
               matchCourseName = chain.course_name;
-              matchDay = chain.day_mon;
+              matchDay = chain.day;
               matchTime = chain.time;
               matchAge = chain.age;
               matchCourseTime = chain.course_time;
@@ -95,6 +100,11 @@ freeSearchForm.keyup(function(e){
               matchStyles = chain.styles;
               matchTeacher = chain.teacher;
               matchPrice = chain.price;
+              matchStart = chain.start;
+              matchHours = chain.hours;
+              matchOrgLink = matchOrganisation[0].guid;
+
+              console.log(matchOrgLink);
 
               //Dag
         if(matchDay == "day_mon"){
@@ -174,7 +184,16 @@ freeSearchForm.keyup(function(e){
           matchLevel = "ALLA";
         }
 
-              writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice   );
+        //If teacher is not set
+        if(matchTeacher == null) {
+          matchTeacher = "Ej registrerat";
+        }
+        //If price is not set
+        if(matchPrice == null) {
+          matchPrice = "Ej registrerat";
+        }
+
+              writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice, matchHours, matchStart   );
               // console.log("school match!");
               // return matchTitle + matchLink + matchCity + matchCourseName + matchDay + matchTime + matchAge + matchCourseTime + matchSchool + matchLevel + matchOrganisation + matchLogo + matchStyles + matchTeacher;
 
@@ -184,13 +203,8 @@ freeSearchForm.keyup(function(e){
 
         afterAjax();
 
-        // var svar = response[0];
-        // html += "<li>" + svar.id + "</li>";
-        // if(matchTeacher){
-        //   writeHTML();
-        // }
         //Write html for the cards
-        function writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice){
+        function writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice, matchHours, matchStart ){
 
 
           html += "<li class='small-12 medium-6 large-4 columns card' id='course-id-" + matchId + "'>";
@@ -202,7 +216,7 @@ freeSearchForm.keyup(function(e){
             html += "</h3></div>";
 
             html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
-            html += "<a href='" + matchLink + "' target='_blank'><i class='fa fa-dot-circle-o'></i>></i></a>";
+            html += "<a href='" + matchOrgLink + "' target='_blank'><i class='fa fa-info-circle'></i></a>";
             html += "</div>";
 
           html += "</div>";
@@ -217,9 +231,9 @@ freeSearchForm.keyup(function(e){
 
               html += "<div class='course-info columns medium-6 large-6'>";
                 html += "<label>Dag / Tid</label>";
-                html += "<p>" + matchDay + " / " + matchTime + "</p>";
+                html += "<p>" + matchDay + " / " + matchCourseTime + "</p>";
                 html += "<label>Antal ggr / tim</label>";
-                html += "<p>12 ggr / 18 tim</p>";
+                html += "<p>" + matchHours + "</p>";
 
                 html += "<label>Pris</label>";
                 html += "<p>" + matchPrice + "</p>";
@@ -227,7 +241,7 @@ freeSearchForm.keyup(function(e){
 
               html += "<div class='course-info text-right columns medium-6 large-6'>";
                 html += "<label>Kursstart</label>";
-                html += "<p>1 jan</p>"
+                html += "<p>" + matchStart  + "</p>"
                 html += "<label> Ålder</label>"
                 html +=  "<p>" + matchAge + "</p>";
 
@@ -244,8 +258,8 @@ freeSearchForm.keyup(function(e){
               html += "</div>";
             html += "</div>";
 
-            html += "<p>" + matchStyles + "</p>";
-            html += "<p>" + matchTeacher + "</p>";
+            // html += "<p>Stil: " + matchStyles + "</p>";
+            html += "<p>Lärare: " + matchTeacher + "</p>";
 
           html += "</div>";
           html += "</div>";
@@ -259,11 +273,9 @@ freeSearchForm.keyup(function(e){
 
     }, //success
     error: function( error ) {
-      console.log("timeout");
+      var errorMsg = "<h3>Sorry, something went wrong. Try again later or if the problem continues, please email me at malininc.s@gmail.com. Thank you!</h3>";
+      $('.section-result').append(errorMsg);
     }
-
-
-
   })
-  }
+  // }
 })

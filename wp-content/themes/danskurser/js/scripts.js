@@ -16,17 +16,19 @@ function App(){
 //show and hide elements
 $('#course-search').addClass('no-height');
 
+
 $('#IRHolder').css('text-align', 'center');
 
 $('#open').hide();
 $('#result').hide();
 $('#second-filter').hide();
+$('#free-search').hide();
+
 
  $('select').on('click', function(e){
 	 e.preventDefault();
 	 $('#course-search').addClass('height');
 	 $('#open').fadeIn("slow");
-
  });
 
  $('#button-search').on('click', function(e){
@@ -35,6 +37,10 @@ $('#second-filter').hide();
 
  $('#button-second-filter').on('click', function(e){
 	$('#second-filter').fadeIn("2000");
+ });
+
+ $('.free-search-icon').on('click', function(e) {
+	 $('#free-search').fadeIn("1000");
  });
 
 

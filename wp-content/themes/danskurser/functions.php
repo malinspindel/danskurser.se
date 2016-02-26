@@ -620,7 +620,7 @@ function course_search(){
       <!--The response output-->
       <div class="row">
         <p class="accent-text text-center small-centered msmall-12 medium-10 info">
-          <strong>Danskurser.se står ej för eventuella fel eller ändringar i kursinformationen.</strong> Läs alltid anmälningsvillkor och information på kursens egna hemsida innan du anmäler dig. Har du frågor om en kurs måste du kontakta kursanordnaren. Kontaktinformation hittar du på respektive hemsida.
+          <strong>Danskurser.se står ej för eventuella fel eller ändringar i kursinformationen.</strong> <a href="#">Läs mer.</a>
         </p>
         <ul class="columns small-centered small-12 medium-10 large-10" id="ul-result"></ul>
       </div>
@@ -703,7 +703,10 @@ function course_search_callback() {
         'org' => get_field('organisations'),
         'logo' => get_field('logo'),
         'styles' => get_field('styles'),
-        'teacher' => get_field('teacher')
+        'teacher' => get_field('teacher'),
+        'price' => get_field('price'),
+        'start' => get_field('start'),
+        'hours' => get_field('hours')
       );
     }
     //application/json didn't work so I took pretty print nd stri-replae and it looks fine now
@@ -728,8 +731,8 @@ function free_search(){
 
   <div id="free-search" class="">
     <form action="" method="jquery">
-      <label for="datepicker"> Sök: </label>
-      <input type="text" name="search" id="input-free-search">
+      <input type="text" name="search" placholder="Sök ex. lärare, skola" id="input-free-search" >
+      <button type="submit" id="button-free-search"><span id="free-search">SÖK</span></button>
     </form>
 
   </div>
@@ -775,7 +778,9 @@ function free_search_callback() {
           'logo' => get_field('logo'),
           'styles' => get_field('styles'),
           'teacher' => get_field('teacher'),
-          'price' => get_field('price')
+          'price' => get_field('price'),
+          'start' => get_field('start'),
+          'hours' => get_field('hours')
         );
       }
       //application/json didn't work so I took pretty print nd stri-replae and it looks fine now

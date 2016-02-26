@@ -63,10 +63,14 @@ var searchForm = courseSearch.find('form');
         var day = "";
         var time = response[i].course_time;
         var age = response[i].age;
+        var start = response[i].start;
+        var hours = response[i].hours;
         var level = response[i].level;
         var styles = response[i].styles;
         var org = response[i].org;
         var org_link = "";
+        var price = response[i].price;
+        var teacher = response[i].teacher;
 
         //Get organisation link to it's post
         for(var l in org) {
@@ -154,6 +158,16 @@ var searchForm = courseSearch.find('form');
           level = "ALLA";
         }
 
+        //If teacher is not set
+        if(response[i].teacher == null){
+          teacher = "Ej registrerat";
+        }
+
+        //If price is not set
+        if(response[i].price == null){
+          price = "Ej registrerat";
+        }
+
       //Filtering levels
         // console.log(data.level);
 
@@ -211,7 +225,7 @@ var searchForm = courseSearch.find('form');
             html += "</h3></div>";
 
             html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
-            html += "<a href='" + org_link + "' target='_blank'><i class='fa fa-dot-circle-o'></i>></i></a>";
+            html += "<a href='" + org_link + "' target='_blank'><i class='fa fa-info-circle'></i></a>";
             html += "</div>";
 
           html += "</div>";
@@ -228,15 +242,15 @@ var searchForm = courseSearch.find('form');
                 html += "<label>Dag / Tid</label>";
                 html += "<p>" + day + " / " + time + "</p>";
                 html += "<label>Antal ggr / tim</label>";
-                html += "<p>12 ggr / 18 tim</p>";
+                html += "<p>" + hours + "</p>";
 
                 html += "<label>Pris</label>";
-                html += "<p> 3275:-</p>";
+                html += "<p>" + price + "</p>";
               html += "</div>";
 
               html += "<div class='course-info text-right columns medium-6 large-6'>";
                 html += "<label>Kursstart</label>";
-                html += "<p>1 jan</p>"
+                html += "<p>" + start + "</p>"
                 html += "<label> Ålder</label>"
                 html +=  "<p>" + age + "</p>";
 
@@ -253,7 +267,8 @@ var searchForm = courseSearch.find('form');
               html += "</div>";
             html += "</div>";
 
-            html += "<p>" + styles + "</p>";
+            // html += "<p>Stil: " + styles + "</p>";
+            html += "<p>Lärare: " + teacher + "</p>";
 
           html += "</div>";
           html += "</div>";
