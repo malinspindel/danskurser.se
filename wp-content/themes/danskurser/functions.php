@@ -730,7 +730,7 @@ function free_search(){
 ?>
 
   <div id="free-search" class="">
-    <form action="" method="jquery">
+    <form action="" method="get">
       <input type="text" name="search" placholder="Sök ex. lärare, skola" id="input-free-search" >
       <button type="submit" id="button-free-search"><span id="free-search">SÖK</span></button>
     </form>

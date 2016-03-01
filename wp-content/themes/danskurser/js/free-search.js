@@ -4,15 +4,15 @@ var freeSearch = $('#free-search');
 
 var freeSearchForm = freeSearch.find('form');
 var keyUpPress = 0;
-
-var teachersList = [];
+var counter = 0;
+// var teachersList = [];
 //peka på teacher i den här arrayen
 
-function afterAjax() {
-  $( "#input-free-search" ).autocomplete({
-    source: teachersList
-  });
-} afterAjax();
+// function afterAjax() {
+//   $( "#input-free-search" ).autocomplete({
+//     source: teachersList
+//   });
+// } afterAjax();
 
 // var requestSent = false;
 
@@ -49,7 +49,8 @@ freeSearchForm.keyup(function(e){
     //   requestSent = false;
     // },
     success : function(response) {
-
+      counter ++;
+      console.log(counter);
         courseSearch.find("ul").empty();
 
         var responseLength = response.length;
@@ -73,19 +74,19 @@ freeSearchForm.keyup(function(e){
         var matchOrgLink = "";
         console.log(response);
 
-        function checkAndAdd(name) {
-          // var id = teachersList.length + 1;
-          var found = teachersList.some(function (el) {
-            return el === name;
-          });
-          if (!found) { teachersList.push( name ); }
-        }
+        // function checkAndAdd(name) {
+        //   // var id = teachersList.length + 1;
+        //   var found = teachersList.some(function (el) {
+        //     return el === name;
+        //   });
+        //   if (!found) { teachersList.push( name ); }
+        // }
 
-        for(f = 0 ; f < responseLength ; f++) {
-          if(response[f].teacher != null){
-            checkAndAdd(response[f].teacher);
-          }
-        }
+        // for(f = 0 ; f < responseLength ; f++) {
+        //   if(response[f].teacher != null){
+        //     checkAndAdd(response[f].teacher);
+        //   }
+        // }
 
         var response = response.filter(function (chain) {
           // console.log(chain.id);
