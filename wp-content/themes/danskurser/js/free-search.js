@@ -215,7 +215,7 @@ freeSearchForm.keyup(function(e){
         function writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice, matchHours, matchStart ){
 
 
-          html += "<li class='small-12 medium-6 large-4 columns card' id='course-id-" + matchId + "'>";
+          html += "<li class='small-12 medium-6 large-4 columns no-padding-side card' id='course-id-" + matchId + "'>";
 
           html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
 

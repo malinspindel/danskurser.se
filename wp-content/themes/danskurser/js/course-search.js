@@ -216,7 +216,7 @@ var searchForm = courseSearch.find('form');
         function writeHTML(){
 
 
-          html = "<li class='small-12 medium-6 large-4 columns card' id='course-id-" + response[i].id + "'>";
+          html = "<li class='small-12 medium-6 large-4 columns no-padding-side card' id='course-id-" + response[i].id + "'>";
 
           html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
 

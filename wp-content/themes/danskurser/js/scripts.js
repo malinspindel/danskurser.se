@@ -28,25 +28,32 @@ $('#free-search').hide();
  $('select').on('click', function(e){
 	 e.preventDefault();
 	 $('#course-search').addClass('height');
+	 $('#open').removeClass('shadow-effect');
 	 $('#open').fadeIn("slow");
+ });
+
+ $('#open').on('click', function(e){
+ 	$('#open').removeClass('shadow-effect');
  });
 
  $('#button-search').on('click', function(e){
 	 $('#result').fadeIn("2000");
  });
 
+
  $('#button-second-filter').on('click', function(e){
-	$('#second-filter').fadeIn("2000");
+	$('#second-filter').slideToggle("1000");
  });
 
  $('.free-search-icon').on('click', function(e) {
-	 $('#free-search').fadeIn("1000");
+	 $('#free-search').slideToggle("1000");
  });
 
  $('#free-search').on('click', function(e){
-	 $('#course-search').removeClass('no-height');
-	 $('.section-city').addClass('no-height');
-	 $('#result').fadeIn("2000");
+	//  $('#course-search').removeClass('no-height');
+	//  $('#open').fadeOut("slow");
+	$('#open').addClass('shadow-effect');
+	$('#result').fadeIn("2000");
  })
 
 
@@ -57,12 +64,12 @@ function scroll_style() {
    var div_top = $('#course-search').offset().top;
 
    if (window_top > div_top-200){
-		 		$('.header').addClass('grad');
+		 	$('.header').addClass('background-blue');
       $('.header').css({"padding-top":"1.25em"});
       $('#click-menu').css({"top":"21px"});
    }
 	 if (window_top < div_top-200){
-			$('.header').removeClass('grad');
+			$('.header').removeClass('background-blue');
 			$('.header').css({"padding-top":"2.9em"});
 			$('#click-menu').css({"top":"38px"});
 

@@ -529,7 +529,7 @@ function course_search(){
       </div>  <!--//section-filter-first -->
 
       <div class="row">
-        <p id="button-second-filter">FLER VAL</p>
+        <p id="button-second-filter"><i class="fa fa-plus-square-o"></i>FLER VAL</p>
       </div>
 
       <div class="section-filter-second row" id="second-filter">
@@ -610,7 +610,7 @@ function course_search(){
 
       </div> <!--//section-filter-second-->
 
-      <button type="submit" id="button-search"><i class="fa fa-search"></i><span id="search">SÖK</span></button>
+      <button type="submit" id="button-search"><i class="fa fa-chevron-circle-right"></i><span id="search">SÖK</span></button>
 
     </form>
     </div>
@@ -652,6 +652,7 @@ function course_search_callback() {
     $age = 0;
     if(isset($_GET['age']))
       $age = sanitize_text_field($_GET['age']);
+
 
   //json result
   $result =  array();
