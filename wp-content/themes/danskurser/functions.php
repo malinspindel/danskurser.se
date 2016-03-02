@@ -660,7 +660,7 @@ function course_search_callback() {
   $args = array(
     "post_type" => "danskurser",
     "post_per_page" => -1,
-    "meta_key" => 'level',
+    "meta_key" => 'course_start_time',
     "orderby" => 'meta_value_num',
     "order" => "ASC"
   );
@@ -699,6 +699,7 @@ function course_search_callback() {
         'time' => get_field('time'),
         'age' => get_field('age'),
         'course_time' => get_field('course_time'),
+        'course_start_time' => get_field('course_start_time'),
         'school' => get_field('school'),
         'level' => get_field('level'),
         'org' => get_field('organisations'),

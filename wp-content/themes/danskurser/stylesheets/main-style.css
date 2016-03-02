@@ -85,7 +85,7 @@ input:focus {
   color: #379D7F !important; }
 
 #click-menu #RMX:hover {
-  color: #E7E143 !important; }
+  color: #223B3F !important; }
 
 #click-menu .threeLines .line {
   height: 4px;
@@ -104,7 +104,8 @@ input:focus {
 /* Free search */
 .free-search-box {
   text-align: right;
-  z-index: 100; }
+  z-index: 100;
+  padding-right: 11%; }
   .free-search-box .free-search-icon {
     display: inline-block;
     width: 10%; }
@@ -136,7 +137,7 @@ input:focus {
     font-size: 24px;
     color: white;
     cursor: pointer;
-    margin-top: 14px; }
+    margin-top: 10px; }
 
 .ui-front {
   line-height: 2.6; }
@@ -629,6 +630,7 @@ select {
       opacity: 1;
       color: #fff; }
     .search-filter .section-result ul li {
+      width: 31.42%;
       list-style: none;
       margin-bottom: 1.75em;
       margin-left: 0.9375rem;
@@ -643,8 +645,7 @@ select {
       -ms-transition: all .35s ease;
       /* Opera */
       transition: all .35s ease; }
-      .search-filter .section-result ul li button
-      .course-heading {
+      .search-filter .section-result ul li .course-heading {
         padding: 0.5em 1.5em;
         background: #223B3F;
         height: 4.5em;
@@ -659,8 +660,7 @@ select {
         transition: all .25s ease;
         line-height: 3.5em;
         font-size: 1.45em; }
-        .search-filter .section-result ul li button
-        .course-heading .fa {
+        .search-filter .section-result ul li .course-heading .fa {
           font-size: 1.5em;
           -webkit-transition: all .25s ease;
           /* Safari and Chrome */
@@ -671,13 +671,11 @@ select {
           -ms-transition: all .25s ease;
           /* Opera */
           transition: all .25s ease; }
-        .search-filter .section-result ul li button
-        .course-heading .fa:hover {
+        .search-filter .section-result ul li .course-heading .fa:hover {
           font-size: 1.6em;
           color: #F6A32C;
           cursor: pointer; }
-        .search-filter .section-result ul li button
-        .course-heading h3 {
+        .search-filter .section-result ul li .course-heading h3 {
           color: #fff;
           line-height: 3em;
           font-weight: 300;
@@ -838,7 +836,7 @@ select {
     content: "\f059"; }
   .first-content h2:before {
     color: #379d7f;
-    content: "\f128";
+    content: "\f128" !important;
     font-size: 1.5em; }
   .first-content #post-161 p {
     padding-left: 6.25%;

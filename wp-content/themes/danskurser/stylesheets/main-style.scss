@@ -97,13 +97,15 @@ input:focus {
 
 /* Responsive menu plugin*/
 
+
+
 #click-menu #RMX {
 	font-size: 55px !important;
 	color: #379D7F !important;
 }
 
 #click-menu #RMX:hover {
-	color: #E7E143 !important;
+	color: #223B3F !important;
 }
 
 #click-menu .threeLines .line {
@@ -127,6 +129,7 @@ input:focus {
 .free-search-box {
 	text-align: right;
 	z-index:100;
+	padding-right: 11%;
 
 	.free-search-icon {
 		display: inline-block;
@@ -169,7 +172,7 @@ input:focus {
 		font-size: 24px;
 		color: white;
 		cursor: pointer;
-		margin-top: 14px;
+		margin-top: 10px;
 	}
 }
 
@@ -759,7 +762,7 @@ select {
 		}
 
 		#button-second-filter:hover {
-			color: #fff;
+				color: #fff;
 		}
 
 		.section-filter-second {
@@ -831,6 +834,7 @@ select {
 		}
 
 		ul li {
+			width: 31.42%;;
 			list-style: none;
 			margin-bottom: 1.75em;
 			margin-left: 0.9375rem;
@@ -843,7 +847,7 @@ select {
 			transition: all .35s ease;
 
 
-button
+
 			.course-heading {
 				padding: 0.5em 1.5em;
 				background: #223B3F;
@@ -1126,7 +1130,7 @@ button
 	}
 	h2:before {
 		color:#379d7f;
-		content: "\f128";
+		content: "\f128" !important;
 		font-size: 1.5em;
 	}
 	#post-161 p {

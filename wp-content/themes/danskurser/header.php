@@ -35,7 +35,7 @@
 				<div class="row">
 
 					<!-- logo -->
-					<div class="logo medium-6 columns">
+					<div class="logo medium-4 columns">
 						<a href="<?php echo home_url(); ?>">
 							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
 							<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="Logo" class="logo-img">
@@ -47,7 +47,7 @@
 
 					<!-- nav -->
 
-					<nav class="nav medium-5 columns" role="navigation">
+					<nav class="nav medium-8 columns" role="navigation">
 						<div class="free-search-box hover-opacity">
 							<?php echo do_shortcode( '[free_search]' ); ?>
 							<span class="free-search-icon"><i class="fa fa-search"></i></span>

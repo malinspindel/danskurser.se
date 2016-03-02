@@ -259,6 +259,7 @@ var searchForm = courseSearch.find('form');
 
             html += "<div class='course-nav row'>";
               html += "<div class='columns medium-9'>";
+              html += "<label class='label-level'>NIVÅ</label>";
                 html += "<div class='circle " + level + "'><span>" + level + "</span></div>";
               html += "</div>";
 
