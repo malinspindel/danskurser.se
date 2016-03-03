@@ -83,6 +83,10 @@ input:focus {
 	border:1px solid #04A4CC;
 }
 
+section {
+	display: block;
+}
+
 /*------------------------------------*\
     STRUCTURE
 \*------------------------------------*/
@@ -93,6 +97,10 @@ input:focus {
 	// width:100%;
 	margin:0 auto;
 	position:relative;
+}
+
+.full-width-row {
+	max-width: 100%;
 }
 
 /* Responsive menu plugin*/
@@ -138,9 +146,13 @@ input:focus {
 
 	#free-search {
 		display: inline-block;
-		width: 60%;
+		width: 45%;
 		vertical-align: top;
 		margin-top: 8px;
+
+		form {
+			margin-top: -7px;
+		}
 
 	}
 
@@ -172,7 +184,7 @@ input:focus {
 		font-size: 24px;
 		color: white;
 		cursor: pointer;
-		margin-top: 10px;
+		margin-top: 7px;
 	}
 }
 
@@ -198,7 +210,7 @@ input:focus {
 		img {
 
 			line-height: 1em;
-			width: 45%;
+			width: 58%;
 		}
 	}
 
@@ -263,6 +275,11 @@ section .fa {
 }
 
 section .fa.fa-plus-square-o {
+	font-size: 1em;
+	padding-right: 10px;
+}
+
+.fa.fa-minus-square-o {
 	font-size: 1em;
 	padding-right: 10px;
 }
@@ -471,7 +488,7 @@ select {
 	font-size: 1.4em;
 	height: 2.5em;
 	padding: 0.5em 1em;
-	text-align: center;
+	// text-align: left;
 	margin-bottom: 0;
 }
 
@@ -713,6 +730,37 @@ select {
 			vertical-align: middle;
 		}
 
+		.select2-arrow {
+			background: #fff;
+			border: 0;
+			width: 20px;
+			b {
+				background-position: 0 5px;
+				background-repeat: no-repeat;
+			}
+		}
+
+		.select2-container .select2-choice {
+			text-align: left;
+			margin-top: -5px;
+			border: 0;
+			background: #fff;
+			font-size: 1.25em;
+			height: 38.5px;
+			padding: .5em 1em;
+		}
+
+		.select2-search input {
+			border: 0;
+			border-bottom: 1px solid grey;
+
+		}
+
+		.span#select2-chosen-2 {
+			background-image: none !important;
+		}
+
+		.select2-container,
 		select {
 			width: 16%;
 			height: 2.5em;
@@ -807,8 +855,8 @@ select {
 			font-size: 1.2em;
 			text-transform: uppercase;;
 			border-radius: 3px;
-			padding: 1em 1.5em;
-			margin: 2em 0em;
+			padding: 1em 1.5em .3em 1.5em;
+			margin: 0 0 1.2em 0;;
 		}
 	}
 
@@ -820,6 +868,7 @@ select {
 			padding: 1.5em;
 			color: #fff;
 			text-align: center;
+			margin-top: -40px;
 		}
 
 		.fa-dot-circle {
@@ -989,7 +1038,7 @@ select {
 
     ul li:hover {
       opacity: 1;
-			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+			box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
     }
 
 		ul li:hover .course-heading {
@@ -1045,7 +1094,7 @@ select {
 .row-wrapper {
 	background-color: #e4e4e4;
 	.front-page-content {
-
+		margin: 0 auto;
 
 		article {
 
@@ -1061,38 +1110,86 @@ select {
 				border-left: 2px solid;
 				border-right: 2px solid;
 				border-color: white;
+				padding: 3em 6em 3em 6em;
 
+
+
+				.first-p {
+					display: inline-block;
+					width:49%;
+					text-align: left;
+					padding-left: 5px;
+
+					.accent-text {
+						font-size: 1.75em;
+					}
+					.letter-spacing:first-of-type {
+						letter-spacing: 0px;
+						padding-left: 1px;
+					}
+				}
+				.second-p {
+					display: inline-block;
+					width: 49%;
+					text-align: right;
+					padding-right: 5px;
+
+					.accent-text {
+						font-size: 1.3em;
+					}
+					.letter-spacing {
+						letter-spacing: 1px;
+
+					}
+
+				}
+				.count-courses {
+					display: inline-block;
+					width:49%;
+					text-align: right;
+					margin-bottom: 10px;
+					font-size: 6em;
+				}
+				.count-org {
+					display: inline-block;
+					width:49%;
+					text-align: left;
+					font-size: 7em
+
+				}
 
 				p {
 					text-transform: uppercase;
 					font-size: 1.49em;
 					color: #223B3F;
-					margin: 0;
+					// margin: 0;
 					font-weight: bold;
 					line-height: 1.15;
+					// width: 40%;
+					// display: inline-block;
 				}
-
-				p:first-child {
-					color: #379d7f;
-					font-size: 2.25em;
-					padding-top: 1em;
-				}
-
-				p:last-child {
-					margin-bottom: 2em;
-				}
+				//
+				// p:first-child {
+				// 	color: #379d7f;
+				// 	font-size: 2.25em;
+				// 	padding-top: 1em;
+				// }
+				//
+				// p:last-child {
+				// 	margin-bottom: 2em;
+				// }
 
 				h2 {
-					margin: 0;
+					// margin: 0;
 					font-size: 7.5em;
 					line-height: .9;
-					margin-left: -5px;
+					// margin-left: -5px;
 				}
 
 				.accent-text {
 
-					font-size: 1.75em;
-					padding-bottom: 3em;
+					// font-size: 1.75em;
+					// // padding-bottom: 3em;
 
 				}
 

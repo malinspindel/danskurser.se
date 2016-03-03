@@ -95,6 +95,9 @@ function html5blank_header_scripts()
         wp_register_script('autocomplete', get_template_directory_uri() . '/js/autocomplete.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('autocomplete'); // Enqueue it!
 
+        wp_register_script('select2', get_template_directory_uri() . '/js/lib/select2/select2.full.min.js', array('jquery'), '1.0.0'); // Custom scripts
+        wp_enqueue_script('select2'); // Enqueue it!
+
         wp_register_script('scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('scripts'); // Enqueue it!
 
@@ -126,6 +129,9 @@ function html5blank_styles()
 
     wp_register_style('jqueryui-theme', get_template_directory_uri() . '/js/lib/jquery-ui-1.11.4.custom/jquery-ui.theme.min.css', array(), '1.0', 'all');
     wp_enqueue_style('jqueryui'); // Enqueue it!
+
+    wp_register_style('select2', get_template_directory_uri() . '/js/lib/select2/select2.min.css', array(), '1.0', 'all');
+    wp_enqueue_style('select2'); // Enqueue it!
 
     wp_register_style('main-style', get_template_directory_uri() . '/style.css', array(), '1.0', 'all');
     wp_enqueue_style('main-style'); // Enqueue it!
@@ -482,8 +488,14 @@ function course_search(){
 
       <label for="city"><i class="fa fa-compass"></i></label>
       <select id="city" name="city">
+        <option selected="selected">Sök ort...</option>
+        <option disabled="disabled">-STOCKHOLM-</option>
         <option value="stockholm">Stockholm</option>
+
+        <option disabled="disabled">-GÖTEBORG-</option>
         <option value="goteborg">Göteborg</option>
+
+        <option disabled="disabled">-MALMÖ-</option>
         <option value="malmo">Malmö</option>
       </select>
     </div>

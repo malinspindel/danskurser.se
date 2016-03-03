@@ -13,7 +13,7 @@ function App(){
 
 
 
-//show and hide elements
+//hide elements
 $('#course-search').addClass('no-height');
 
 
@@ -24,7 +24,19 @@ $('#result').hide();
 $('#second-filter').hide();
 $('#free-search').hide();
 
+//click event to select2 plugin
+function format(state) {
+    if (!state.id) return state.text; // optgroup
+    return state.text + " <i class='info'>link</i>";
+}
 
+var select2 = $("#city").select2({
+    formatResult: format,
+    formatSelection: format,
+    escapeMarkup: function(m) { return m; }
+}).data('select2');
+
+//toggle elements
  $('select').on('click', function(e){
 	 e.preventDefault();
 	 $('#course-search').addClass('height');
@@ -46,15 +58,25 @@ $('#free-search').hide();
  });
 
  $('.free-search-icon').on('click', function(e) {
-	 $('#free-search').slideToggle("1000");
+	 $('#free-search').fadeToggle("1000");
  });
 
  $('#free-search').on('click', function(e){
-	//  $('#course-search').removeClass('no-height');
+	 $('#course-search').removeClass('no-height');
 	//  $('#open').fadeOut("slow");
 	$('#open').addClass('shadow-effect');
 	$('#result').fadeIn("2000");
- })
+});
+
+
+// Toggle - +
+$('#button-second-filter').on('click', function(e){
+	if($( "#button-second-filter i" ).hasClass( "fa-plus-square-o")){
+		$( "#button-second-filter i" ).switchClass( "fa-plus-square-o", "fa-minus-square-o", 500);
+	} else {
+		$( "#button-second-filter i" ).switchClass( "fa-minus-square-o", "fa-plus-square-o", 500);
+	}
+});
 
 
 /* Scroll events */

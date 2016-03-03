@@ -71,6 +71,9 @@ input:focus {
   outline: 0;
   border: 1px solid #04A4CC; }
 
+section {
+  display: block; }
+
 /*------------------------------------*\
     STRUCTURE
 \*------------------------------------*/
@@ -78,6 +81,9 @@ input:focus {
 .wrapper {
   margin: 0 auto;
   position: relative; }
+
+.full-width-row {
+  max-width: 100%; }
 
 /* Responsive menu plugin*/
 #click-menu #RMX {
@@ -111,9 +117,11 @@ input:focus {
     width: 10%; }
   .free-search-box #free-search {
     display: inline-block;
-    width: 60%;
+    width: 45%;
     vertical-align: top;
     margin-top: 8px; }
+    .free-search-box #free-search form {
+      margin-top: -7px; }
   .free-search-box #input-free-search {
     font-size: 1.4em;
     height: 2.5em;
@@ -137,7 +145,7 @@ input:focus {
     font-size: 24px;
     color: white;
     cursor: pointer;
-    margin-top: 10px; }
+    margin-top: 7px; }
 
 .ui-front {
   line-height: 2.6; }
@@ -158,7 +166,7 @@ input:focus {
     display: inline-block; }
     .header .logo img {
       line-height: 1em;
-      width: 45%; }
+      width: 58%; }
   .header ul li {
     opacity: .9;
     color: #fff;
@@ -198,6 +206,10 @@ section .fa {
   display: inline-block; }
 
 section .fa.fa-plus-square-o {
+  font-size: 1em;
+  padding-right: 10px; }
+
+.fa.fa-minus-square-o {
   font-size: 1em;
   padding-right: 10px; }
 
@@ -370,7 +382,6 @@ select {
   font-size: 1.4em;
   height: 2.5em;
   padding: 0.5em 1em;
-  text-align: center;
   margin-bottom: 0; }
 
 /* Contact form 7 */
@@ -554,6 +565,27 @@ select {
     .search-filter .section-city label {
       display: inline-block;
       vertical-align: middle; }
+    .search-filter .section-city .select2-arrow {
+      background: #fff;
+      border: 0;
+      width: 20px; }
+      .search-filter .section-city .select2-arrow b {
+        background-position: 0 5px;
+        background-repeat: no-repeat; }
+    .search-filter .section-city .select2-container .select2-choice {
+      text-align: left;
+      margin-top: -5px;
+      border: 0;
+      background: #fff;
+      font-size: 1.25em;
+      height: 38.5px;
+      padding: .5em 1em; }
+    .search-filter .section-city .select2-search input {
+      border: 0;
+      border-bottom: 1px solid grey; }
+    .search-filter .section-city .span#select2-chosen-2 {
+      background-image: none !important; }
+    .search-filter .section-city .select2-container,
     .search-filter .section-city select {
       width: 16%;
       height: 2.5em;
@@ -613,15 +645,16 @@ select {
       font-size: 1.2em;
       text-transform: uppercase;
       border-radius: 3px;
-      padding: 1em 1.5em;
-      margin: 2em 0em; }
+      padding: 1em 1.5em .3em 1.5em;
+      margin: 0 0 1.2em 0; }
   .search-filter .section-result {
     background: #fff; }
     .search-filter .section-result h2 {
       background: #223B3F;
       padding: 1.5em;
       color: #fff;
-      text-align: center; }
+      text-align: center;
+      margin-top: -40px; }
     .search-filter .section-result .fa-dot-circle {
       color: #fff;
       opacity: .85;
@@ -747,7 +780,7 @@ select {
         opacity: 1; }
     .search-filter .section-result ul li:hover {
       opacity: 1;
-      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); }
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4); }
     .search-filter .section-result ul li:hover .course-heading {
       background: #379D7F; }
 
@@ -789,33 +822,54 @@ select {
 
 .row-wrapper {
   background-color: #e4e4e4; }
-  .row-wrapper .front-page-content article .container {
-    padding: 1em 3em; }
-  .row-wrapper .front-page-content article .content-center {
-    border-left: 2px solid;
-    border-right: 2px solid;
-    border-color: white; }
-    .row-wrapper .front-page-content article .content-center p {
-      text-transform: uppercase;
-      font-size: 1.49em;
-      color: #223B3F;
-      margin: 0;
-      font-weight: bold;
-      line-height: 1.15; }
-    .row-wrapper .front-page-content article .content-center p:first-child {
-      color: #379d7f;
-      font-size: 2.25em;
-      padding-top: 1em; }
-    .row-wrapper .front-page-content article .content-center p:last-child {
-      margin-bottom: 2em; }
-    .row-wrapper .front-page-content article .content-center h2 {
-      margin: 0;
-      font-size: 7.5em;
-      line-height: .9;
-      margin-left: -5px; }
-    .row-wrapper .front-page-content article .content-center .accent-text {
-      font-size: 1.75em;
-      padding-bottom: 3em; }
+  .row-wrapper .front-page-content {
+    margin: 0 auto; }
+    .row-wrapper .front-page-content article .container {
+      padding: 1em 3em; }
+    .row-wrapper .front-page-content article .content-center {
+      border-left: 2px solid;
+      border-right: 2px solid;
+      border-color: white;
+      padding: 3em 6em 3em 6em; }
+      .row-wrapper .front-page-content article .content-center .first-p {
+        display: inline-block;
+        width: 49%;
+        text-align: left;
+        padding-left: 5px; }
+        .row-wrapper .front-page-content article .content-center .first-p .accent-text {
+          font-size: 1.75em; }
+        .row-wrapper .front-page-content article .content-center .first-p .letter-spacing:first-of-type {
+          letter-spacing: 0px;
+          padding-left: 1px; }
+      .row-wrapper .front-page-content article .content-center .second-p {
+        display: inline-block;
+        width: 49%;
+        text-align: right;
+        padding-right: 5px; }
+        .row-wrapper .front-page-content article .content-center .second-p .accent-text {
+          font-size: 1.3em; }
+        .row-wrapper .front-page-content article .content-center .second-p .letter-spacing {
+          letter-spacing: 1px; }
+      .row-wrapper .front-page-content article .content-center .count-courses {
+        display: inline-block;
+        width: 49%;
+        text-align: right;
+        margin-bottom: 10px;
+        font-size: 6em; }
+      .row-wrapper .front-page-content article .content-center .count-org {
+        display: inline-block;
+        width: 49%;
+        text-align: left;
+        font-size: 7em; }
+      .row-wrapper .front-page-content article .content-center p {
+        text-transform: uppercase;
+        font-size: 1.49em;
+        color: #223B3F;
+        font-weight: bold;
+        line-height: 1.15; }
+      .row-wrapper .front-page-content article .content-center h2 {
+        font-size: 7.5em;
+        line-height: .9; }
 
 /* Other sides */
 .first-content {

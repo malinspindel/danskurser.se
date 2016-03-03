@@ -18,15 +18,23 @@ $args = array(
   'post_type' => 'danskurser'
 );
 $the_query = new WP_Query( $args );
-$post_count = $the_query->found_posts;
+$post_count_courses = $the_query->found_posts;
+
+$args = array(
+  'post_type' => 'organisationer'
+);
+$the_query = new WP_Query( $args );
+$post_count_org = $the_query->found_posts;
 
 ?>
-<div class="text-slider-wrapper">
-	<section class="row text-slider">
-		<?php echo do_shortcode( '[content-text-slider setting="1" group="1"]' ); ?>
-	</section>
+<div class="row full-width-row">
+	<div class="text-slider-wrapper">
+		<section class="row text-slider">
+			<?php echo do_shortcode( '[content-text-slider setting="1" group="1"]' ); ?>
+		</section>
+	</div>
 </div>
-<div class="row-wrapper">
+<div class="row full-width-row row-wrapper">
 
 
 	<section class="row front-page-content">
@@ -40,13 +48,11 @@ $post_count = $the_query->found_posts;
 
 		<article class="columns small-12 medium-4 large-4 text-center padding-top-bottom">
 			<div class="container content-center padding-top-bottom">
+				<h2 class="count-courses"><?php echo $post_count_courses ; ?> </h2>
+				<p class="first-p"><span class="letter-spacing"> PUBLICERADE </span><span class="accent-text">KURSER</span></p>
+				<p class="second-p"><span class="letter-spacing">ANSLUTNA</span><br><span class="accent-text">ORGANIS<br>ATIONER</span></p>
+				<h2 class="count-org"><?php echo $post_count_org ; ?> </h2>
 
-				<p> JUST NU </p>
-				<h2><?php echo $post_count ; ?> </h2>
-				<p>
-					PUBLICERADE<br>
-					<span class="accent-text">KURSER</span>
-				</p>
 			</div>
 		</article>
 

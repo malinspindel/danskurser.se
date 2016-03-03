@@ -17,13 +17,21 @@
 
 		<?php wp_head(); ?>
 		<script>
-        // conditionizr.com
-        // configure environment tests
-        conditionizr.config({
-            assets: '<?php echo get_template_directory_uri(); ?>',
-            tests: {}
-        });
-        </script>
+      // conditionizr.com
+      // configure environment tests
+      conditionizr.config({
+          assets: '<?php echo get_template_directory_uri(); ?>',
+          tests: {}
+      });
+
+      $(document).ready(function() {
+          $("#city").select2({
+                  placeholder: "Select a State",
+                  allowClear: true
+           });
+      });
+		</script>
+
 
 	</head>
 	<body <?php body_class(); ?>>
