@@ -488,7 +488,7 @@ function course_search(){
 
       <label for="city"><i class="fa fa-compass"></i></label>
       <select id="city" name="city">
-        <option selected="selected">Sök ort...</option>
+        <option selected="selected">VÄLJ ORT</option>
         <option disabled="disabled">-STOCKHOLM-</option>
         <option value="stockholm">Stockholm</option>
 

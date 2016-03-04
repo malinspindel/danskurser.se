@@ -16,6 +16,16 @@
 /* Fonts */
 @import url(https://fonts.googleapis.com/css?family=Lora:400,700);
 @import url(https://fonts.googleapis.com/css?family=Exo+2:400,600);
+#hideAll {
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  background-color: white;
+  z-index: 10000;
+  /* Higher than anything else in the document */ }
+
 /* global box-sizing */
 *,
 *:after,
@@ -928,6 +938,32 @@ select {
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(black, rgba(40, 70, 75, 0.1));
   /* Standard syntax */ }
+
+#popup-info {
+  background-color: #eee;
+  border-radius: 10px;
+  width: 25%;
+  height: auto;
+  color: black;
+  position: absolute;
+  top: 10em;
+  right: 10em;
+  padding: 1.5em; }
+
+#popup-info:after {
+  content: "";
+  position: absolute;
+  top: -30px;
+  left: 45%;
+  border: 15px solid transparent;
+  border-bottom-color: #eee;
+  display: block;
+  width: 0; }
+
+.popup-close i {
+  font-size: 1em;
+  color: orange;
+  right: 0; }
 
 /* sidebar */
 /* footer */

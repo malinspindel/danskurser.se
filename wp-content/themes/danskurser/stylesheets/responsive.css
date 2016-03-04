@@ -1,8 +1,23 @@
-@media screen and (max-device-width: 1640px) {
-  #free-search-box {
+@media (max-width: 1640px) {
+  .free-search-box {
     padding-right: 20%; } }
-@media screen and (max-device-width: 1200px) {
-  #free-search-box {
-    padding-right: 27%; } }
+@media (max-width: 1400px) {
+  .free-search-box {
+    padding-right: 28%; } }
+@media (max-width: 1240px) {
+  .free-search-box {
+    padding-right: 16%; }
+
+  #click-menu {
+    right: 5%  !important; } }
+@media (max-width: 768px) {
+  .free-search-box {
+    padding-right: 20%; } }
+@media (max-width: 480px) {
+  .free-search-box {
+    padding-right: 25%; }
+
+  #click-menu {
+    right: 2% !important; } }
 
 /*# sourceMappingURL=responsive.css.map */

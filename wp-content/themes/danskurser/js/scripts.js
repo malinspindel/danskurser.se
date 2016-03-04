@@ -1,6 +1,8 @@
 function App(){
 	console.log("nurå");
 
+
+
 	//Prevent error when pressing enter in Freesearch input
 	$(document).ready(function() {
 	  $(window).keydown(function(event){
@@ -10,6 +12,29 @@ function App(){
 	    }
 	  });
 	});
+
+	//Popup only shown once / user
+	$("#popup-info").hide();
+	$("#popup-info").delay(4000).fadeIn();
+
+	var storage = localStorage.getItem('popState') != 'shown';
+	//don't work now (on local)
+  // if(storage){
+	// 	console.log("kör coookie");
+  //     $("#popup-info").delay(4000).fadeIn();
+  //     localStorage.setItem('popState','shown')
+  // }
+
+  $('.popup-close').click(function(e) // You are clicking the close button
+  {
+      $('#popup-info').fadeOut(); // Now the pop up is hiden.
+  });
+
+  $('#popup-info').click(function(e)
+  {
+      $('#popup-info').fadeOut();
+  });
+
 
 
 
@@ -105,9 +130,6 @@ $(function() {
 
 
 }
-
-
-
 
 
 

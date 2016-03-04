@@ -36,6 +36,13 @@
 
 		<?php wp_footer(); ?>
 
+		<?php
+			if(is_home())
+			{
+			if (function_exists (mypopup)) mypopup();
+			}
+		?>
+
 		<!-- analytics -->
 		<script>
 		(function(f,i,r,e,s,h,l){i['GoogleAnalyticsObject']=s;f[s]=f[s]||function(){

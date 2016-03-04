@@ -34,6 +34,7 @@ $post_count_org = $the_query->found_posts;
 		</section>
 	</div>
 </div>
+
 <div class="row full-width-row row-wrapper">
 
 
@@ -43,8 +44,7 @@ $post_count_org = $the_query->found_posts;
 			<div class="container content-left">
 				<?php the_content(); ?>
 			</div>
-
-</article>
+		</article>
 
 		<article class="columns small-12 medium-4 large-4 text-center padding-top-bottom">
 			<div class="container content-center padding-top-bottom">
@@ -52,7 +52,6 @@ $post_count_org = $the_query->found_posts;
 				<p class="first-p"><span class="letter-spacing"> PUBLICERADE </span><span class="accent-text">KURSER</span></p>
 				<p class="second-p"><span class="letter-spacing">ANSLUTNA</span><br><span class="accent-text">ORGANIS<br>ATIONER</span></p>
 				<h2 class="count-org"><?php echo $post_count_org ; ?> </h2>
-
 			</div>
 		</article>
 
@@ -73,12 +72,6 @@ $post_count_org = $the_query->found_posts;
 				<?php endif; ?>
 			</div>
 		</article>
-
-
-		<div id="here">
-
-		</div>
-
 
 	</section>
 </div><!--// row-wrapper-->

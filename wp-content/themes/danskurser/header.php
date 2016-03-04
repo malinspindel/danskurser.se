@@ -35,6 +35,14 @@
 
 	</head>
 	<body <?php body_class(); ?>>
+		<div style="display: none" id="hideAll">&nbsp;</div>
+	<script type="text/javascript">
+	   document.getElementById("hideAll").style.display = "block";
+
+		 window.onload = function()
+  	{ document.getElementById("hideAll").style.display = "none"; }
+	 </script>
+
 
 
 			<!-- header -->
@@ -43,7 +51,7 @@
 				<div class="row">
 
 					<!-- logo -->
-					<div class="logo medium-4 columns">
+					<div class="logo small-4 medium-4 columns">
 						<a href="<?php echo home_url(); ?>">
 							<!-- svg logo - toddmotto.com/mastering-svg-use-for-a-retina-web-fallbacks-with-png-script -->
 							<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="Logo" class="logo-img">
@@ -55,7 +63,7 @@
 
 					<!-- nav -->
 
-					<nav class="nav medium-8 columns" role="navigation">
+					<nav class="nav small-8 medium-8 columns" role="navigation">
 						<div class="free-search-box hover-opacity">
 							<?php echo do_shortcode( '[free_search]' ); ?>
 							<span class="free-search-icon"><i class="fa fa-search"></i></span>
@@ -66,6 +74,16 @@
 
 					</nav>
 					<!-- /nav -->
+
+					<div id="popup-info">
+
+						<h3>PSST...</h3>
+						<p>
+							HÄR KAN DU SÖKA PÅ <STRONG>DANSLÄRARE ELLER SKOLA</STRONG> &amp; ÄVEN MENY FÖR MER INFO &amp; KONTAKT!
+						</p>
+						<span class="popup-close"><i class="fa fa-check"></i></span>
+
+					</div>
 
 
 			</header>
