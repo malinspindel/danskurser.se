@@ -35,6 +35,7 @@
 
 	</head>
 	<body <?php body_class(); ?>>
+		<!--Div to hide body while loading-->
 		<div style="display: none" id="hideAll">&nbsp;</div>
 	<script type="text/javascript">
 	   document.getElementById("hideAll").style.display = "block";
@@ -65,10 +66,8 @@
 
 					<nav class="nav small-8 medium-8 columns" role="navigation">
 						<div class="free-search-box hover-opacity">
-							<?php echo do_shortcode( '[free_search]' ); ?>
+								<?php echo do_shortcode( '[free_search]' ); ?>
 							<span class="free-search-icon"><i class="fa fa-search"></i></span>
-
-							<!-- <?php echo do_shortcode('[wpdreams_ajaxsearchlite]'); ?> -->
 						</div>
 						<?php wp_nav_menu(); ?>
 
@@ -79,9 +78,12 @@
 
 						<h3>PSST...</h3>
 						<p>
-							HÄR KAN DU SÖKA PÅ <STRONG>DANSLÄRARE ELLER SKOLA</STRONG> &amp; ÄVEN MENY FÖR MER INFO &amp; KONTAKT!
+							HÄR KAN DU SÖKA PÅ <STRONG>DANSLÄRARE ELLER SKOLA</STRONG>.
 						</p>
-						<span class="popup-close"><i class="fa fa-check"></i></span>
+						<p>
+							DU HITTAR ÄVEN <strong>MENY</strong> FÖR MER INFO &amp; KONTAKT!
+						</p>
+						<p class="popup-close"><i class="fa fa-check"></i></p>
 
 					</div>
 

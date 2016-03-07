@@ -40,7 +40,7 @@ $post_count_org = $the_query->found_posts;
 
 	<section class="row front-page-content">
 
-		<article class="columns small-12 medium-4 large-4 text-right padding-top-bottom">
+		<article class="columns small-12 medium-8 large-4 text-right padding-top-bottom">
 			<div class="container content-left">
 				<?php the_content(); ?>
 			</div>
@@ -49,13 +49,13 @@ $post_count_org = $the_query->found_posts;
 		<article class="columns small-12 medium-4 large-4 text-center padding-top-bottom">
 			<div class="container content-center padding-top-bottom">
 				<h2 class="count-courses"><?php echo $post_count_courses ; ?> </h2>
-				<p class="first-p"><span class="letter-spacing"> PUBLICERADE </span><span class="accent-text">KURSER</span></p>
+				<p class="first-p"><span class="letter-spacing"> PUBLICERADE </span><br><span class="accent-text">KURSER</span></p>
 				<p class="second-p"><span class="letter-spacing">ANSLUTNA</span><br><span class="accent-text">ORGANIS<br>ATIONER</span></p>
 				<h2 class="count-org"><?php echo $post_count_org ; ?> </h2>
 			</div>
 		</article>
 
-		<article class="columns small-12 medium-4 large-4 padding-top-bottom">
+		<article class="columns small-12 medium-12 large-4 padding-top-bottom">
 			<div class="container content-right">
 				<?php if(have_rows('flexible_content')): the_row(); ?>
 					<?php if(get_row_layout() == 'content'): ?>

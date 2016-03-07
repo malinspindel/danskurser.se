@@ -1,7 +1,4 @@
 function App(){
-	console.log("nurå");
-
-
 
 	//Prevent error when pressing enter in Freesearch input
 	$(document).ready(function() {
@@ -15,25 +12,25 @@ function App(){
 
 	//Popup only shown once / user
 	$("#popup-info").hide();
-	$("#popup-info").delay(4000).fadeIn();
+	// $("#popup-info").delay(3000).fadeIn();
 
 	var storage = localStorage.getItem('popState') != 'shown';
 	//don't work now (on local)
   // if(storage){
 	// 	console.log("kör coookie");
-  //     $("#popup-info").delay(4000).fadeIn();
+  //     $("#popup-info").delay(3000).fadeIn();
   //     localStorage.setItem('popState','shown')
   // }
-
-  $('.popup-close').click(function(e) // You are clicking the close button
-  {
-      $('#popup-info').fadeOut(); // Now the pop up is hiden.
-  });
-
-  $('#popup-info').click(function(e)
-  {
-      $('#popup-info').fadeOut();
-  });
+	//
+  // $('.popup-close').click(function(e) // You are clicking the close button
+  // {
+  //     $('#popup-info').fadeOut(); // Now the pop up is hiden.
+  // });
+	//
+  // $('#popup-info').click(function(e)
+  // {
+  //     $('#popup-info').fadeOut();
+  // });
 
 
 
@@ -108,16 +105,18 @@ $('#button-second-filter').on('click', function(e){
 
 function scroll_style() {
    var window_top = $(window).scrollTop();
-   var div_top = $('#course-search').offset().top;
 
-   if (window_top > div_top-200){
+
+
+
+   if (window_top > 100){
 		 	$('.header').addClass('background-blue');
       $('.header').css({"padding-top":"1.25em"});
       $('#click-menu').css({"top":"21px"});
    }
-	 if (window_top < div_top-200){
+	 if (window_top < 100){
 			$('.header').removeClass('background-blue');
-			$('.header').css({"padding-top":"2.9em"});
+			
 			$('#click-menu').css({"top":"38px"});
 
 	 }

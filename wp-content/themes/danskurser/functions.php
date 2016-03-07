@@ -541,7 +541,7 @@ function course_search(){
       </div>  <!--//section-filter-first -->
 
       <div class="row">
-        <p id="button-second-filter"><i class="fa fa-plus-square-o"></i>FLER VAL</p>
+        <p class="column small-12" id="button-second-filter"><i class="fa fa-plus-square-o"></i>FLER VAL</p>
       </div>
 
       <div class="section-filter-second row" id="second-filter">
@@ -631,10 +631,10 @@ function course_search(){
       <h2>Dina Sökresultat</h2>
       <!--The response output-->
       <div class="row">
-        <p class="accent-text text-center small-centered msmall-12 medium-10 info">
+        <p class="accent-text text-center small-centered small-12 medium-10 info">
           <strong>Danskurser.se står ej för eventuella fel eller ändringar i kursinformationen.</strong> <a href="#">Läs mer.</a>
         </p>
-        <ul class="columns small-centered small-12 medium-10 large-10" id="ul-result"></ul>
+        <ul class="columns small-centered small-12 medium-12 large-10" id="ul-result"></ul>
       </div>
 
     </section>
@@ -744,10 +744,14 @@ function free_search(){
 ?>
 
   <div id="free-search" class="">
-    <form action="" method="get">
-      <input type="text" name="search" placholder="Sök ex. lärare, skola" id="input-free-search" >
-      <button type="submit" id="button-free-search"><span id="free-search">SÖK</span></button>
-    </form>
+
+      <form action="" method="get">
+        <div class="popup">
+        <input type="text" name="search" placholder="Sök ex. lärare, skola" id="input-free-search" >
+        <button type="submit" id="button-free-search"><span id="free-search">SÖK</span></button>
+        </div>
+      </form>
+
 
   </div>
 <?php

@@ -38,7 +38,7 @@ $(document).ready(function(){
     // },
     success : function(response) {
       counter ++;
-      console.log(counter);
+      // console.log(counter);
         courseSearch.find("ul").empty();
 
         var responseLength = response.length;
@@ -60,7 +60,7 @@ $(document).ready(function(){
         var matchTeacher = "";
         var matchPrice = "";
         var matchOrgLink = "";
-        console.log(response);
+        // console.log(response);
 
         function checkAndAdd(name) {
           // var id = teachersList.length + 1;
@@ -103,7 +103,7 @@ $(document).ready(function(){
               matchHours = chain.hours;
               matchOrgLink = matchOrganisation[0].guid;
 
-              console.log(matchOrgLink);
+              // console.log(matchOrgLink);
 
               writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice, matchHours, matchStart   );
               // console.log("school match!");

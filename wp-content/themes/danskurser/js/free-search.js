@@ -219,11 +219,11 @@ freeSearchForm.keyup(function(e){
 
           html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
 
-            html += "<div class='no-padding-side medium-11 large-11 columns'><h3>";
+            html += "<div class='no-padding-side small-11 medium-11 large-11 columns'><h3>";
             html += matchTitle;
             html += "</h3></div>";
 
-            html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
+            html += "<div class='no-padding-side small-1 medium-1 large-1 columns text-right'>";
             html += "<a href='" + matchOrgLink + "' target='_blank'><i class='fa fa-info-circle'></i></a>";
             html += "</div>";
 
@@ -237,7 +237,7 @@ freeSearchForm.keyup(function(e){
 
             html += "<div class='row'>";
 
-              html += "<div class='course-info columns medium-6 large-6'>";
+              html += "<div class='course-info columns small-6 medium-6 large-6'>";
                 html += "<label>Dag / Tid</label>";
                 html += "<p>" + matchDay + " / " + matchCourseTime + "</p>";
                 html += "<label>Antal ggr / tim</label>";
@@ -247,7 +247,7 @@ freeSearchForm.keyup(function(e){
                 html += "<p>" + matchPrice + "</p>";
               html += "</div>";
 
-              html += "<div class='course-info text-right columns medium-6 large-6'>";
+              html += "<div class='course-info text-right columns small-6 medium-6 large-6'>";
                 html += "<label>Kursstart</label>";
                 html += "<p>" + matchStart  + "</p>"
                 html += "<label> Ålder</label>"
@@ -257,11 +257,11 @@ freeSearchForm.keyup(function(e){
             html += "</div>";
 
             html += "<div class='course-nav row'>";
-              html += "<div class='columns medium-9'>";
+              html += "<div class='columns small-9 medium-9'>";
                 html += "<div class='circle " + matchLevel + "'><span>" + matchLevel + "</span></div>";
               html += "</div>";
 
-              html += "<div class='columns medium-3'>";
+              html += "<div class='columns small-3 medium-3'>";
                 html += "<a href ='" + matchLink + "'><i class='fa fa-arrow-circle-right'></i></a>";
               html += "</div>";
             html += "</div>";

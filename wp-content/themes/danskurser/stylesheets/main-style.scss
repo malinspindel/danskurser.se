@@ -144,6 +144,10 @@ section {
 }
 
 /* Free search */
+
+ul#ui-id-1	{
+	z-index: 999;
+}
 .free-search-box {
 	text-align: right;
 	z-index:100;
@@ -156,19 +160,20 @@ section {
 
 	#free-search {
 		display: inline-block;
-		width: 45%;
+		// width: 45%;
 		vertical-align: top;
 		margin-top: 8px;
 
 		form {
 			margin-top: -7px;
 		}
-
 	}
+
+
 
 	#input-free-search {
 		font-size: 1.4em;
-		height: 2.5em;
+		height: 39px;
 		padding: 0.5em 1em;
 		margin-bottom: 0;
 		display: inline-block;
@@ -183,7 +188,7 @@ section {
 		width: 20%;
 		margin: 0;
 		padding: .2em;
-		height: 2.85em;
+		height: 39px;
     padding-bottom: 7px;
     margin-left: -7px;
 
@@ -672,6 +677,30 @@ select {
 }
 
 /* section-slider */
+.slide {
+	height: 500px;
+	width: 100%;
+	background-position: center;
+	position: relative;
+
+	.row {
+		position: static;
+
+		.top-inner-row {
+			position: absolute;
+			top: 40%;
+			width: 59%;
+			max-width: 600px;
+			left: 0;
+			right: 0;
+			margin: 0 auto;
+		}
+	}
+}
+
+
+
+
 .top-section {
 	// margin: 0px 20px;
 	.slides-content {
@@ -809,6 +838,8 @@ select {
 
 		#button-second-filter {
 			padding-top: 2em;
+			padding-right: 7%;
+			text-align: right;
 			color: #223B3F;
 			cursor: pointer;
 			font-weight: bold;
@@ -893,11 +924,11 @@ select {
 		}
 
 		ul li {
-			width: 31.42%;;
+			width: 32.33%;;
 			list-style: none;
 			margin-bottom: 1.75em;
-			margin-left: 0.9375rem;
-			margin-right: 0.9375rem;
+			margin-left: 0.5%;
+			margin-right: 0.5%;
       opacity: .93;
 			-webkit-transition: all .35s ease; /* Safari and Chrome */
 			-moz-transition: all .35s ease; /* Firefox */
@@ -1072,7 +1103,7 @@ select {
 
 		overflow: hidden;
 		height: 100px;
-		padding: 2em 0em;
+		padding: 1em 0em;
 		width: 60%;
 		margin: 0 auto;
 
@@ -1283,16 +1314,19 @@ select {
 }
 
 
+
+
 #popup-info {
 	background-color: #eee;
 	border-radius: 10px;
-	width: 25%;
+	width: 24%;
 	height: auto;
 	color: black;
 	position: absolute;
 	top: 10em;
-	right: 10em;
-	padding: 1.5em;
+	right: 4.5%;
+	padding: 2.5em;
+	cursor: pointer;
 }
 
 
@@ -1306,11 +1340,13 @@ select {
   display: block;
   width: 0;
 }
+.popup-close {
+	text-align: right;
+}
 
 .popup-close i {
-	font-size: 1em;
+	font-size: 2em;
 	color: orange;
-	right: 0;
 }
 
 
@@ -1352,7 +1388,7 @@ select {
 \*------------------------------------*/
 
 .hover-opacity {
-	opacity: .85;
+	opacity: .9;
 
 	-webkit-transition: all .5s ease; /* Safari and Chrome */
 	-moz-transition: all .5s ease; /* Firefox */

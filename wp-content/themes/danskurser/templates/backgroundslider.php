@@ -2,23 +2,24 @@
 
 
 			<?php while(have_rows('slides')): the_row(); ?>
-				<div class="slide">
-					<?php
-					$image = get_sub_field('bg_image');
-					if($image):
-					?>
-						<?php $image_src = wp_get_attachment_image_src($image['id'], ''); ?>
+				<?php
+				$image = get_sub_field('bg_image');
+				if($image):
+				?>
+					<?php $image_src = wp_get_attachment_image_src($image['id'], ''); ?>
 
-						<img src="<?php echo $image_src[0]; ?>" alt="<?php echo $image['title']; ?>" />
+					<!-- <img src="<?php //echo $image_src[0]; ?>" alt="<?php //echo $image['title']; ?>" /> -->
 
-					<?php endif; ?>
+				<?php endif; ?>
+				<div class="slide" style="background-image: url( <?php echo $image_src[0]; ?>" alt="<?php echo $image['title']; ?>)">
 
-					<div class="slides-content table">
 
-						<div class="table-cell align-middle">
 
-							<div class="row">
 
+					<div class="row">
+
+						<div class="top-inner-row">
+			
 							<?php if($title = get_sub_field('top_title')): ?>
 								<h1><?php echo $title; ?></h1>
 							<?php endif; ?>
@@ -30,15 +31,10 @@
 							<?php if($btn_text = get_sub_field('btn_text')): ?>
 								<a href="<?php the_sub_field('btn_link_url'); ?>" class="btn"><?php echo $btn_text; ?></a>
 							<?php endif; ?>
-
+						</div>
 							</div>
-
-
-						</div> <!-- /.table-cell -->
-
 					</div>
 
-				</div>
 
 			<?php endwhile; ?>
 

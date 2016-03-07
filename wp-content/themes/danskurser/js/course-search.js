@@ -220,11 +220,11 @@ var searchForm = courseSearch.find('form');
 
           html += "<div class='columns medium-12 large-12 no-padding-side course-heading'>";
 
-            html += "<div class='no-padding-side medium-11 large-11 columns'><h3>";
+            html += "<div class='no-padding-side small-11 medium-11 large-11 columns'><h3>";
             html += course_name;
             html += "</h3></div>";
 
-            html += "<div class='no-padding-side medium-1 large-1 columns text-right'>";
+            html += "<div class='no-padding-side small-1 medium-1 large-1 columns text-right'>";
             html += "<a href='" + org_link + "' target='_blank'><i class='fa fa-info-circle'></i></a>";
             html += "</div>";
 
@@ -238,7 +238,7 @@ var searchForm = courseSearch.find('form');
 
             html += "<div class='row'>";
 
-              html += "<div class='course-info columns medium-6 large-6'>";
+              html += "<div class='course-info columns small-6 medium-6 large-6'>";
                 html += "<label>Dag / Tid</label>";
                 html += "<p>" + day + " / " + time + "</p>";
                 html += "<label>Antal ggr / tim</label>";
@@ -248,7 +248,7 @@ var searchForm = courseSearch.find('form');
                 html += "<p>" + price + "</p>";
               html += "</div>";
 
-              html += "<div class='course-info text-right columns medium-6 large-6'>";
+              html += "<div class='course-info text-right columns small-6  medium-6 large-6'>";
                 html += "<label>Kursstart</label>";
                 html += "<p>" + start + "</p>"
                 html += "<label> Ålder</label>"
@@ -258,12 +258,12 @@ var searchForm = courseSearch.find('form');
             html += "</div>";
 
             html += "<div class='course-nav row'>";
-              html += "<div class='columns medium-9'>";
+              html += "<div class='columns small-9 medium-9'>";
               html += "<label class='label-level'>NIVÅ</label>";
                 html += "<div class='circle " + level + "'><span>" + level + "</span></div>";
               html += "</div>";
 
-              html += "<div class='columns medium-3'>";
+              html += "<div class='columns small-3 medium-3'>";
                 html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i></a>";
               html += "</div>";
             html += "</div>";
@@ -289,7 +289,7 @@ var searchForm = courseSearch.find('form');
         courseSearch.find('ul').append(emptyText);
       }
 
-      console.log(response);
+      // console.log(response);
     },
     error: function( error ) {
       var errorMsg = "<h3>Sorry, something went wrong. Try again later or if the problem continues, please email me at malininc.s@gmail.com. Thank you!</h3>";
