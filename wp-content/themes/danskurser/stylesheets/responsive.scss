@@ -78,6 +78,10 @@
   .section-filter-first div {
     margin-top: 2.5em;
   }
+
+  #button-second-filter {
+    width: 95%;
+  }
   /*end*/
 
   .row-wrapper .front-page-content article .content-left {
@@ -107,11 +111,54 @@
     height: 120px;
   }
 
+  /* Filter-second */
+
+  .styles {
+
+    .styles-column.padding-left {
+      padding-left: 10em;
+
+    }
+    .checkbox-label {
+      font-size: 1.2em;
+    }
+
+  }
+
   /* cards */
   .search-filter .section-result ul li {
     margin: 1%;
     width: 48%;
   }
+}
+
+@media (max-width: 820px) {
+
+  .section-filter-second {
+    .columns {
+      width: 100%;
+    }
+    h2 {
+      margin-bottom: 1em;
+    }
+  }
+  .styles {
+    h2 {
+      margin-top: 2em;
+    }
+    .styles-column {
+      float: none;
+      width: 60%;
+      margin: 0 auto;
+      padding-left: 1em;
+      font-size: 1.5em;
+    }
+    .styles-column.padding-left {
+      padding-left: 1em;
+    }
+  }
+
+
 }
 
 
@@ -172,8 +219,6 @@
     width: 60% !important;
   }
 
-
-
   .search-filter .section-city .select2-container, .search-filter .section-city select {
     width: 60% !important;
   }
@@ -183,6 +228,10 @@
 
   }
   /*end*/
+
+  #button-second-filter {
+    width: 86%;
+  }
 
   .slide .row .top-inner-row {
     width: 85%;
@@ -216,7 +265,7 @@
   }
 
   .search-filter .section-result ul li .course-heading h3 {
-    line-height: 2.5em;;
+    line-height: 2em;
 
   }
 }

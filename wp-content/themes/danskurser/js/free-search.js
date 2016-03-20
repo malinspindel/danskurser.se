@@ -5,16 +5,7 @@ var freeSearch = $('#free-search');
 var freeSearchForm = freeSearch.find('form');
 var keyUpPress = 0;
 var counter = 0;
-// var teachersList = [];
-//peka på teacher i den här arrayen
 
-// function afterAjax() {
-//   $( "#input-free-search" ).autocomplete({
-//     source: teachersList
-//   });
-// } afterAjax();
-
-// var requestSent = false;
 
 freeSearchForm.submit(function(e){
   e.preventDefault();
@@ -25,10 +16,7 @@ freeSearchForm.submit(function(e){
 freeSearchForm.keyup(function(e){
   keyUpPress ++;
 
-  if(keyUpPress > 4) {
-
-
-
+  if(keyUpPress > 5) {
 
   courseSearch.find('ul').empty();
   courseSearch.find("ul").append('<h4 class="text-center"><i class="fa fa-spinner fa-spin"></i><br>Söker</h4>');
@@ -38,19 +26,14 @@ freeSearchForm.keyup(function(e){
     freeSearchText: freeSearch.find('#input-free-search').val()
   }
 
-  // if(!requestSent) {
-    // requestSent = true;
-
 
   $.ajax({
     url : ajax_url,
     data : data,
-    // complete: function() {
-    //   requestSent = false;
-    // },
+
     success : function(response) {
       counter ++;
-      console.log(counter);
+      // console.log(counter);
         courseSearch.find("ul").empty();
 
         var responseLength = response.length;
@@ -62,7 +45,8 @@ freeSearchForm.keyup(function(e){
         var matchCourseName = "";
         var matchDay = "";
         var matchTime = "";
-        var matchAge = "";
+        var matchAgeFrom = "";
+        var matchAgeTo = "";
         var matchCourseTime = "";
         var matchSchool = "";
         var matchLevel = "";
@@ -72,21 +56,8 @@ freeSearchForm.keyup(function(e){
         var matchTeacher = "";
         var matchPrice = "";
         var matchOrgLink = "";
-        console.log(response);
+        // console.log(response);
 
-        // function checkAndAdd(name) {
-        //   // var id = teachersList.length + 1;
-        //   var found = teachersList.some(function (el) {
-        //     return el === name;
-        //   });
-        //   if (!found) { teachersList.push( name ); }
-        // }
-
-        // for(f = 0 ; f < responseLength ; f++) {
-        //   if(response[f].teacher != null){
-        //     checkAndAdd(response[f].teacher);
-        //   }
-        // }
 
         var response = response.filter(function (chain) {
           // console.log(chain.id);
@@ -99,7 +70,8 @@ freeSearchForm.keyup(function(e){
               matchCourseName = chain.course_name;
               matchDay = chain.day;
               matchTime = chain.time;
-              matchAge = chain.age;
+              matchAgeFrom = chain.age_from;
+              matchAgeTo = chain.age_to;
               matchCourseTime = chain.course_time;
               matchSchool = chain.school;
               matchLevel = chain.level;
@@ -112,7 +84,7 @@ freeSearchForm.keyup(function(e){
               matchHours = chain.hours;
               matchOrgLink = matchOrganisation[0].guid;
 
-              console.log(matchOrgLink);
+              // console.log(matchOrgLink);
 
               //Dag
         if(matchDay == "day_mon"){
@@ -135,32 +107,6 @@ freeSearchForm.keyup(function(e){
         }
         if(matchDay == "day_sun"){
           matchDay = "Sön";
-        }
-
-        //Ålder
-        if(matchAge == "age_1"){
-          matchAge = "1-3 år";
-        }
-        if(matchAge == "age_4"){
-          matchAge = "4-6 år";
-        }
-        if(matchAge == "age_7"){
-          matchAge = "7-9 år";
-        }
-        if(matchAge == "age_10"){
-          matchAge = "10-12 år";
-        }
-        if(matchAge == "age_13"){
-          matchAge = "13-15 år";
-        }
-        if(matchAge == "age_16"){
-          matchAge = "16+";
-        }
-        if(matchAge == "age_30"){
-          matchAge = "30+";
-        }
-        if(matchAge == "age_50"){
-          matchAge = "50+";
         }
 
         //Nivå
@@ -201,19 +147,49 @@ freeSearchForm.keyup(function(e){
           matchPrice = "Ej registrerat";
         }
 
-              writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice, matchHours, matchStart   );
-              // console.log("school match!");
-              // return matchTitle + matchLink + matchCity + matchCourseName + matchDay + matchTime + matchAge + matchCourseTime + matchSchool + matchLevel + matchOrganisation + matchLogo + matchStyles + matchTeacher;
-
+              writeHTML(matchId,
+                        matchTitle,
+                        matchLink,
+                        matchCity,
+                        matchCourseName,
+                        matchDay,
+                        matchTime,
+                        matchAgeFrom,
+                        matchAgeTo,
+                        matchCourseTime,
+                        matchSchool,
+                        matchLevel,
+                        matchOrganisation,
+                        matchLogo,
+                        matchStyles,
+                        matchTeacher,
+                        matchPrice,
+                        matchHours,
+                        matchStart   );
             }
-
         })
-
         afterAjax();
 
         //Write html for the cards
-        function writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice, matchHours, matchStart ){
-
+        function writeHTML(matchId,
+                            matchTitle,
+                            matchLink,
+                            matchCity,
+                            matchCourseName,
+                            matchDay,
+                            matchTime,
+                            matchAgeFrom,
+                            matchAgeTo,
+                            matchCourseTime,
+                            matchSchool,
+                            matchLevel,
+                            matchOrganisation,
+                            matchLogo,
+                            matchStyles,
+                            matchTeacher,
+                            matchPrice,
+                            matchHours,
+                            matchStart ){
 
           html += "<li class='small-12 medium-6 large-4 columns no-padding-side card' id='course-id-" + matchId + "'>";
 
@@ -251,14 +227,16 @@ freeSearchForm.keyup(function(e){
                 html += "<label>Kursstart</label>";
                 html += "<p>" + matchStart  + "</p>"
                 html += "<label> Ålder</label>"
-                html +=  "<p>" + matchAge + "</p>";
+                html +=  "<p>" + matchAgeFrom + "-" + matchAgeTo +  " år</p>";
+                html += "<label> Lärare</label>"
+                html +=  "<p>" + matchTeacher + "</p>";
 
               html += "</div>";
             html += "</div>";
 
             html += "<div class='course-nav row'>";
               html += "<div class='columns small-9 medium-9'>";
-                html += "<div class='circle " + matchLevel + "'><span>" + matchLevel + "</span></div>";
+                 html += "<div class='circle " + matchLevel + "'><span class='label-level'>NIVÅ</span><br><span>" + matchLevel + "</span></div>";
               html += "</div>";
 
               html += "<div class='columns small-3 medium-3'>";
@@ -266,18 +244,14 @@ freeSearchForm.keyup(function(e){
               html += "</div>";
             html += "</div>";
 
-            // html += "<p>Stil: " + matchStyles + "</p>";
-            html += "<p>Lärare: " + matchTeacher + "</p>";
-
           html += "</div>";
           html += "</div>";
-
-
 
           html += "</li>";
         }
 
         courseSearch.find('ul').append(html);
+        loadCards();
 
     }, //success
     error: function( error ) {

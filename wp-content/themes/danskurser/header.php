@@ -6,10 +6,10 @@
 		<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
 
 		<link href="//www.google-analytics.com" rel="dns-prefetch">
-    <link href="<?php echo get_template_directory_uri(); ?>/img/icons/favicon.ico" rel="shortcut icon">
-    <link href="<?php echo get_template_directory_uri(); ?>/img/icons/touch.png" rel="apple-touch-icon-precomposed">
+        <link href="https://hittadanskurs.se/wp-content/uploads/favicon.ico" rel="shortcut icon">
+        <link href="https://hittadanskurs.se/wp-content/uploads/touch.png" rel="apple-touch-icon-precomposed">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
 
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -32,7 +32,6 @@
       });
 		</script>
 
-
 	</head>
 	<body <?php body_class(); ?>>
 		<!--Div to hide body while loading-->
@@ -43,8 +42,6 @@
 		 window.onload = function()
   	{ document.getElementById("hideAll").style.display = "none"; }
 	 </script>
-
-
 
 			<!-- header -->
 			<header class="header clear" role="banner">
@@ -60,10 +57,7 @@
 					</div>
 					<!-- /logo -->
 
-
-
 					<!-- nav -->
-
 					<nav class="nav small-8 medium-8 columns" role="navigation">
 						<div class="free-search-box hover-opacity">
 								<?php echo do_shortcode( '[free_search]' ); ?>

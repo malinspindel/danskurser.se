@@ -25,23 +25,6 @@ if (function_exists('add_theme_support'))
     add_image_size('medium', 250, '', true); // Medium Thumbnail
     add_image_size('small', 120, '', true); // Small Thumbnail
     add_image_size('custom-size', 700, 200, true); // Custom Thumbnail Size call using the_post_thumbnail('custom-size');
-    // Add Support for Custom Backgrounds - Uncomment below if you're going to use
-    /*add_theme_support('custom-background', array(
-	'default-color' => 'FFF',
-	'default-image' => get_template_directory_uri() . '/img/bg.jpg'
-    ));*/
-    // Add Support for Custom Header - Uncomment below if you're going to use
-    /*add_theme_support('custom-header', array(
-	'default-image'			=> get_template_directory_uri() . '/img/headers/default.jpg',
-	'header-text'			=> false,
-	'default-text-color'		=> '000',
-	'width'				=> 1000,
-	'height'			=> 198,
-	'random-default'		=> false,
-	'wp-head-callback'		=> $wphead_cb,
-	'admin-head-callback'		=> $adminhead_cb,
-	'admin-preview-callback'	=> $adminpreview_cb
-    ));*/
     // Enables post and comment RSS feed links to head
     add_theme_support('automatic-feed-links');
     // Localisation Support
@@ -97,6 +80,9 @@ function html5blank_header_scripts()
 
         wp_register_script('select2', get_template_directory_uri() . '/js/lib/select2/select2.full.min.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('select2'); // Enqueue it!
+
+        wp_register_script('plugins', get_template_directory_uri() . '/js/plugins.js', array('jquery'), '1.0.0'); // Custom scripts
+        wp_enqueue_script('plugins'); // Enqueue it!
 
         wp_register_script('scripts', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0.0'); // Custom scripts
         wp_enqueue_script('scripts'); // Enqueue it!
@@ -483,161 +469,159 @@ function course_search(){
   <div id="course-search" class="">
 
     <div class="section-city">
-    <form action="" method="get">
+      <form action="" method="get">
 
 
-      <label for="city"><i class="fa fa-compass"></i></label>
-      <select id="city" name="city">
-        <option selected="selected">VÄLJ ORT</option>
-        <option disabled="disabled">-STOCKHOLM-</option>
-        <option value="stockholm">Stockholm</option>
+            <label for="city"><i class="fa fa-compass"></i></label>
+            <select id="city" name="city">
+              <option selected="selected">VÄLJ ORT</option>
+              <option disabled="disabled">-STOCKHOLM-</option>
+              <option value="stockholm">Stockholm</option>
 
-        <option disabled="disabled">-GÖTEBORG-</option>
-        <option value="goteborg">Göteborg</option>
+              <option disabled="disabled">-GÖTEBORG-</option>
+              <option value="goteborg">Göteborg</option>
 
-        <option disabled="disabled">-MALMÖ-</option>
-        <option value="malmo">Malmö</option>
-      </select>
+              <option disabled="disabled">-MALMÖ-</option>
+              <option value="malmo">Malmö</option>
+            </select>
+          </div>
+
+          <div class="section-filter" id="open">
+            <div class="section-filter-first row">
+              <div class="section-day column small-12 medium-6 large-4">
+                <label for="day"><span><i class="fa fa-calendar"></i></span> <h2>Dag</h2></label>
+                <select id="day" name="day">
+                  <option value="day_mon">Måndag</option>
+                  <option value="day_tue">Tisdag</option>
+                  <option value="day_wed">Onsdag</option>
+                  <option value="day_thu">Torsdag</option>
+                  <option value="day_fri">Fredag</option>
+                  <option value="day_sat">Lördag</option>
+                  <option value="day_sun">Söndag</option>
+                </select>
+              </div>
+
+              <div class="section-time column small-12 medium-6 large-4">
+                <label for="time"><span><i class="fa fa-clock-o"></i></span><h2>Tid</h2></label>
+                <select id="time" name="time">
+                  <option value="time_7">07.00-11.00</option>
+                  <option value="time_11">11.00-15.00</option>
+                  <option value="time_15">15.00-18.00</option>
+                  <option value="time_18">18.00-00.00</option>
+                </select>
+              </div>
+
+              <div class="section-age column small-12 medium-6 large-4">
+                <label for="age_from_to"><span><i class="fa fa-heart-o"></i></span><h2>Ålder</h2></label>
+                <input id="age_from" type="number" name="age_from" min="0" max="99" value="0"><span class="toSymbol">-</span>
+                <input id="age_to" type="number" name="age_to" min="1" max="99" value="99" >
+              </div>
+            </div>  <!--//section-filter-first -->
+
+            <div class="row">
+              <p class="column small-12" id="button-second-filter"><i class="fa fa-plus-square-o"></i>FLER VAL</p>
+            </div>
+
+            <div class="section-filter-second row" id="second-filter">
+
+              <div class=" small-12 medium-4 large-4 columns">
+                <label for="level"><span><i class="fa fa-star"></i></span><h2>Nivå</h2></label>
+                <select id="level" name="level">
+                  <option value="0">Visa alla nivåer</option>
+                  <option value="1">Nybörjare</option>
+                  <option value="2">Nybörjare - Fortsättning</option>
+                  <option value="3">Fortsättning</option>
+                  <option value="4">Fortsättning - Medel</option>
+                  <option value="5">Medel</option>
+                  <option value="6">Medel - Avancerad</option>
+                  <option value="7">Avancerad</option>
+                  <option value="8">Professionell</option>
+                  <option value="9">För alla nivåer</option>
+                </select>
+              </div>
+
+              <div class=" small-12 medium-8 large-8 columns styles">
+                <label for="styles"><span><i class="fa fa-tags"></i></span><h2>Dansstilar</h2></label>
+
+                <div class="small-12 medium-6 large-4 columns styles-column">
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="balett" id="balett" />     <label for="balett"><p class="checkbox-label">Balett</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="barndans" id="barndans" />             <label for="barndans"><p class="checkbox-label">Barndans</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="breaking" id="breaking" />             <label for="breaking"><p class="checkbox-label">Breaking</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="dansmix" id="dansmix" />               <label for="dansmix"><p class="checkbox-label">Dansmix</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="flamenco" id="flamenco"/>              <label for="flamenco"><p class="checkbox-label">Flamenco</p></label>
+                  </div>
+                </div>
+
+                <div class="small-12 medium-6 large-4 columns styles-column padding-left">
+                  <div class="style-holder">
+                  <input class="style" type="checkbox" name="style" value="improvisation" id="improvisation" />   <label for="improvisation"><p class="checkbox-label">Improvisation</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="jazzdans" id="jazzdans" />             <label for="jazzdans"><p class="checkbox-label">Jazzdans</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="latinska" id="latinska" />             <label for="latinska"><p class="checkbox-label">Latinska</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="modernnutida" id="modernnutida" />     <label for="modernnutida"><p class="checkbox-label">Modern&amp;Nutida</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="musikal" id="musikal"/>                <label for="musikal"><p class="checkbox-label">Musikal</p></label>
+                  </div>
+
+                </div>
+
+                <div class="small-12 medium-6 large-4 columns styles-column padding-left">
+
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="pardans" id="pardans" />               <label for="pardans"><p class="checkbox-label">Pardans</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="pilates" id="pilates" />               <label for="pilates"><p class="checkbox-label">Pilates</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="streetdance" id="streetdance" />       <label for="streetdance"><p class="checkbox-label">Streetdance</p></label>
+                  </div>
+                  <div class="style-holder">
+                    <input class="style" type="checkbox" name="style" value="yoga" id="yoga" />                     <label for="yoga"><p class="checkbox-label">Yoga</p></label>
+                  </div>
+
+                </div>
+              </div>
+
+            </div> <!--//section-filter-second-->
+
+            <button type="submit" id="button-search"><i class="fa fa-chevron-circle-right"></i><span id="search">SÖK</span></button>
+
+          </form>
     </div>
 
-    <div class="section-filter" id="open">
-      <div class="section-filter-first row">
-        <div class="section-day column small-12 medium-6 large-4">
-          <label for="day"><span><i class="fa fa-calendar"></i></span> <h2>Dag</h2></label>
-          <select id="day" name="day">
-            <option value="day_mon">Måndag</option>
-            <option value="day_tue">Tisdag</option>
-            <option value="day_wed">Onsdag</option>
-            <option value="day_thu">Torsdag</option>
-            <option value="day_fri">Fredag</option>
-            <option value="day_sat">Lördag</option>
-            <option value="day_sun">Söndag</option>
-          </select>
-        </div>
-
-        <div class="section-time column small-12 medium-6 large-4">
-          <label for="time"><span><i class="fa fa-clock-o"></i></span><h2>Tid</h2></label>
-          <select id="time" name="time">
-            <option value="time_7">07.00-11.00</option>
-            <option value="time_11">11.00-15.00</option>
-            <option value="time_15">15.00-18.00</option>
-            <option value="time_18">18.00-00.00</option>
-          </select>
-        </div>
-
-        <div class="section-age column small-12 medium-6 large-4">
-          <label for="age"><span><i class="fa fa-heart-o"></i></span><h2>Ålder</h2></label>
-          <select id="age" name="age">
-            <option value="age_1">1-3 år</option>
-            <option value="age_4">4-6 år</option>
-            <option value="age_7">7-9 år</option>
-            <option value="age_10">10-12 år</option>
-            <option value="age_13">13-15 år</option>
-            <option value="age_16">16+</option>
-            <option value="age_30">30+</option>
-            <option value="age_50">50+</option>
-          </select>
-        </div>
-      </div>  <!--//section-filter-first -->
-
-      <div class="row">
-        <p class="column small-12" id="button-second-filter"><i class="fa fa-plus-square-o"></i>FLER VAL</p>
-      </div>
-
-      <div class="section-filter-second row" id="second-filter">
-
-        <div class=" small-10 medium-4 large-4 columns">
-          <label for="level"><span><i class="fa fa-star"></i></span><h2>Nivå</h2></label>
-          <select id="level" name="level">
-            <option value="0">Visa alla nivåer</option>
-            <option value="1">Nybörjare</option>
-            <option value="2">Nybörjare - Fortsättning</option>
-            <option value="3">Fortsättning</option>
-            <option value="4">Fortsättning - Medel</option>
-            <option value="5">Medel</option>
-            <option value="6">Medel - Avancerad</option>
-            <option value="7">Avancerad</option>
-            <option value="8">Professionell</option>
-            <option value="9">För alla nivåer</option>
-          </select>
-        </div>
-
-        <div class=" small-10 medium-8 large-8 columns styles">
-          <label for="styles"><span><i class="fa fa-tags"></i></span><h2>Dansstilar</h2></label>
-
-          <div class="small-12 medium-6 large-4 columns styles-column">
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="balett" id="balett" />     <label for="balett"><p class="checkbox-label">Balett</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="barndans" id="barndans" />             <label for="barndans"><p class="checkbox-label">Barndans</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="breaking" id="breaking" />             <label for="breaking"><p class="checkbox-label">Breaking</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="dansmix" id="dansmix" />               <label for="dansmix"><p class="checkbox-label">Dansmix</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="flamenco" id="flamenco"/>              <label for="flamenco"><p class="checkbox-label">Flamenco</p></label>
-            </div>
-          </div>
-
-          <div class="small-12 medium-6 large-4 columns styles-column padding-left">
-            <div class="style-holder">
-            <input class="style" type="checkbox" name="style" value="improvisation" id="improvisation" />   <label for="improvisation"><p class="checkbox-label">Improvisation</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="jazzdans" id="jazzdans" />             <label for="jazzdans"><p class="checkbox-label">Jazzdans</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="latinska" id="latinska" />             <label for="latinska"><p class="checkbox-label">Latinska</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="modernnutida" id="modernnutida" />     <label for="modernnutida"><p class="checkbox-label">Modern&amp;Nutida</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="musikal" id="musikal"/>                <label for="musikal"><p class="checkbox-label">Musikal</p></label>
-            </div>
-
-          </div>
-
-          <div class="small-12 medium-6 large-4 columns styles-column padding-left">
-
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="pardans" id="pardans" />               <label for="pardans"><p class="checkbox-label">Pardans</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="pilates" id="pilates" />               <label for="pilates"><p class="checkbox-label">Pilates</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="streetdance" id="streetdance" />       <label for="streetdance"><p class="checkbox-label">Streetdance</p></label>
-            </div>
-            <div class="style-holder">
-              <input class="style" type="checkbox" name="style" value="yoga" id="yoga" />                     <label for="yoga"><p class="checkbox-label">Yoga</p></label>
-            </div>
-
-          </div>
-        </div>
-
-      </div> <!--//section-filter-second-->
-
-      <button type="submit" id="button-search"><i class="fa fa-chevron-circle-right"></i><span id="search">SÖK</span></button>
-
-    </form>
-    </div>
 
     <section class="section-result" id="result">
       <h2>Dina Sökresultat</h2>
       <!--The response output-->
       <div class="row">
         <p class="accent-text text-center small-centered small-12 medium-10 info">
-          <strong>Danskurser.se står ej för eventuella fel eller ändringar i kursinformationen.</strong> <a href="#">Läs mer.</a>
+          <strong>Danskurser.se står ej för eventuella fel eller ändringar i kursinformationen.</strong> <a href="https://hittadanskurs.se/vanliga-fragor">Läs mer.</a>
         </p>
-        <ul class="columns small-centered small-12 medium-12 large-10" id="ul-result"></ul>
+        <ul class="columns small-centered small-12 medium-12 large-12" id="ul-result"></ul>
+      </div>
+
+      <div class="row padding-sides">
+        <div id="loadMore" class="text-right">VISA FLER KURSER <i class="fa fa-plus-circle"></i></div>
       </div>
 
     </section>
+    </div>
 
 
   </div>
@@ -655,16 +639,22 @@ function course_search_callback() {
     $city = 0;
     if(isset($_GET['city']))
       $city = sanitize_text_field($_GET['city']);
+
     $day = 0;
     if(isset($_GET['day']))
       $day = sanitize_text_field($_GET['day']);
+
     $time = 0;
     if(isset($_GET['time']))
       $time = sanitize_text_field($_GET['time']);
-    $age = 0;
-    if(isset($_GET['age']))
-      $age = sanitize_text_field($_GET['age']);
 
+    $age_from = 0;
+    if(isset($_GET['age_from']))
+      $age_from = sanitize_text_field($_GET['age_from']);
+
+    $age_to = 0;
+    if(isset($_GET['age_to']))
+      $age_to = sanitize_text_field($_GET['age_to']);
 
   //json result
   $result =  array();
@@ -691,10 +681,21 @@ function course_search_callback() {
     'value' => $time,
     'compare' => '='
   );
+
   $args['meta_query'][] = array(
-    'key' => 'age',
-    'value' => $age,
-    'compare' => '='
+    'relation'		=> 'AND',
+    		array(
+    			'key'		=> 'age_from',
+    			'value'		=> $age_from,
+          'type'  => 'NUMERIC',
+    			'compare'	=> '>='
+    		),
+    		array(
+    			'key'		=> 'age_to',
+    			'value'		=> $age_to,
+    			'type'		=> 'NUMERIC',
+    			'compare'	=> '<='
+    		)
   );
 
   $course_query = new WP_Query( $args );
@@ -709,7 +710,8 @@ function course_search_callback() {
         'course_name' => get_field('course_name'),
         'day' => get_field('day'),
         'time' => get_field('time'),
-        'age' => get_field('age'),
+        'age_from' => get_field('age_from'),
+        'age_to' => get_field('age_to'),
         'course_time' => get_field('course_time'),
         'course_start_time' => get_field('course_start_time'),
         'school' => get_field('school'),
@@ -723,7 +725,7 @@ function course_search_callback() {
         'hours' => get_field('hours')
       );
     }
-    //application/json didn't work so I took pretty print nd stri-replae and it looks fine now
+    //application/json didn't work so I took pretty print and strip-replae and it
       //Fix utf-8
     $finalResult = json_encode($result, JSON_PRETTY_PRINT);
     $finalResult = str_replace("\/","/",$finalResult);
@@ -787,8 +789,9 @@ function free_search_callback() {
           'city' => get_field('city'),
           'course_name' => get_field('course_name'),
           'day' => get_field('day'),
+          'age_from' => get_field('age_from'),
+          'age_to' => get_field('age_to'),
           'time' => get_field('time'),
-          'age' => get_field('age'),
           'course_time' => get_field('course_time'),
           'school' => get_field('school'),
           'level' => get_field('level'),

@@ -6,7 +6,7 @@ var freeSearchForm = freeSearch.find('form');
 var keyUpPress = 0;
 var counter = 0;
 var teachersList = [];
-//peka på teacher i den här arrayen
+
 
 function afterAjax() {
   $( "#input-free-search" ).autocomplete({
@@ -14,31 +14,20 @@ function afterAjax() {
   });
 } afterAjax();
 
-// var requestSent = false;
-
-
 
 $(document).ready(function(){
-
 
   var data = {
     action: "free_search",
     freeSearchText: freeSearch.find('#input-free-search').val()
   }
 
-  // if(!requestSent) {
-    // requestSent = true;
-
-
   $.ajax({
     url : ajax_url,
     data : data,
-    // complete: function() {
-    //   requestSent = false;
-    // },
+
     success : function(response) {
       counter ++;
-      // console.log(counter);
         courseSearch.find("ul").empty();
 
         var responseLength = response.length;
@@ -60,10 +49,8 @@ $(document).ready(function(){
         var matchTeacher = "";
         var matchPrice = "";
         var matchOrgLink = "";
-        // console.log(response);
 
         function checkAndAdd(name) {
-          // var id = teachersList.length + 1;
           var found = teachersList.some(function (el) {
             return el === name;
           });
@@ -80,8 +67,7 @@ $(document).ready(function(){
         }
 
         var response = response.filter(function (chain) {
-          // console.log(chain.id);
-          // console.log(data.freeSearchText);
+
             if(data.freeSearchText == chain.school || data.freeSearchText == chain.price || data.freeSearchText == chain.teacher || data.freeSearchText == chain.id  ){
               matchId = chain.id;
               matchTitle = chain.title;
@@ -103,12 +89,7 @@ $(document).ready(function(){
               matchHours = chain.hours;
               matchOrgLink = matchOrganisation[0].guid;
 
-              // console.log(matchOrgLink);
-
               writeHTML(matchId, matchTitle, matchLink, matchCity, matchCourseName, matchDay, matchTime, matchAge, matchCourseTime, matchSchool, matchLevel, matchOrganisation, matchLogo, matchStyles, matchTeacher, matchPrice, matchHours, matchStart   );
-              // console.log("school match!");
-              // return matchTitle + matchLink + matchCity + matchCourseName + matchDay + matchTime + matchAge + matchCourseTime + matchSchool + matchLevel + matchOrganisation + matchLogo + matchStyles + matchTeacher;
-
             }
 
         })

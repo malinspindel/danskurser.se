@@ -4,6 +4,25 @@ var courseSearch = $('#course-search');
 
 var searchForm = courseSearch.find('form');
 
+//Show more cards
+function loadCards() {
+  $('.card').css({"display":"none"});
+  size_li = $("#ul-result li").size();
+  x=6;
+  $('#ul-result li:lt('+x+')').show();
+
+  if(size_li > 12) {
+    $('#loadMore').show();
+    $('#loadMore').click(function () {
+        x= (x+6 <= size_li) ? x+6 : size_li;
+        $('#ul-result li:lt('+x+')').show();
+        if(x == size_li){
+            $('#loadMore').hide();
+        }
+    });
+  }
+}
+
 // console.log(searchForm);
 // $( document ).ready(function() {
   searchForm.submit(function(e){
@@ -19,7 +38,8 @@ var searchForm = courseSearch.find('form');
       city: courseSearch.find('#city').val(),
       day: courseSearch.find('#day').val(),
       time: courseSearch.find('#time').val(),
-      age: courseSearch.find('#age').val(),
+      age_from: courseSearch.find('#age_from').val(),
+      age_to: courseSearch.find('#age_to').val(),
       level: courseSearch.find('#level').val(),
       styles: function getCheckboxes(checkboxName) {
                 var checkboxes = document.getElementsByName(checkboxName);
@@ -62,7 +82,8 @@ var searchForm = courseSearch.find('form');
         var logo = response[i].logo;
         var day = "";
         var time = response[i].course_time;
-        var age = response[i].age;
+        var age_from = response[i].age_from;
+        var age_to = response[i].age_to;
         var start = response[i].start;
         var hours = response[i].hours;
         var level = response[i].level;
@@ -101,32 +122,6 @@ var searchForm = courseSearch.find('form');
         }
         if(response[i].day == "day_sun"){
           day = "Sön";
-        }
-
-        //Ålder
-        if(response[i].age == "age_1"){
-          age = "1-3 år";
-        }
-        if(response[i].age == "age_4"){
-          age = "4-6 år";
-        }
-        if(response[i].age == "age_7"){
-          age = "7-9 år";
-        }
-        if(response[i].age == "age_10"){
-          age = "10-12 år";
-        }
-        if(response[i].age == "age_13"){
-          age = "13-15 år";
-        }
-        if(response[i].age == "age_16"){
-          age = "16+";
-        }
-        if(response[i].age == "age_30"){
-          age = "30+";
-        }
-        if(response[i].age == "age_50"){
-          age = "50+";
         }
 
         //Nivå
@@ -172,21 +167,17 @@ var searchForm = courseSearch.find('form');
         // console.log(data.level);
 
         if(data.level == 0 && checkedBoxes == null) {
-          // console.log("no choises");
+
           writeHTML();
         }
 
         else if(data.level == response[i].level && checkedBoxes != null){
-          // console.log("both choises ")
 
             if(data.level == response[i].level){
               for(j = 0; j < checkedBoxes.length; j++ ){
                 // console.log("forloop");
                 for(k = 0 ; k < styles.length ; k++ ) {
                   if(checkedBoxes[j] == styles[k]) {
-                    // console.log("samma:");
-                    // console.log(checkedBoxes[j]);
-                    // console.log(styles[k]);
                     writeHTML();
                   }
                 }
@@ -195,14 +186,12 @@ var searchForm = courseSearch.find('form');
         }
 
         else if(data.level == response[i].level && checkedBoxes == null) {
-          console.log("level choise is true");
           writeHTML();
         }
 
         else if(checkedBoxes != null && data.level == 0){
-          console.log("styles choises true");
+
               for(j = 0; j < checkedBoxes.length; j++ ){
-                // console.log("forloop");
                 for(k = 0 ; k < styles.length ; k++ ) {
                   if(checkedBoxes[j] == styles[k]) {
                     writeHTML();
@@ -252,24 +241,23 @@ var searchForm = courseSearch.find('form');
                 html += "<label>Kursstart</label>";
                 html += "<p>" + start + "</p>"
                 html += "<label> Ålder</label>"
-                html +=  "<p>" + age + "</p>";
+                html +=  "<p>" + age_from + "-" + age_to + " år</p>";
+                html += "<label> Lärare</label>"
+                html +=  "<p>" + teacher + "</p>";
+
 
               html += "</div>";
             html += "</div>";
 
             html += "<div class='course-nav row'>";
               html += "<div class='columns small-9 medium-9'>";
-              html += "<label class='label-level'>NIVÅ</label>";
-                html += "<div class='circle " + level + "'><span>" + level + "</span></div>";
+                html += "<div class='circle " + level + "'><span class='label-level'>NIVÅ</span><br><span>" + level + "</span></div>";
               html += "</div>";
 
               html += "<div class='columns small-3 medium-3'>";
                 html += "<a href ='" + response[i].link + "'><i class='fa fa-arrow-circle-right'></i></a>";
               html += "</div>";
             html += "</div>";
-
-            // html += "<p>Stil: " + styles + "</p>";
-            html += "<p>Lärare: " + teacher + "</p>";
 
           html += "</div>";
           html += "</div>";
@@ -281,6 +269,7 @@ var searchForm = courseSearch.find('form');
 
 
         courseSearch.find('ul').append(html);
+        loadCards();
       }
 
       //give a message if ul is empty after filtering with js

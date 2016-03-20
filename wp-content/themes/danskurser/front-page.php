@@ -1,9 +1,6 @@
-
-
 <?php
 get_header();
 ?>
-
 
 <?php if(get_field('top_section_type') == 'slider'): ?>
 	<?php get_template_part('templates/backgroundslider'); ?>
@@ -13,19 +10,17 @@ get_header();
 <?php get_template_part('templates/search-filter'); ?>
 
 <?php
+	$args = array(
+	  'post_type' => 'danskurser'
+	);
+	$the_query = new WP_Query( $args );
+	$post_count_courses = $the_query->found_posts;
 
-$args = array(
-  'post_type' => 'danskurser'
-);
-$the_query = new WP_Query( $args );
-$post_count_courses = $the_query->found_posts;
-
-$args = array(
-  'post_type' => 'organisationer'
-);
-$the_query = new WP_Query( $args );
-$post_count_org = $the_query->found_posts;
-
+	$args = array(
+	  'post_type' => 'organisationer'
+	);
+	$the_query = new WP_Query( $args );
+	$post_count_org = $the_query->found_posts;
 ?>
 <div class="row full-width-row">
 	<div class="text-slider-wrapper">
@@ -36,10 +31,7 @@ $post_count_org = $the_query->found_posts;
 </div>
 
 <div class="row full-width-row row-wrapper">
-
-
 	<section class="row front-page-content">
-
 		<article class="columns small-12 medium-8 large-4 text-right padding-top-bottom">
 			<div class="container content-left">
 				<?php the_content(); ?>
@@ -72,10 +64,7 @@ $post_count_org = $the_query->found_posts;
 				<?php endif; ?>
 			</div>
 		</article>
-
 	</section>
 </div><!--// row-wrapper-->
-
-
 
 <?php get_footer(); ?>
